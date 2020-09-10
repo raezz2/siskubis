@@ -49,6 +49,11 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
 	Route::get('/event/calendar', 'Event\EventController@calendar')->name('inkubator.event-calendar');
     Route::get('/pengumuman', 'Pengumuman\PengumumanController@index')->name('inkubator.pengumuman');
     Route::get('/berita', 'Berita\BeritaController@index')->name('inkubator.berita');
+    //Alvi Adnan Vazshola
+    Route::get('/berita/create', 'Berita\BeritaController@create')->name('inkubator.formBerita');
+    Route::post('/berita/store', 'Berita\BeritaController@store')->name('inkubator.storeBerita');
+    Route::delete('/berita/destroy/{berita}', 'Berita\BeritaController@destroy')->name('inkubator.destroyBerita');
+    //End
     Route::get('/berita/kategori', 'Berita\KategoriController@kategori')->name('inkubator.kategori');
     Route::get('/chat', 'Chat\ChatController@index')->name('inkubator.chat');
     Route::get('/pesan', 'Pesan\PesanController@index')->name('inkubator.pesan');
