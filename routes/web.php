@@ -26,7 +26,7 @@ Route::group(['prefix'=>'admin','middleware' => ['role:admin']], function () {
 	Route::get('/tenant/{kategori}', 'Tenant\TenantController@kategori')->name('admin.tenant-kategori');
 	Route::get('/tenant/{kategori}/{id}', 'Tenant\TenantController@detail')->name('admin.tenant-detail');
 	Route::get('/chat', 'Chat\ChatController@index')->name('admin.chat');
-	
+
 });
 
 Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], function () {
@@ -34,7 +34,7 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     Route::get('/tenant', 'Tenant\TenantController@index')->name('inkubator.tenant');
 	Route::get('/tenant/{kategori}', 'Tenant\TenantController@kategori')->name('inkubator.tenant-kategori');
 	Route::get('/tenant/{kategori}/{id}', 'Tenant\TenantController@detail')->name('inkubator.tenant-detail');
-	
+
 	Route::get('/mentor', 'Mentor\MentorController@index')->name('inkubator.mentor');
 	Route::get('/produk', 'Produk\ProdukController@index')->name('inkubator.produk');
 	Route::get('/aktifitas', 'Produk\ProdukController@index')->name('inkubator.aktifitas');
@@ -49,9 +49,24 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
 	Route::get('/event/calendar', 'Event\EventController@calendar')->name('inkubator.event-calendar');
     Route::get('/pengumuman', 'Pengumuman\PengumumanController@index')->name('inkubator.pengumuman');
     Route::get('/berita', 'Berita\BeritaController@index')->name('inkubator.berita');
+    Route::get('/berita/kategori', 'Berita\KategoriController@kategori')->name('inkubator.kategori');
     Route::get('/chat', 'Chat\ChatController@index')->name('inkubator.chat');
     Route::get('/pesan', 'Pesan\PesanController@index')->name('inkubator.pesan');
 	Route::get('/profile', 'Profile\ProfileUserController@index')->name('inkubator.profile');
+
+    /*========================================================== Kategori ===================================================================*/
+    // Route::resource('kategori', 'Berita\KategoriController')->except(['create', 'show']);
+
+    Route::get('/berita/kategori', 'Berita\KategoriController@index')->name('inkubator.kategori.index');
+
+    Route::get('/berita/kategori/create', 'Berita\KategoriController@create')->name('inkubator.kategori.create');
+    Route::post('/berita/kategori/create','Berita\KategoriController@store');
+
+    Route::get('/berita/kategori/{kategori}/edit', 'Berita\KategoriController@edit')->name('inkubator.kategori.edit');
+
+    Route::patch('/berita/kategori/{kategori}/edit', 'Berita\KategoriController@update')->name('inkubator.kategori.update');
+    Route::delete('/berita/kategori/{kategori}/delete', 'Berita\KategoriController@destroy')->name('inkubator.kategori.destroy');
+
 });
 
 Route::group(['prefix'=>'mentor','middleware' => ['role:mentor']], function () {

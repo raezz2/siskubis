@@ -21,5 +21,5 @@ class BeritaController extends Controller
     {
         return view('berita.index');
     }
-	
+
 }
