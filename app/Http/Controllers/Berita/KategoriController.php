@@ -44,8 +44,9 @@ class KategoriController extends Controller
 		return redirect('/inkubator/berita/kategori');
 	}
 
-    $kategori->delete();
 	public function destroy(Kategori $kategori){
+    	$kategori->delete();
+    	
         return redirect('/inkubator/berita/kategori');
 	}
 }
