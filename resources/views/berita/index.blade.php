@@ -1,14 +1,17 @@
 @extends('layouts.app')
 @section('content')
 
-<div class="row"> 
+<div class="row">
 <div class="col-xl-8 col-lg-8">
 <div class="card">
 <div class="card-header container-fluid">
   <div class="row">
-	<div class="col-md-10">
+	<div class="col-md-7">
 	  <h3>Berita</h3>
-	</div>
+    </div>
+    <div class="col-md-3">
+        <a href="{{ route('inkubator.kategori.index') }}"><button class="btn btn-primary custom-btn btn-sm">+ Tambah Kategori</button></a>
+    </div>
 	<div class="col-md-2">
 	  <a href="{{ route('inkubator.formBerita') }}"><button class="btn btn-primary custom-btn btn-sm">+ Tambah Berita</button></a>
 	</div>

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Berita;
-use App\BeritaCategory;
+use App\kategori;
 use App\Inkubator;
 use Validator;
 use File;
@@ -25,7 +25,7 @@ class BeritaController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {   
+    {
         $berita = Berita::with('beritaCategory','inkubator','user')->orderBy('created_at','ASC')->paginate(5);
         if (request()->search != '') {
             $berita = $berita->where('tittle', 'LIKE', '%' . request()->s . '%');
@@ -33,10 +33,10 @@ class BeritaController extends Controller
 
         return view('berita.index',compact('berita', $berita));
     }
-	
+
     public function create()
     {
-        $kategori_berita =  BeritaCategory::all();
+        $kategori_berita =  kategori::all();
         $inkubator = Inkubator::all();
 
         return view('berita.formTambah',compact('kategori_berita','inkubator'));
@@ -82,5 +82,5 @@ class BeritaController extends Controller
 
         return redirect(route('inkubator.berita'))->with(['success' => 'berita berhasil dihapus']);
     }
-    
+
 }

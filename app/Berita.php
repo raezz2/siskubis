@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\BeritaCategory;
+use App\kategori;
 use App\Inkubator;
 use App\User;
 
@@ -14,7 +14,7 @@ class Berita extends Model
 
     public function beritaCategory()
 	{
-	    return $this->belongsTo(BeritaCategory::class);
+	    return $this->belongsTo(kategori::class);
 	}
 
 	public function inkubator()
