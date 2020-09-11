@@ -83,4 +83,48 @@ class BeritaController extends Controller
         return redirect(route('inkubator.berita'))->with(['success' => 'berita berhasil dihapus']);
     }
 
+    public function edit($id)
+    {
+        $berita = berita::find($id);
+        $kategori = kategori::all();
+        $inkubator = Inkubator::all();
+
+        return view('berita.formEditBerita', compact('berita','kategori', 'inkubator'));
+    }
+
+    public function update($value='')
+    {
+        $validator = Validator::make($request->all(), [
+            'tittle'                => 'required',
+            'berita'                => 'required',
+            'berita_category_id'    => 'required|exists:berita_category,id',
+            'publish'               => 'required',
+            'author_id'             => 'required|exists:user,id',
+            'inkubator_id'          => 'required|exists:inkubator,id',
+            'foto'                  => 'required|image|mimes:jpg,png,jpeg',
+
+        ]);
+        $berita = Berita::find($id);
+        $filename = $berita->foto;
+
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $filename = time() . Str::slug($request->tittle) . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/berita', $filename);
+            File::delete(storage_path('app/public/berita/' . $produk->foto));
+        }
+        $produk->update([
+            'tittle'                => $request->tittle,
+            'slug'                  => $request->tittle,
+            'berita'                => $request->berita,
+            'berita_category_id'    => $request->berita_category_id,
+            'publish'               => $request->publish,
+            'author_id'             => $request->author_id,
+            'inkubator_id'          => $request->inkubator_id,
+            'foto'                  => $filename,
+            'views'                 => $request->views
+        ]);
+
+        return redirect(route('inkubator.berita'))->with(['success' => 'berita berhasil dipublish']);
+    }
 }

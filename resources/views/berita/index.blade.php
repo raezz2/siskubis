@@ -57,7 +57,7 @@
 				<form action="{{ route('inkubator.destroyBerita', $b->id) }}" method="post">
                 	@csrf
                 	<input type="hidden" name="_method" value="DELETE">
-					<a class="ul-link-action text-success" href="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="i-Edit"></i></a>
+					<a class="ul-link-action text-success" href="{{ route('inkubator.editBerita', $b->id) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="i-Edit"></i></a>
 					<button type="submit" class="btn btn-link ul-link-action text-danger mr-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Want To Delete !!!"><i class="i-Eraser-2"></i></button>
 				</form>
 				</span></div>

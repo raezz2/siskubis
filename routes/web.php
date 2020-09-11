@@ -53,6 +53,8 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     Route::get('/berita/create', 'Berita\BeritaController@create')->name('inkubator.formBerita');
     Route::post('/berita/store', 'Berita\BeritaController@store')->name('inkubator.storeBerita');
     Route::delete('/berita/destroy/{berita}', 'Berita\BeritaController@destroy')->name('inkubator.destroyBerita');
+    Route::get('berita/edit/{id}','Berita\BeritaController@edit')->name('inkubator.editBerita');
+    Route::post('berita/update/{id}','Berita\BeritaController@update')->name('inkubator.updateBerita');
     //End
     Route::get('/berita/kategori', 'Berita\KategoriController@kategori')->name('inkubator.kategori');
     Route::get('/chat', 'Chat\ChatController@index')->name('inkubator.chat');
