@@ -10,7 +10,7 @@
 	  <h3>Berita</h3>
     </div>
     <div class="col-md-3">
-        <a href="{{ route('inkubator.kategori.index') }}"><button class="btn btn-primary custom-btn btn-sm">+ Tambah Kategori</button></a>
+        <a href="{{ route('inkubator.kategori.index') }}"><button class="btn btn-primary custom-btn btn-sm ml-5">+ Tambah Kategori</button></a>
     </div>
 	<div class="col-md-2">
 	  <a href="{{ route('inkubator.formBerita') }}"><button class="btn btn-primary custom-btn btn-sm">+ Tambah Berita</button></a>

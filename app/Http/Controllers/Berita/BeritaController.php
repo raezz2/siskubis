@@ -70,7 +70,7 @@ class BeritaController extends Controller
 
             $berita = Berita::create([
                 'tittle'                => $request->tittle,
-                'slug'                  => $request->tittle,
+                'slug'                  => Str::slug($request->tittle),
                 'berita'                => $request->berita,
                 'berita_category_id'    => $request->berita_category_id,
                 'publish'               => $request->publish,
@@ -124,7 +124,7 @@ class BeritaController extends Controller
         }
         $berita->update([
             'tittle'                => $request->tittle,
-            'slug'                  => $request->tittle,
+            'slug'                  => Str::slug($request->tittle),
             'berita'                => $request->berita,
             'berita_category_id'    => $request->berita_category_id,
             'publish'               => $request->publish,
