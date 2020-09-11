@@ -93,7 +93,7 @@
                             <p><strong>Biarkan kosong jika tidak ingin mengganti gambar</strong></p>
 		        		</div>
 						<div class="form-group">
-							<button class="btn btn-primary">Tambah</button>
+							<button class="btn btn-primary">Update</button>
 						</div>
 					</div>
 				</div>

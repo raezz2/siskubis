@@ -24,7 +24,6 @@
         <form action="{{ route('cariberita') }}" method="get" name="s" >
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" name="search" placeholder="Search...">
-
         </div>
 	</div>
 	<div class="col-md-4 mt-3 mt-md-0">
@@ -52,16 +51,15 @@
 				<div class="ul-widget5__pic"><img src="{{ asset('storage/berita/' . $b->foto) }}" alt="Third slide" /></div>
 				<div class="ul-widget5__section">
 					<a class="ul-widget4__title" href="#">{{ $b->tittle }}</a>
-					<p class="ul-widget5__desc">{!! $b->berita !!}</p>
+					<p class="ul-widget5__desc">{!! Str::limit($b->berita, 47) !!}</p>
 					<div class="ul-widget5__info">
-						<span>Status:</span>
+						<span>Status : </span>
 							@if($b->publish == 1)
 								<span class="badge badge-pill badge-success p-1 mr-2">Publish</span>
 							@else
 								<span class="badge badge-pill badge-danger p-1 mr-2">Draft</span>
 							@endif
-
-						<span>Author:</span><span class="text-primary">{{ $b->user['name'] }}</span><br>
+						<span>Author : </span><span class="text-primary">{{ $b->author_id }}</span><br>
 						<span>Released:</span><span class="text-primary">{{ $b->created_at->format('d-m-Y') }}</span>
 					</div>
 				</div>
