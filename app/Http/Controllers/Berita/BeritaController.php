@@ -92,7 +92,7 @@ class BeritaController extends Controller
         return view('berita.formEditBerita', compact('berita','kategori', 'inkubator'));
     }
 
-    public function update($value='')
+    public function update($id, Request $request)
     {
         $validator = Validator::make($request->all(), [
             'tittle'                => 'required',
@@ -113,7 +113,7 @@ class BeritaController extends Controller
             $file->storeAs('public/berita', $filename);
             File::delete(storage_path('app/public/berita/' . $produk->foto));
         }
-        $produk->update([
+        $berita->update([
             'tittle'                => $request->tittle,
             'slug'                  => $request->tittle,
             'berita'                => $request->berita,

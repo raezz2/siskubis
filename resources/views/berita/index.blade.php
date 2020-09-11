@@ -46,9 +46,20 @@
 		<div class="ul-widget5__item">
 			<div class="ul-widget5__content">
 				<div class="ul-widget5__pic"><img src="{{ asset('storage/berita/' . $b->foto) }}" alt="Third slide" /></div>
-				<div class="ul-widget5__section"><a class="ul-widget4__title" href="#">{{ $b->tittle }}</a>
+				<div class="ul-widget5__section">
+					<a class="ul-widget4__title" href="#">{{ $b->tittle }}</a>
 					<p class="ul-widget5__desc">{!! $b->berita !!}</p>
-					<div class="ul-widget5__info"><span>Status:</span><span class="badge badge-pill badge-success p-1 mr-2">Publish</span><span>Author:</span><span class="text-primary"></span>{{ $b->user['name'] }} <br><span>Released:</span><span class="text-primary">{{ $b->created_at->format('d-m-Y') }}</span></div>
+					<div class="ul-widget5__info">
+						<span>Status:</span>
+							@if($b->publish == 1)
+								<span class="badge badge-pill badge-success p-1 mr-2">Publish</span>
+							@else
+								<span class="badge badge-pill badge-danger p-1 mr-2">Draft</span>
+							@endif
+						
+						<span>Author:</span><span class="text-primary">{{ $b->user['name'] }}</span><br>
+						<span>Released:</span><span class="text-primary">{{ $b->created_at->format('d-m-Y') }}</span>
+					</div>
 				</div>
 			</div>
 			<div class="ul-widget5__content">
