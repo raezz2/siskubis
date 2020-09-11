@@ -27,11 +27,20 @@ class BeritaController extends Controller
     public function index()
     {
         $berita = Berita::with('beritaCategory','inkubator','user')->orderBy('created_at','ASC')->paginate(5);
-        if (request()->search != '') {
+        // if (request()->search != '') {
+        //     $berita = $berita->where('title', 'LIKE', '%' . request()->s . '%');
+        // }
+        if (request()->s != '') {
             $berita = $berita->where('tittle', 'LIKE', '%' . request()->s . '%');
         }
 
         return view('berita.index',compact('berita', $berita));
+    }
+
+    public function search(Request $request){
+        $cari = $request->get('search');
+        $berita = Berita::where('tittle','LIKE','%'.$cari.'%')->paginate(10);
+        return view('berita.index', compact('berita','cari'));
     }
 
     public function create()
@@ -126,5 +135,6 @@ class BeritaController extends Controller
         ]);
 
         return redirect(route('inkubator.berita'))->with(['success' => 'berita berhasil dipublish']);
+
     }
 }

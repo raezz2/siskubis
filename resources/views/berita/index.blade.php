@@ -18,10 +18,14 @@
   </div>
 </div>
 <div class="card-body">
-<form action="{{ route('inkubator.berita') }}" method="get">
+
 <div class="row row-xs">
 	<div class="col-md-4">
-		<input class="form-control" type="text" placeholder="Search" name="search" value="{{ request()->search }}">
+        <form action="{{ route('cariberita') }}" method="get" name="s" >
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" name="search" placeholder="Search...">
+
+        </div>
 	</div>
 	<div class="col-md-4 mt-3 mt-md-0">
 		<input class="form-control" type="date" placeholder="Tanggal">
@@ -35,7 +39,7 @@
 	  </div>
 	</div>
 	<div class="col-md-2 mt-3 mt-md-0">
-		<button class="btn btn-primary btn-block">Search</button>
+		<button type="submit" class="btn btn-primary btn-block">Search</button>
 	</div>
 </form>
 </div>
@@ -56,7 +60,7 @@
 							@else
 								<span class="badge badge-pill badge-danger p-1 mr-2">Draft</span>
 							@endif
-						
+
 						<span>Author:</span><span class="text-primary">{{ $b->user['name'] }}</span><br>
 						<span>Released:</span><span class="text-primary">{{ $b->created_at->format('d-m-Y') }}</span>
 					</div>

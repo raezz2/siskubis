@@ -74,7 +74,12 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     Route::patch('/berita/kategori/{kategori}/edit', 'Berita\KategoriController@update')->name('inkubator.kategori.update');
     Route::delete('/berita/kategori/{kategori}/delete', 'Berita\KategoriController@destroy')->name('inkubator.kategori.destroy');
 
+    //Search
+    Route::get('cariberita','Berita\BeritaController@search')->name('cariberita');
 });
+
+
+
 
 Route::group(['prefix'=>'mentor','middleware' => ['role:mentor']], function () {
     Route::get('/', 'Mentor\HomeController@index')->name('mentor.home');
