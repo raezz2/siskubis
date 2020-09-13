@@ -12,6 +12,6 @@ class profil_user extends Model
 
     public function berita()
     {
-    	return $this->belongTo(Berita::class);
+    	return $this->belongTo('App\Berita','author_Id','id');
     }
 }

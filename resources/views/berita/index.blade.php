@@ -59,7 +59,7 @@
 							@else
 								<span class="badge badge-pill badge-danger p-1 mr-2">Draft</span>
 							@endif
-						<span>Author : </span><span class="text-primary">{{ $b->profil_user['nama'] }}</span><br>
+						<span>Author : </span><span class="text-primary">{{ $b->profil_user->nama }}</span><br>
 						<span>Released : </span><span class="text-primary">{{ $b->created_at->format('d, M Y') }}</span>
 					</div>
 				</div>

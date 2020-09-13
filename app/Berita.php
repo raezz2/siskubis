@@ -24,6 +24,6 @@ class Berita extends Model
 
 	public function profil_user()
 	{
-		return $this->belongsTo(profil_user::class);
+		return $this->belongsTo('App\profil_user','author_id','id');
 	}
 }
