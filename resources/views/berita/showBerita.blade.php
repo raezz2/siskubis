@@ -1,89 +1,39 @@
 @extends('layouts.app')
+@section('css')
+
+
+
+@endsection
 @section('content')
 
 <div class="row">
 <div class="col-xl-8 col-lg-8">
 <div class="card">
 <div class="card-header container-fluid">
-  <div class="row">
-	<div class="col-md-7">
-	  <h3>Berita</h3>
-    </div>
-    <div class="col-md-3">
-        <a href="{{ route('inkubator.kategori.index') }}"><button class="btn btn-primary custom-btn btn-sm ml-5">+ Tambah Kategori</button></a>
-    </div>
-	<div class="col-md-2">
-	  <a href="{{ route('inkubator.formBerita') }}"><button class="btn btn-primary custom-btn btn-sm">+ Tambah Berita</button></a>
-	</div>
-  </div>
+	<h3 class="text-center">{{ $berita->tittle }}</h3>
 </div>
 <div class="card-body">
-
-<div class="row row-xs">
-	<div class="col-md-4">
-        <form action="{{ route('cariberita') }}" method="get" name="s" >
-        <div class="input-group custom-search-form">
-            <input type="text" class="form-control" name="search" placeholder="Search...">
-        </div>
-	</div>
-	<div class="col-md-4 mt-3 mt-md-0">
-		<input class="form-control" type="date" placeholder="Tanggal">
-	</div>
-	<div class="col-md-2 mt-3 mt-md-0">
-	 <div class="btn-group">
-		<button class="btn btn-danger btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			Status
-		</button>
-		<div class="dropdown-menu ul-task-manager__dropdown-menu" x-placement="top-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -102px, 0px);"><a class="dropdown-item" href="#"><span class="ul-task-manager__dot bg-warning mr-2"></span>Draft</a><a class="dropdown-item" href="#"><span class="ul-task-manager__dot bg-success mr-2"></span>Published</a></div>
-	  </div>
-	</div>
-	<div class="col-md-2 mt-3 mt-md-0">
-		<button type="submit" class="btn btn-primary btn-block">Search</button>
-	</div>
-</form>
-</div>
-  <hr>
-	<div class="ul-widget__body">
-	<div class="ul-widget5">
-		@foreach ($berita as $b)
-		<div class="ul-widget5__item">
-			<div class="ul-widget5__content">
-				<div class="ul-widget5__pic"><img src="{{ asset('storage/berita/' . $b->foto) }}" alt="Third slide" /></div>
-				<div class="ul-widget5__section">
-					<a class="ul-widget4__title" href="{{ route('inkubator.showBerita', $b->slug) }}">{{ $b->tittle }}</a>
-					<p class="ul-widget5__desc">{!! Str::limit($b->berita, 47) !!}</p>
-					<div class="ul-widget5__info">
-						<span>Status : </span>
-							@if($b->publish == 1)
-								<span class="badge badge-pill badge-success p-1 mr-2">Publish</span>
-							@else
-								<span class="badge badge-pill badge-danger p-1 mr-2">Draft</span>
-							@endif
-						<span>Author : </span><span class="text-primary">{{ $b->profil_user['nama'] }}</span><br>
-						<span>Released : </span><span class="text-primary">{{ $b->created_at->format('d, M Y') }}</span>
-					</div>
-				</div>
-			</div>
-			<div class="ul-widget5__content">
-				<div class="ul-widget5__stats"><span class="ul-widget5__sales">{{ $b->views }} <i class="i-Eye"></i></span><span class="ul-widget5__sales">200 <i class="i-Speach-Bubble-3"></i></span></div>
-				<div class="ul-widget5__stats"><span class="ul-widget5__number">
-				<form action="{{ route('inkubator.destroyBerita', $b->id) }}" method="post">
-                	@csrf
-                	<input type="hidden" name="_method" value="DELETE">
-					<a class="ul-link-action text-success" href="{{ route('inkubator.editBerita', $b->id) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="i-Edit"></i></a>
-					<button type="submit" class="btn btn-link ul-link-action text-danger mr-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Want To Delete !!!"><i class="i-Eraser-2"></i></button>
-				</form>
-				</span></div>
-			</div>
-		</div>
-		@endforeach
-	</div>
-
-	<ul class="pagination justify-content-center">
-		<li class="page-item">{{ $berita->links() }}</li>
-	</ul>
-
-	</div>
+	<main class="ps-main">
+    	<div class="ps-blog-grid pt-80 pb-80">
+      		<div class="ps-container">
+        		<div class="row">
+          			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
+            			<div class="ps-post--detail">
+              				<div class="ps-post__header">
+                				<div class="ps-post__thumbnail"><img src="{{ asset('storage/berita/' . $berita->foto) }}" alt="{{ $berita->slug }}" style="width: 750px; height: 350px;"></div>
+                				<p class="ps-post__meta">Posted by 
+                  					<a href="blog-grid.html">{{ $berita->profilUser->name ?? "" }}</a> on {{ $berita->created_at->format('d, M Y') }}
+                				</p>
+              				</div>
+              				<div class="ps-post__content">
+	                			<p>{!! $berita->berita !!}</p>
+    	          			</div>
+            			</div>
+        	  		</div>
+        		</div>
+      		</div>
+    	</div>
+	</main>
 </div>
 </div>
 </div>
@@ -100,9 +50,16 @@
 			<div class="ul-widget-app__comment">
 				<div class="ul-widget-app__profile-title">
 					<h6 class="heading">{{ $row->tittle }}</h6>
-					<p class="mb-2">{!! str::Limit($row->berita,30) !!}</p>
+					<p class="mb-2">{!! $row->berita !!}</p>
 				</div>
-				<div class="ul-widget-app__profile-status"><span class="badge badge-pill badge-primary p-2 m-1">Pending</span><span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">{{ $row->created_at->format('d, M Y') }}</span></div>
+				<div class="ul-widget-app__profile-status">
+							@if($berita->publish == 1)
+								<span class="badge badge-pill badge-success p-1 mr-2">Publish</span>
+							@else
+								<span class="badge badge-pill badge-danger p-1 mr-2">Draft</span>
+							@endif
+					<span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">{{ $row->created_at->format('d, M Y') }}</span>
+				</div>
 			</div>
 		</div>
 		@empty
@@ -110,7 +67,7 @@
 		@endforelse
 		</div>
 		<ul class="pagination justify-content-center">
-			<li class="page-item">{{ $berita->links() }}</li>
+			<li class="page-item"></li>
 		</ul>	
 	</div>
 

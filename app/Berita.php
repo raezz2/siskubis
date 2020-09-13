@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\kategori;
 use App\Inkubator;
-use App\User;
+use App\profil_user;
 
 class Berita extends Model
 {
@@ -22,8 +22,8 @@ class Berita extends Model
 		return $this->belongsTo(Inkubator::class);
 	}
 
-	public function user()
+	public function profil_user()
 	{
-		return $this->belongsTo('App\User', 'user_id');
+		return $this->belongsTo(profil_user::class);
 	}
 }
