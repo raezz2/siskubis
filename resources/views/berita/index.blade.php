@@ -36,10 +36,10 @@
 		</button> --}}
         {{-- <div class="dropdown-menu ul-task-manager__dropdown-menu" x-placement="top-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -102px, 0px);"><a class="dropdown-item" href=""><span class="ul-task-manager__dot bg-warning mr-2"></span>Draft</a><a class="dropdown-item" href="#"><span class="ul-task-manager__dot bg-success mr-2"></span>Published</a></div> --}}
         <select name="status">
+            <option value="3">All</option>
             <option value="1">Publice</option>
             <option value="0">Draf</option>
         </select>
-        <a href="{{URL('/inkubator/berita')}}" class="btn btn-danger">All</a>
 	  </div>
 	</div>
 	<div class="col-md-2 mt-3 mt-md-0">

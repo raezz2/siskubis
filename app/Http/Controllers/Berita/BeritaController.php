@@ -37,7 +37,12 @@ class BeritaController extends Controller
         $cari = $request->input('search');
         $tgl = $request->input('tgl');
         $status = $request->input('status');
-        $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
+        if($status == '3'){
+            $berita = Berita::where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
+        } else {
+            $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
+        }
+
 
 
         // $berita = Berita::where('created_at','LIKE','%'.$cari.'%')->paginate(10);
