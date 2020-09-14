@@ -25,16 +25,21 @@
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" name="search" placeholder="Search...">
         </div>
-	</div>
-	<div class="col-md-4 mt-3 mt-md-0">
-		<input class="form-control" type="date" placeholder="Tanggal">
+        <div class="input-group custom-search-form">
+            <input class="form-control" type="date" name="tgl" placeholder="Tanggal">
+        </div>
 	</div>
 	<div class="col-md-2 mt-3 mt-md-0">
 	 <div class="btn-group">
-		<button class="btn btn-danger btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		{{-- <button class="btn btn-danger btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 			Status
-		</button>
-		<div class="dropdown-menu ul-task-manager__dropdown-menu" x-placement="top-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -102px, 0px);"><a class="dropdown-item" href="#"><span class="ul-task-manager__dot bg-warning mr-2"></span>Draft</a><a class="dropdown-item" href="#"><span class="ul-task-manager__dot bg-success mr-2"></span>Published</a></div>
+		</button> --}}
+        {{-- <div class="dropdown-menu ul-task-manager__dropdown-menu" x-placement="top-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -102px, 0px);"><a class="dropdown-item" href=""><span class="ul-task-manager__dot bg-warning mr-2"></span>Draft</a><a class="dropdown-item" href="#"><span class="ul-task-manager__dot bg-success mr-2"></span>Published</a></div> --}}
+        <select name="status">
+            <option value="1">Publice</option>
+            <option value="0">Draf</option>
+        </select>
+        <a href="{{URL('/inkubator/berita')}}" class="btn btn-danger">All</a>
 	  </div>
 	</div>
 	<div class="col-md-2 mt-3 mt-md-0">
@@ -100,7 +105,7 @@
 			<div class="ul-widget-app__comment">
 				<div class="ul-widget-app__profile-title">
 					<h6 class="heading">{{ $row->tittle }}</h6>
-					<p class="mb-2">{!! str::Limit($row->berita,30) !!}</p>
+					<p class="mb-2">{!! Str::Limit($row->berita,30) !!}</p>
 				</div>
 				<div class="ul-widget-app__profile-status"><span class="badge badge-pill badge-primary p-2 m-1">Pending</span><span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">{{ $row->created_at->format('d, M Y') }}</span></div>
 			</div>
@@ -111,7 +116,7 @@
 		</div>
 		<ul class="pagination justify-content-center">
 			<li class="page-item">{{ $berita->links() }}</li>
-		</ul>	
+		</ul>
 	</div>
 
 	<div class="card">

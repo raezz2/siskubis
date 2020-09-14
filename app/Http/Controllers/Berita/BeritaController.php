@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Berita;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
- 
+
 use App\Berita;
 use App\kategori;
 use App\Inkubator;
@@ -34,10 +34,22 @@ class BeritaController extends Controller
     }
 
     public function search(Request $request){
-        $cari = $request->get('search');
-        $berita = Berita::where('tittle','LIKE','%'.$cari.'%')->paginate(10);
-        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+        $cari = $request->input('search');
+        $tgl = $request->input('tgl');
+        $status = $request->input('status');
+        $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
 
+
+        // $berita = Berita::where('created_at','LIKE','%'.$cari.'%')->paginate(10);
+        // if($request->has('tgl')){
+        // $berita->where('created_at','=', $tgl);
+        // }
+        // if($request->has('search')){
+        // $berita->where('tittle','LIKE','%'.$cari.'%');
+        //  }
+
+       $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+         //return response()->json($berita);
         return view('berita.index', compact('berita','cari','umum'));
     }
 
