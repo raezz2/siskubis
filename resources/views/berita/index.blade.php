@@ -10,7 +10,7 @@
 	  <h3>Berita</h3>
     </div>
     <div class="col-md-3">
-        <a href="{{ route('inkubator.kategori.index') }}"><button class="btn btn-primary custom-btn btn-sm ml-5">+ Tambah Kategori</button></a>
+        <a href="{{ route('inkubator.kategori.create') }}"><button class="btn btn-primary custom-btn btn-sm ml-5">+ Tambah Kategori</button></a>
     </div>
 	<div class="col-md-2">
 	  <a href="{{ route('inkubator.formBerita') }}"><button class="btn btn-primary custom-btn btn-sm">+ Tambah Berita</button></a>
@@ -50,7 +50,7 @@
 			<div class="ul-widget5__content">
 				<div class="ul-widget5__pic"><img src="{{ asset('storage/berita/' . $b->foto) }}" alt="Third slide" /></div>
 				<div class="ul-widget5__section">
-					<a class="ul-widget4__title" href="{{ route('inkubator.showBerita', $b->slug) }}">{{ $b->tittle }}</a>
+					<a class="ul-widget4__title" href="{{ route('inkubator.showBerita', $b->slug) }}">{{ Str::limit($b->tittle, 40) }}</a>
 					<p class="ul-widget5__desc">{!! Str::limit($b->berita, 47) !!}</p>
 					<div class="ul-widget5__info">
 						<span>Status : </span>

@@ -97,8 +97,9 @@ class BeritaController extends Controller
         $berita = berita::find($id);
         $kategori = kategori::all();
         $inkubator = Inkubator::all();
+        $penulis = profil_user::all();
 
-        return view('berita.formEditBerita', compact('berita','kategori', 'inkubator'));
+        return view('berita.formEditBerita', compact('berita','kategori', 'inkubator','penulis'));
     }
 
     public function update($id, Request $request)
@@ -141,7 +142,7 @@ class BeritaController extends Controller
     public function show($slug)
     {
         $berita = Berita::with(['beritaCategory','profil_user'])->where('slug', $slug)->first();
-        $view = $berita->views=+1;
+        $view = $berita->views + 1;
         $berita->update([
             'views' => $view,
         ]);

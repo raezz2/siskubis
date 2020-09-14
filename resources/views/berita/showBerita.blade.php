@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('css')
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 @endsection
 @section('content')
@@ -15,20 +15,16 @@
 <div class="card-body">
 	<main class="ps-main">
     	<div class="ps-blog-grid pt-80 pb-80">
-      		<div class="ps-container">
+      		<div class="container">
         		<div class="row">
           			<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
-            			<div class="ps-post--detail">
-              				<div class="ps-post__header">
-                				<div class="ps-post__thumbnail"><img src="{{ asset('storage/berita/' . $berita->foto) }}" alt="{{ $berita->slug }}" style="width: 750px; height: 350px;"></div>
+                				<div class="align-item-center"><img src="{{ asset('storage/berita/' . $berita->foto) }}" alt="{{ $berita->slug }}" style="width: 750px; height: 350px;"></div>
                 				<p class="ps-post__meta">Posted by 
-                  					<a href="blog-grid.html">{{ $berita->profilUser->name ?? "" }}</a> on {{ $berita->created_at->format('d, M Y') }}
+                  					<a href="#">{{ $berita->profil_user->nama }}</a> on {{ $berita->created_at->format('d, M Y') }}
                 				</p>
-              				</div>
               				<div class="ps-post__content">
 	                			<p>{!! $berita->berita !!}</p>
     	          			</div>
-            			</div>
         	  		</div>
         		</div>
       		</div>

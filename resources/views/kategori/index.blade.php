@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
         <div class="col-md-3">
-            @include('layouts.module.sidebar')
+            @include('layouts.module.sidebar') 
         </div>
       <div class="col-md">
         <a href="{{ route('inkubator.kategori.create') }}" class="btn btn-primary">Tambah Kategori <i class="fa fa-plus"></i></a>

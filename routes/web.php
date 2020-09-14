@@ -65,7 +65,7 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     /*========================================================== Kategori ===================================================================*/
     // Route::resource('kategori', 'Berita\KategoriController')->except(['create', 'show']);
 
-    Route::get('/berita/kategori', 'Berita\KategoriController@index')->name('inkubator.kategori.index');
+    //Route::get('/berita/kategori', 'Berita\KategoriController@index')->name('inkubator.kategori.index');
 
     Route::get('/berita/kategori/create', 'Berita\KategoriController@create')->name('inkubator.kategori.create');
     Route::post('/berita/kategori/create','Berita\KategoriController@store');

@@ -9,6 +9,7 @@ use App\Kategori;
 
 class KategoriController extends Controller
 {
+	/*
     public function index(){
 		$berita_category = Kategori::All();
 		$data = array(
@@ -17,15 +18,22 @@ class KategoriController extends Controller
 		);
 		return view('kategori.index',$data);
 	}
+	*/
 	public function create(){
+		$berita_category = Kategori::All();
+		$datas = array(
+			'berita_category' => $berita_category,
+			'no'        => 1
+		);
+
 		$data = array('title'   => 'category');
-		return view('kategori.create',$data);
+		return view('kategori.create',$data,$datas);
 	}
 	public function store(){
 		Kategori::create([
 			'category'      => request('category'),
 		]);
-		return redirect('/inkubator/berita/kategori');
+		return redirect(route('inkubator.kategori.create'));
 	}
 	public function edit(Kategori $kategori)
 	{
@@ -41,12 +49,12 @@ class KategoriController extends Controller
 		$kategori->update([
 			'category'      => request('category'),
 		]);
-		return redirect('/inkubator/berita/kategori');
+		return redirect(route('inkubator.kategori.create'));
 	}
 
 	public function destroy(Kategori $kategori){
     	$kategori->delete();
     	
-        return redirect('/inkubator/berita/kategori');
+        return redirect(route('inkubator.kategori.create'));
 	}
 }
