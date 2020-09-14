@@ -25,17 +25,13 @@
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" name="search" placeholder="Search...">
         </div>
-        <div class="input-group custom-search-form">
-            <input class="form-control" type="date" name="tgl" placeholder="Tanggal">
-        </div>
 	</div>
+	<div class="col-md-4 mt-3 mt-md-0">
+            <input class="form-control" type="date" name="tgl" placeholder="Tanggal">
+    </div>
 	<div class="col-md-2 mt-3 mt-md-0">
 	 <div class="btn-group">
-		{{-- <button class="btn btn-danger btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			Status
-		</button> --}}
-        {{-- <div class="dropdown-menu ul-task-manager__dropdown-menu" x-placement="top-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -102px, 0px);"><a class="dropdown-item" href=""><span class="ul-task-manager__dot bg-warning mr-2"></span>Draft</a><a class="dropdown-item" href="#"><span class="ul-task-manager__dot bg-success mr-2"></span>Published</a></div> --}}
-        <select name="status">
+        <select name="status" class="btn btn-danger btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <option value="3">All</option>
             <option value="1">Publice</option>
             <option value="0">Draf</option>
@@ -135,53 +131,8 @@
 					<div class="ul-widget-app__profile-status"><span class="badge badge-pill badge-primary p-2 m-1">Pending</span><span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">May 14, 2019</span></div>
 				</div>
 			</div>
-			<!--  row-comments-2 -->
-			<div class="ul-widget-app__row-comments">
-				<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-md mb-2 rounded-circle" src="{{ asset('theme/images/faces/2.jpg')}}" alt="alt" /></div>
-				<div class="ul-widget-app__comment">
-					<div class="ul-widget-app__profile-title">
-						<h6 class="heading">Jhon Trevor</h6>
-						<p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.ipsum .</p>
-					</div>
-					<div class="ul-widget-app__profile-status"><span class="badge badge-pill badge-success p-2 m-1">Approved</span><span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">May 14, 2019</span></div>
-				</div>
-			</div>
-			<!--  row-comments-3 -->
-			<div class="ul-widget-app__row-comments">
-				<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-md mb-2 rounded-circle" src="{{ asset('theme/images/faces/4.jpg')}}" alt="alt" /></div>
-				<div class="ul-widget-app__comment">
-					<div class="ul-widget-app__profile-title">
-						<h6 class="heading">Jhon Trevor</h6>
-						<p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.ipsum .</p>
-					</div>
-					<div class="ul-widget-app__profile-status"><span class="badge badge-pill badge-danger p-2 m-1">Rejected</span><span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">May 14, 2019</span></div>
-				</div>
-			</div>
-			<!--  row-comments-4 -->
-			<div class="ul-widget-app__row-comments">
-				<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-md mb-2 rounded-circle" src="{{ asset('theme/images/faces/3.jpg')}}" alt="alt" /></div>
-				<div class="ul-widget-app__comment">
-					<div class="ul-widget-app__profile-title">
-						<h6 class="heading">Jhon Trevor</h6>
-						<p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.ipsum .</p>
-					</div>
-					<div class="ul-widget-app__profile-status"><span class="badge badge-pill badge-primary p-2 m-1">Pending</span><span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">May 14, 2019</span></div>
-				</div>
-			</div>
-			<!--  row-comments-5 -->
-			<div class="ul-widget-app__row-comments">
-				<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-md mb-2 rounded-circle" src="{{ asset('theme/images/faces/5.jpg')}}" alt="alt" /></div>
-				<div class="ul-widget-app__comment">
-					<div class="ul-widget-app__profile-title">
-						<h6 class="heading">Jhon Trevor</h6>
-						<p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.ipsum .</p>
-					</div>
-					<div class="ul-widget-app__profile-status"><span class="badge badge-pill badge-success p-2 m-1">Success</span><span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">May 14, 2019</span></div>
-				</div>
-			</div>
 		</div>
 	</div>
-
 </div>
 </div>
 @endsection

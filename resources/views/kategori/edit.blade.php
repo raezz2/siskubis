@@ -14,7 +14,7 @@
           </div>
           <div class="form-group">
             <input type="submit" value="Edit" class="btn btn-primary">
-            <a href="{{URL('/inkubator/berita/kategori')}}" class="btn btn-danger">Kembali</a>
+            <a href="{{ route('inkubator.kategori.create') }}" class="btn btn-danger">Kembali</a>
           </div>
         </div>
       </form>
