@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Berita;
 use App\kategori;
 use App\Inkubator;
+use App\profil_user;
 use Validator;
 use File;
 
@@ -26,20 +27,28 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        $berita = Berita::with('beritaCategory','inkubator','user')->orderBy('created_at','ASC')->paginate(5);
-        if (request()->search != '') {
+        $berita = Berita::with('profil_user')->orderBy('created_at','ASC')->paginate(5);
+        if (request()->s != '') {
             $berita = $berita->where('tittle', 'LIKE', '%' . request()->s . '%');
         }
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
 
-        return view('berita.index',compact('berita', $berita));
+        return view('berita.index',compact('berita', 'umum'));
+    }
+
+    public function search(Request $request){
+        $cari = $request->get('search');
+        $berita = Berita::where('tittle','LIKE','%'.$cari.'%')->paginate(10);
+        return view('berita.index', compact('berita','cari'));
     }
 
     public function create()
     {
         $kategori_berita =  kategori::all();
         $inkubator = Inkubator::all();
+        $penulis = profil_user::all();
 
-        return view('berita.formTambah',compact('kategori_berita','inkubator'));
+        return view('berita.formTambah',compact('kategori_berita','inkubator','penulis'));
     }
 
     public function store(Request $request)
@@ -49,7 +58,7 @@ class BeritaController extends Controller
             'berita'                => 'required',
             'berita_category_id'    => 'required|exists:berita_category,id',
             'publish'               => 'required',
-            'author_id'             => 'required|exists:user,id',
+            'author_id'             => 'required|exists:profil_user,user_id',
             'inkubator_id'          => 'required|exists:inkubator,id',
             'foto'                  => 'required|image|mimes:jpg,png,jpeg',
 
@@ -61,7 +70,7 @@ class BeritaController extends Controller
 
             $berita = Berita::create([
                 'tittle'                => $request->tittle,
-                'slug'                  => $request->tittle,
+                'slug'                  => Str::slug($request->tittle),
                 'berita'                => $request->berita,
                 'berita_category_id'    => $request->berita_category_id,
                 'publish'               => $request->publish,
@@ -99,7 +108,7 @@ class BeritaController extends Controller
             'berita'                => 'required',
             'berita_category_id'    => 'required|exists:berita_category,id',
             'publish'               => 'required',
-            'author_id'             => 'required|exists:user,id',
+            'author_id'             => 'required|exists:profil_user,user_id',
             'inkubator_id'          => 'required|exists:inkubator,id',
             'foto'                  => 'required|image|mimes:jpg,png,jpeg',
 
@@ -115,7 +124,7 @@ class BeritaController extends Controller
         }
         $berita->update([
             'tittle'                => $request->tittle,
-            'slug'                  => $request->tittle,
+            'slug'                  => Str::slug($request->tittle),
             'berita'                => $request->berita,
             'berita_category_id'    => $request->berita_category_id,
             'publish'               => $request->publish,
@@ -126,5 +135,18 @@ class BeritaController extends Controller
         ]);
 
         return redirect(route('inkubator.berita'))->with(['success' => 'berita berhasil dipublish']);
+
+    }
+
+    public function show($slug)
+    {
+        $berita = Berita::with(['beritaCategory','profil_user'])->where('slug', $slug)->first();
+        $view = $berita->views=+1;
+        $berita->update([
+            'views' => $view,
+        ]);
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+
+        return view('berita.showBerita', compact('berita','umum'));
     }
 }

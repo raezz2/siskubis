@@ -62,10 +62,15 @@
                                 </select>
                             </div>
                         </div>
-						<div class="form-group" hidden>
+						<div class="form-group">
 							<label>Penulis :</label>
 	           				<div class="input-group">
-								<input type="text" class="form-control" name="author_id" value="{{ $berita->author_id }}" required>
+								<select name="author_id" class="form-control custom-select" required>
+                                 	<option value="">Pilih</option>
+                                    @foreach ($penulis as $row)
+                                        <option value="{{ $row->id }}" {{ $berita->author_id == $row->id ? 'selected':'' }}>{{ $row->nama }}</option>
+                                    @endforeach
+                                </select>
 	           				</div>
 						</div>
 						<div class="form-group" hidden>
@@ -93,7 +98,7 @@
                             <p><strong>Biarkan kosong jika tidak ingin mengganti gambar</strong></p>
 		        		</div>
 						<div class="form-group">
-							<button class="btn btn-primary">Tambah</button>
+							<button class="btn btn-primary">Update</button>
 						</div>
 					</div>
 				</div>

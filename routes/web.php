@@ -55,6 +55,7 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     Route::delete('/berita/destroy/{berita}', 'Berita\BeritaController@destroy')->name('inkubator.destroyBerita');
     Route::get('berita/edit/{id}','Berita\BeritaController@edit')->name('inkubator.editBerita');
     Route::put('berita/update/{id}','Berita\BeritaController@update')->name('inkubator.updateBerita');
+    Route::get('/berita/{slug}', 'Berita\BeritaController@show')->name('inkubator.showBerita');
     //End
     Route::get('/berita/kategori', 'Berita\KategoriController@kategori')->name('inkubator.kategori');
     Route::get('/chat', 'Chat\ChatController@index')->name('inkubator.chat');
@@ -74,7 +75,12 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     Route::patch('/berita/kategori/{kategori}/edit', 'Berita\KategoriController@update')->name('inkubator.kategori.update');
     Route::delete('/berita/kategori/{kategori}/delete', 'Berita\KategoriController@destroy')->name('inkubator.kategori.destroy');
 
+    //Search
+    Route::get('cariberita','Berita\BeritaController@search')->name('cariberita');
 });
+
+
+
 
 Route::group(['prefix'=>'mentor','middleware' => ['role:mentor']], function () {
     Route::get('/', 'Mentor\HomeController@index')->name('mentor.home');

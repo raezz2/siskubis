@@ -56,10 +56,15 @@
                                 </select>
                             </div>
                         </div>
-						<div class="form-group" hidden>
+						<div class="form-group">
 							<label>Penulis :</label>
 	           				<div class="input-group">
-								<input type="text" class="form-control" name="author_id" value="{{ Auth::user()->id }}" required>
+								<select name="author_id" class="form-control custom-select" required>
+                                 	<option value="">Pilih</option>
+                                    @foreach ($penulis as $row)
+                                        <option value="{{ $row->id }}">{{ $row->nama }}</option>
+                                    @endforeach
+                                </select>
 	           				</div>
 						</div>
 						<div class="form-group" hidden>
