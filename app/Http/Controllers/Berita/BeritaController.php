@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Berita;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+ 
 use App\Berita;
 use App\kategori;
 use App\Inkubator;
@@ -28,9 +28,6 @@ class BeritaController extends Controller
     public function index()
     {
         $berita = Berita::with('profil_user')->orderBy('created_at','ASC')->paginate(5);
-        if (request()->s != '') {
-            $berita = $berita->where('tittle', 'LIKE', '%' . request()->s . '%');
-        }
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
 
         return view('berita.index',compact('berita', 'umum'));
@@ -39,7 +36,9 @@ class BeritaController extends Controller
     public function search(Request $request){
         $cari = $request->get('search');
         $berita = Berita::where('tittle','LIKE','%'.$cari.'%')->paginate(10);
-        return view('berita.index', compact('berita','cari'));
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+
+        return view('berita.index', compact('berita','cari','umum'));
     }
 
     public function create()
