@@ -88,7 +88,7 @@
 	</div>
 </div>
 </div>
-</div>
+
 <div class="col-xl-4 col-lg-4">
 <div class="card mb-4">
 	<div class="card-body">
@@ -143,7 +143,7 @@
 					</div>
 					<div class="ul-widget-app__profile-status">
 					<span class="ul-widget-app__icons">
-					<!-- <a href="inkubator/berita/destroy/{{ $li->id }}" class="badge badge-pill badge-danger p-2 m-1">Delete</a> -->	
+					<!-- <a href="inkubator/berita/destroy/{{ $li->id }}" class="badge badge-pill badge-danger p-2 m-1">Delete</a> -->
 					</span>
 					<span class="text-mute">{{ date('d M Y',strtotime($li->created_at)) }}</span>
 					</div>
