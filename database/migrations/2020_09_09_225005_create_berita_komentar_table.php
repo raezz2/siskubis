@@ -15,7 +15,6 @@ class CreateBeritaKomentarTable extends Migration
     {
         Schema::create('berita_komentar', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->text('komentar');
             $table->integer('user_id')->nullable();
             $table->integer('berita_id');

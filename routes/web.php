@@ -56,6 +56,7 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     Route::get('berita/edit/{id}','Berita\BeritaController@edit')->name('inkubator.editBerita');
     Route::put('berita/update/{id}','Berita\BeritaController@update')->name('inkubator.updateBerita');
     Route::get('/berita/{slug}', 'Berita\BeritaController@show')->name('inkubator.showBerita');
+    Route::post('/berita/komentar','Berita\BeritaController@komentar')->name('inkubator.komentarBerita');
     //End
     Route::get('/berita/kategori', 'Berita\KategoriController@kategori')->name('inkubator.kategori');
     Route::get('/chat', 'Chat\ChatController@index')->name('inkubator.chat');

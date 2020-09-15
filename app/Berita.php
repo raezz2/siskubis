@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\kategori;
 use App\Inkubator;
 use App\profil_user;
+use App\Komentar;
 
 class Berita extends Model
 {

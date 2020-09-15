@@ -19,6 +19,46 @@
 				<p class="text-justify">{!! $berita->berita !!}</p>
 			</div>
 		</div>
+		<div class="card">
+			<div class="card-body">
+				<div class="card-title"><h6>{{ $total_komentar }} Responses</h6></div>
+				@forelse($komentar as $row)
+				<div class="row">
+					<div class="col-md-2">
+						<figure>
+							<img src="{{asset('assets/images/images2.jpg')}}" style="width: 65px; height: 65px;" class="rounded-circle">
+						</figure>
+					</div>
+					<div class="col-md-10">
+						<h5>{{ $row->name }}</h5>
+						<small class="font-grey">{{ $row->created_at }}</small>
+						<p>{{ $row->komentar }}</p>
+					</div>
+				</div>
+				@empty
+					<p>Belum Ada Komentar</p>
+				@endforelse
+				<br><br>
+				<form action="{{ route('inkubator.komentarBerita') }}" method="post" class="row">
+					{{ csrf_field() }}
+					<input type="hidden" name="id" value="id" class="form-control">
+					<input type="hidden" name="berita_id" value="{{ $berita->id }}" class="form-control">
+					<div class="col-md-12">
+						<h3 class="title">Leave Your Response</h3>
+					</div>
+					<div class="form-group col-md-12" hidden>
+						<label for="name">Nama</label>
+						<input type="text" id="name" name="name" class="form-control" value="{{ Auth::user()->name }}">
+					</div>
+					<div class="form-group col-md-12">
+						<textarea class="form-control" name="komentar" placeholder="Write your response ..."></textarea>
+					</div>
+					<div class="form-group col-md-12">
+						<button class="btn btn-primary">Send Response</button>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 <div class="col-xl-4 col-lg-4">
 <div class="card mb-4">

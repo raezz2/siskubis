@@ -12,6 +12,7 @@ use App\Inkubator;
 use App\profil_user;
 use App\Komentar;
 use App\User;
+use DB;
 use Auth;
 use Validator;
 use File;
@@ -162,18 +163,34 @@ class BeritaController extends Controller
 
     public function show($slug)
     {
+        $berita = Berita::find($slug);
         $berita = Berita::with(['beritaCategory','profil_user'])->where('slug', $slug)->first();
         $view = $berita->views + 1;
         $berita->update([
             'views' => $view,
         ]);
+        $komentar = DB::table('berita_komentar')->where('berita_id',$berita->id)->orderBy('created_at','desc')->get();
+        $total_komentar = DB::table('berita_komentar')->where('berita_id',$berita->id)->count();
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
 
-        return view('berita.showBerita', compact('berita','umum'));
+        return view('berita.showBerita', compact('berita','umum','komentar','total_komentar'));
     }
-	    public function single()
+
+	public function single()
     {
         $hasil = User::all();
         return view('front.single',['hasil'=>$hasil]);
+    }
+
+    public function komentar(Request $request)
+    {
+        Komentar::create([
+            'berita_id' => $request->berita_id,
+            'name' => $request->name,
+            'user_id' => Auth::user()->id,
+            'komentar' => $request->komentar
+        ]);
+
+        return redirect()->back()->with(['success' => 'Komentar Ditambahkan']);
     }
 }
