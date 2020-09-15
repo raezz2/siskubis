@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Komentar;
+use App\User;
 
 use App\Berita;
 
@@ -33,6 +35,9 @@ class IndexController extends Controller
 	
 	public function single()
     {
-        return view('front.single');
+        $hasil = Komentar::all();
+        $total_komentar = \DB::table('berita_komentar')->count();
+		
+        return view('front.single',['hasil'=>$hasil],compact('total_komentar'));
     }
 }

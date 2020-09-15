@@ -26,4 +26,14 @@ class Berita extends Model
 	{
 		return $this->belongsTo('App\profil_user','author_id','id');
 	}
+	
+	public function comments()
+    {
+        return $this->hasMany(Komentar::class);
+    }
+	
+    public function user()
+    {
+    return $this->belongsTo(User::class);
+    }
 }

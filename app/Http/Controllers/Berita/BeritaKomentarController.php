@@ -17,11 +17,13 @@ class BeritaKomentarController extends Controller
         //VALIDASI DATA YANG DITERIMA
         $this->validate($request, [
             'id' => 'required',
+            'name' => 'required',
             'komentar' => 'required'
         ]);
     
         Komentar::create([
             'berita_id' => $request->berita_id,
+            'name' => $request->name,
             //JIKA PARENT ID TIDAK KOSONG, MAKA AKAN DISIMPAN IDNYA, SELAIN ITU NULL
             'user_id' => Auth::user()->id,
             'komentar' => $request->komentar
@@ -31,6 +33,7 @@ class BeritaKomentarController extends Controller
     }
     public function destroy($id)
     {
+	    // menghapus data pegawai berdasarkan id yang dipilih
         DB::table('berita_komentar')->where('id',$id)->delete();
     
 	return redirect()->back()->with(['success' => 'Komentar Dihapus']);

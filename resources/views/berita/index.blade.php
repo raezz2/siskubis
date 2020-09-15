@@ -131,6 +131,24 @@
 					<div class="ul-widget-app__profile-status"><span class="badge badge-pill badge-primary p-2 m-1">Pending</span><span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">May 14, 2019</span></div>
 				</div>
 			</div>
+			<!--KOMENTAR-->
+			@foreach ($hasil as $li)
+			<div class="ul-widget-app__row-comments">
+				<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-md mb-2 rounded-circle" src="{{ asset('assets/images/images2.jpg')}}" alt="alt" /></div>
+				<div class="ul-widget-app__comment">
+					<div class="ul-widget-app__profile-title">
+						<h6 class="heading">{{ $li->name}}</h6>
+						<p class="mb-2">{{ $li->komentar}}</p>
+					</div>
+					<div class="ul-widget-app__profile-status">
+					<span class="ul-widget-app__icons">
+					<!-- <a href="inkubator/berita/destroy/{{ $li->id }}" class="badge badge-pill badge-danger p-2 m-1">Delete</a> -->	
+					</span>
+					<span class="text-mute">{{ date('d M Y',strtotime($li->created_at)) }}</span>
+					</div>
+				</div>
+			</div>
+			@endforeach
 		</div>
 	</div>
 </div>

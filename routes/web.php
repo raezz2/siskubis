@@ -61,6 +61,12 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     Route::get('/chat', 'Chat\ChatController@index')->name('inkubator.chat');
     Route::get('/pesan', 'Pesan\PesanController@index')->name('inkubator.pesan');
 	Route::get('/profile', 'Profile\ProfileUserController@index')->name('inkubator.profile');
+	
+	//komentar
+	//Route::get('/{slug}', 'Berita\BeritaKomentarController@show');
+	Route::post('/berita/comment', 'Berita\BeritaKomentarController@comment')->name('inkubator.berita.comment');
+	Route::get('/berita/destroy/{id}', 'Berita\BeritaKomentarController@destroy')->name('inkubator.berita.destroy');
+
 
     /*========================================================== Kategori ===================================================================*/
     // Route::resource('kategori', 'Berita\KategoriController')->except(['create', 'show']);

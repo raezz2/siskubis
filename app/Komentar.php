@@ -16,12 +16,7 @@ class Komentar extends Model
         'berita_id'
 
     ];
-    // protected $guarded = [];
-    
-    // public function child()
-    // {
-    //     return $this->hasMany(Komentar::class, 'user_id');
-    // }
+
 
     public function post()
     {

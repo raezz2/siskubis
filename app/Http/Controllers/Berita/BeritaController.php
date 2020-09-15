@@ -10,6 +10,9 @@ use App\Berita;
 use App\kategori;
 use App\Inkubator;
 use App\profil_user;
+use App\Komentar;
+use App\User;
+use Auth;
 use Validator;
 use File;
 
@@ -29,8 +32,9 @@ class BeritaController extends Controller
     {
         $berita = Berita::with('profil_user')->orderBy('created_at','ASC')->paginate(5);
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+		$hasil = Komentar::all();
 
-        return view('berita.index',compact('berita', 'umum'));
+        return view('berita.index',compact('berita', 'umum', 'hasil'));
     }
 
     public function search(Request $request){
@@ -165,5 +169,10 @@ class BeritaController extends Controller
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
 
         return view('berita.showBerita', compact('berita','umum'));
+    }
+	    public function single()
+    {
+        $hasil = User::all();
+        return view('front.single',['hasil'=>$hasil]);
     }
 }
