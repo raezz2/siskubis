@@ -15,7 +15,7 @@
 									<span class="sr-only">Next</span>
 								</a>
 							</div>
-							<div class="owl-carousel owl-theme" id="headline">							
+							<div class="owl-carousel owl-theme" id="headline">
 								<div class="item">
 									<a href="#"><div class="badge">Tip!</div> Vestibulum ante ipsum primis in faucibus orci</a>
 								</div>
@@ -87,8 +87,13 @@
 									<article class="article col-md-12">
 										<div class="inner">
 											<figure>
+<<<<<<< HEAD
 												<a href="{{route('single')}}">
 													<img src="{{asset('assets/images/news/img10.jpg')}}" alt="Sample Article">
+=======
+												<a href="#">
+													<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->tittle }}">
+>>>>>>> a3f7934d0d382b0585c2d2d90eff8fb520e9a5a8
 												</a>
 											</figure>
 											<div class="padding">
@@ -96,8 +101,13 @@
 													<div class="time">December 10, 2016</div>
 													<div class="category"><a href="category.html">Healthy</a></div>
 												</div>
+<<<<<<< HEAD
 												<h2><a href="{{route('single')}}">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
 												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+=======
+												<h4><a href="#">{{ Str::Limit($row->tittle, 40) }}</a></h4>
+												<p>{!! Str::Limit($row->berita, 150) !!}</p>
+>>>>>>> a3f7934d0d382b0585c2d2d90eff8fb520e9a5a8
 												<footer>
 													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
 													<a class="btn btn-primary more" href="{{route('single')}}">
@@ -469,13 +479,13 @@
 												<div class="item">
 													<a href="#">
 														<div class="name">Posts</div>
-														<div class="value">208</div>														
+														<div class="value">208</div>
 													</a>
 												</div>
 												<div class="item">
 													<a href="#">
 														<div class="name">Stars</div>
-														<div class="value">3,729</div>														
+														<div class="value">3,729</div>
 													</a>
 												</div>
 												<div class="item">
@@ -483,7 +493,7 @@
 														<div class="icon">
 															<div>More</div>
 															<i class="ion-chevron-right"></i>
-														</div>														
+														</div>
 													</a>
 												</div>
 											</div>
@@ -637,7 +647,7 @@
 												</div>
 												<h1><a href="{{route('single')}}">Donec congue turpis vitae mauris</a></h1>
 												<p>
-													Donec congue turpis vitae mauris condimentum luctus. Ut dictum neque at egestas convallis. 
+													Donec congue turpis vitae mauris condimentum luctus. Ut dictum neque at egestas convallis.
 												</p>
 											</div>
 										</div>
@@ -695,7 +705,7 @@
 								<div class="tab-pane comments" id="comments">
 									<div class="comment-list sm">
 										<div class="item">
-											<div class="user">                                
+											<div class="user">
 												<figure>
 													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
 												</figure>
@@ -709,7 +719,7 @@
 											</div>
 										</div>
 										<div class="item">
-											<div class="user">                                
+											<div class="user">
 												<figure>
 													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
 												</figure>
@@ -723,7 +733,7 @@
 											</div>
 										</div>
 										<div class="item">
-											<div class="user">                                
+											<div class="user">
 												<figure>
 													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
 												</figure>
@@ -763,22 +773,22 @@
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li> 
+									</li>
 									<li>
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li> 
+									</li>
 									<li>
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li> 
+									</li>
 									<li>
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li> 
+									</li>
 								</ul>
 							</div>
 						</aside>
@@ -906,4 +916,3 @@
 			</div>
 		</section>
 @endsection
-		

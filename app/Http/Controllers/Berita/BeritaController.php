@@ -30,9 +30,14 @@ class BeritaController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $berita = Berita::with('profil_user')->orderBy('created_at','ASC')->paginate(5);
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
 		$hasil = Komentar::all();
+=======
+        $berita = Berita::with('profil_user')->orderBy('created_at','desc')->paginate(10);
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
+>>>>>>> a3f7934d0d382b0585c2d2d90eff8fb520e9a5a8
 
         return view('berita.index',compact('berita', 'umum', 'hasil'));
     }
