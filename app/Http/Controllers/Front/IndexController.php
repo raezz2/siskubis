@@ -40,7 +40,7 @@ class IndexController extends Controller
 
         return view('front.index', compact('mainNews','lastNews','popular'));
     }
-	
+
 	public function single()
     {
         return view('front.single');

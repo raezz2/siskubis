@@ -91,7 +91,7 @@
 										<div class="inner">
 											<figure>
 												<a href="#">
-													<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->$tittle }}">
+													<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->tittle }}">
 												</a>
 											</figure>
 											<div class="padding">
