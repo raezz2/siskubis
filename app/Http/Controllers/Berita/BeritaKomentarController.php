@@ -8,7 +8,7 @@ use App\Berita;
 use App\Komentar;
 use App\User;
 use Auth;
-use DB;
+use DB; 
 
 class BeritaKomentarController extends Controller
 {
@@ -16,7 +16,6 @@ class BeritaKomentarController extends Controller
     {
         //VALIDASI DATA YANG DITERIMA
         $this->validate($request, [
-            'id' => 'required',
             'name' => 'required',
             'komentar' => 'required'
         ]);

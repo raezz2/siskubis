@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Front\IndexController@index');
-Route::get('/single', 'Front\IndexController@single')->name('single');
+Route::get('/single/{slug}','Front\IndexController@single')->name('single');
+//Route::get('/berita/{slug}','Front\IndexController@single')->name('berita.depan');
 
 Auth::routes();
 

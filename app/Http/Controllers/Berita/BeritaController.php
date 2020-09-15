@@ -34,7 +34,7 @@ class BeritaController extends Controller
 
         $berita = Berita::with('profil_user')->orderBy('created_at','desc')->paginate(10);
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
-		$hasil = Komentar::all();
+		$hasil = Komentar::paginate(5);
 
         return view('berita.index',compact('berita', 'umum', 'hasil'));
     }
@@ -49,18 +49,7 @@ class BeritaController extends Controller
             $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
         }
 
-
-
-        // $berita = Berita::where('created_at','LIKE','%'.$cari.'%')->paginate(10);
-        // if($request->has('tgl')){
-        // $berita->where('created_at','=', $tgl);
-        // }
-        // if($request->has('search')){
-        // $berita->where('tittle','LIKE','%'.$cari.'%');
-        //  }
-
        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
-         //return response()->json($berita);
         return view('berita.index', compact('berita','cari','umum'));
     }
 

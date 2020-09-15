@@ -30,8 +30,8 @@
 						</figure>
 					</div>
 					<div class="col-md-10">
-						<h5>{{ $row->name }}</h5>
-						<small class="font-grey">{{ $row->created_at }}</small>
+						<h5 class="heading">{{ $row->name }}</h5>
+						<span><small class="text-mute">{{ \Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</small></span>
 						<p>{{ $row->komentar }}</p>
 					</div>
 				</div>
@@ -72,8 +72,7 @@
 			<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-lg" src="{{ asset('storage/berita/' . $row->foto) }}" alt="alt" /></div>
 			<div class="ul-widget-app__comment">
 				<div class="ul-widget-app__profile-title">
-					<h6 class="heading">{{ $row->tittle }}</h6>
-					<p class="mb-2">{!! Str::Limit($row->berita, 35) !!}</p>
+					<a class="ul-widget4__title" href="{{ route('inkubator.showBerita', $row->slug) }}">{{ Str::limit($row->tittle, 40) }}</a>
 				</div>
 				<div class="ul-widget-app__profile-status">
 							@if($berita->publish == 1)
@@ -81,7 +80,12 @@
 							@else
 								<span class="badge badge-pill badge-danger p-1 mr-2">Draft</span>
 							@endif
-					<span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">{{ $row->created_at->format('d, M Y') }}</span>
+					<span class="ul-widget-app__icons">
+						<a href="href"><i class="i-Approved-Window text-mute"></i></a>
+						<a href="href"><i class="i-Like text-mute"></i></a>
+						<a href="href"><i class="i-Heart1 text-mute"></i></a>
+					</span>
+					<span class="text-mute">{{ $row->created_at->format('d, M Y') }}</span>
 				</div>
 			</div>
 		</div>
@@ -92,25 +96,6 @@
 		<ul class="pagination justify-content-center">
 			<li class="page-item"></li>
 		</ul>	
-	</div>
-
-	<div class="card">
-		<div class="card-body">
-			<div class="card-title mb-0">Recent Comments</div>
-		</div>
-		<div class="ul-widget-app__comments">
-			<!--  row-comments -->
-			<div class="ul-widget-app__row-comments">
-				<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-md mb-2 rounded-circle img-fluid" src="{{ asset('theme/images/faces/1.jpg')}}" alt="alt" /></div>
-				<div class="ul-widget-app__comment">
-					<div class="ul-widget-app__profile-title">
-						<h6 class="heading">Jhon Wick</h6>
-						<p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.ipsum .</p>
-					</div>
-					<div class="ul-widget-app__profile-status"><span class="badge badge-pill badge-primary p-2 m-1">Pending</span><span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">May 14, 2019</span></div>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
 </div>

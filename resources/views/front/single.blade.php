@@ -15,75 +15,24 @@
 						<aside>
 							<h1 class="aside-title">Recent Post</h1>
 							<div class="aside-body">
-								<article class="article-fw">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">												
-												<img src="{{asset('assets/images/news/img16.jpg')}}">
-											</a>
-										</figure>
-										<div class="details">
-											<h1><a href="{{route('single')}}">Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit</a></h1>
-											<p>
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-											tempor incididunt ut labore et dolore magna aliqua.
-											</p>
-											<div class="detail">
-												<div class="time">December 26, 2016</div>
-												<div class="category"><a href="category.html">Lifestyle</a></div>
-											</div>
-										</div>
-									</div>
-								</article>
-								<div class="line"></div>
+								@foreach($recent as $row)
 								<article class="article-mini">
 									<div class="inner">
 										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img05.jpg')}}">
+											<a href="#">
+												<img src="{{ asset('storage/berita/' . $row->foto) }}">
 											</a>
 										</figure>
 										<div class="padding">
-											<h1><a href="{{route('single')}}">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
+											<h1><a href="{{ route('single', $row->slug) }}">{{ $row->tittle }}</a></h1>
 											<div class="detail">
-												<div class="category"><a href="category.html">Lifestyle</a></div>
-												<div class="time">December 22, 2016</div>
+												<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
+												<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
 											</div>
 										</div>
 									</div>
 								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img02.jpg')}}">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
-											<div class="detail">
-												<div class="category"><a href="category.html">Travel</a></div>
-												<div class="time">December 21, 2016</div>
-											</div>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img13.jpg')}}">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-											<div class="detail">
-												<div class="category"><a href="category.html">International</a></div>
-												<div class="time">December 20, 2016</div>
-											</div>
-										</div>
-									</div>
-								</article>
+								@endforeach
 							</div>
 						</aside>
 						<aside>
@@ -107,36 +56,25 @@
 					<div class="col-md-8">
 						<ol class="breadcrumb">
 						  <li><a href="#">Home</a></li>
-						  <li class="active">Film</li>
+						  <li class="active">{{ $berita->beritaCategory->category }}</li>
 						</ol>
 						<article class="article main-article">
 							<header>
-								<h1>Pellentesque elementum tellus id mauris faucibus</h1>
+								<h1>{{ $berita->tittle }}</h1>
 								<ul class="details">
-									<li>Posted on 31 December, 2016</li>
-									<li><a>Film</a></li>
-									<li>By <a href="#">John Doe</a></li>
+									<li>Posted on {{ $berita->created_at->format('d M, Y') }}</li>
+									<li><a>{{ $berita->beritaCategory->category }}</a></li>
+									<li>By <a href="#">{{ $berita->profil_user->nama }}</a></li>
 								</ul>
 							</header>
 							<div class="main">
-								<p>Pellentesque elementum tellus id mauris faucibus, id sagittis mauris rhoncus. Donec ac iaculis dui, id convallis mauris. Fusce faucibus purus eu risus pulvinar, vel rutrum velit hendrerit. Sed urna nunc, efficitur faucibus sollicitudin non.</p>
 								<div class="featured">
 									<figure>
-										<img src="{{asset('assets/images/news/img01.jpg')}}">
-										<figcaption>Image by pexels.com</figcaption>
+										<img src="{{ asset('storage/berita/' . $berita->foto) }}">
+										<figcaption>Image by siskubis.com</figcaption>
 									</figure>
 								</div>
-
-								<p>Nulla facilisi. Aenean pharetra fringilla nunc a finibus. Nulla vitae pretium nunc. Pellentesque sagittis sollicitudin turpis id aliquam. Cras lobortis diam in nunc posuere, et malesuada sem gravida. Curabitur ornare massa id orci faucibus elementum. Phasellus pharetra, velit <a href="#">in egestas rutrum,</a> metus dolor maximus massa, feugiat molestie eros mauris sit amet massa. Maecenas blandit diam lacus, in luctus nulla efficitur nec. Sed sit amet quam sit amet odio scelerisque vestibulum vel sit amet ante. Cras fringilla efficitur lacinia. Cras posuere, arcu id consequat ultrices, urna urna cursus massa, at sollicitudin elit lacus quis dui. In laoreet nulla a turpis blandit sollicitudin. Donec in risus eu lorem volutpat hendrerit quis non lorem. Nulla in metus ipsum.
-								<p>Etiam sit amet augue non velit aliquet consectetur. Proin gravida, odio in facilisis pharetra, neque enim aliquam eros, vitae gravida orci elit vel magna. Integer viverra a purus id gravida. Donec laoreet mi ac auctor ultricies. Pellentesque ullamcorper est et erat ullamcorper gravida. In hac habitasse platea dictumst. Pellentesque justo mauris, mollis at tortor ut, commodo venenatis elit. Curabitur suscipit pellentesque nunc, id tempus mi facilisis sed. Curabitur molestie eu odio vitae condimentum. Donec placerat tristique neque a blandit. Nullam commodo massa ut eros elementum, in suscipit libero aliquam.</p>
-
-								<h4>Sed id sodales sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla facilisi.</h4>
-								<p>Nulla facilisi. Duis auctor fringilla sagittis. Fusce ornare, dui id consequat volutpat, nibh metus viverra nibh, vitae bibendum diam velit in libero. Sed dignissim quam sit amet nibh porttitor, non pellentesque metus tincidunt. Maecenas non velit sapien. </p>
-								<p>Maecenas vel dolor sit amet ligula interdum tempor id eu ipsum. Suspendisse pharetra risus ut metus elementum pulvinar. Mauris eget varius tellus. Cras et lorem vel nunc gravida porttitor.</p>
-								<blockquote>
-									Free Responsive HTML5 &amp; CSS3 Magazine Template
-								</blockquote>
-								<p>Ut est elit, vehicula tempus volutpat ut, sodales eget odio. Nunc placerat, orci ac iaculis feugiat, sem tellus efficitur tortor, mollis iaculis lacus ante nec risus. Sed consequat vehicula pretium.</p>
+								{!! $berita->berita !!}
 							</div>
 							<footer>
 								<div class="col">
@@ -197,8 +135,8 @@
 							</figure>
 							<div class="details">
 								<div class="job">Web Developer</div>
-								<h3 class="name">John Doe</h3>
-								<p>Nulla sagittis rhoncus nisi, vel gravida ante. Nunc lobortis condimentum elit, quis porta ipsum rhoncus vitae. Curabitur magna leo, porta vel fringilla gravida, consectetur in libero. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+								<h3 class="name">{{ $berita->profil_user->nama}}</h3>
+								<p>{{ $berita->profil_user->deskripsi }}</p>
 								<ul class="social trp sm">
 									<li>
 										<a href="#" class="facebook">
@@ -229,76 +167,61 @@
 						</div>
 						<div class="line"><div>You May Also Like</div></div>
 						<div class="row">
+							@forelse($recommend as $row)
 							<article class="article related col-md-6 col-sm-6 col-xs-12">
 								<div class="inner">
 									<figure>
 										<a href="#">
-											<img src="{{asset('assets/images/news/img03.jpg')}}">
+											<img src="{{ asset('storage/berita/' . $row->foto) }}">
 										</a>
 									</figure>
 									<div class="padding">
-										<h2><a href="#">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
+										<h2><a href="{{ route('single', $row->slug) }}">{{ $row->tittle }}</a></h2>
 										<div class="detail">
-											<div class="category"><a href="category.html">Lifestyle</a></div>
-											<div class="time">December 26, 2016</div>
+											<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
+											<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
 										</div>
 									</div>
 								</div>
 							</article>
-							<article class="article related col-md-6 col-sm-6 col-xs-12">
-								<div class="inner">
-									<figure>
-										<a href="#">
-											<img src="{{asset('assets/images/news/img08.jpg')}}">
-										</a>
-									</figure>
-									<div class="padding">
-										<h2><a href="#">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-										<div class="detail">
-											<div class="category"><a href="category.html">Lifestyle</a></div>
-											<div class="time">December 26, 2016</div>
-										</div>
-									</div>
-								</div>
-							</article>
+							@empty
+								<p>Belum ada berita terkait kategori ini</p>
+							@endforelse
 						</div>
 						<!--komentar-->
 						<div class="line thin"></div>
 						<div class="comments">
 							<h2 class="title">{{ $total_komentar }} Responses</h2>
 							<div class="comment-list">						
-								@foreach ($hasil as $li)
+								@foreach ($komentar as $row)
 								<div class="item">
 									<div class="user">
 										<figure>
 											<img src="{{asset('assets/images/images2.jpg')}}">
 										</figure>
 										<div class="details">
-											<h4 class="name">{{ $li->name}}</h4>
-											<span class="time">{{ $li->created_at->diffForHumans() }}</span>
-											<div class="description"><p>{{ $li->komentar}}</p></div>
-											<a href="inkubator/berita/destroy/{{ $li->id }}"  class ="right"><small>Delete</small></a>
+											<h4 class="name">{{ $row->name}}</h4>
+											<span class="time">{{ \Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</span>
+											<div class="description"><p>{{ $row->komentar}}</p></div>
+											<a href="inkubator/berita/destroy/{{ $row->id }}"  class ="right"><small>Delete</small></a>
 									</div>
 									</div>
 								</div>
 								@endforeach
 							</div>
-							<form action="inkubator/berita/comment" method="post" class="row">
+							<form action="inkubator.berita.comment" method="post" class="row">
 								{{ csrf_field() }}
 								<input type="hidden" name="id" value="id" class="form-control">
-								<input type="hidden" name="berita_id" value="1" class="form-control">
+								<input type="hidden" name="berita_id" value="{{ $berita->id }}" class="form-control">
 								<div class="col-md-12">
 									<h3 class="title">Leave Your Response</h3>
-									<p>{{ $errors->first('id')}}</p>
+								</div>
+								<div class="form-group col-md-12" hidden>
+									<label for="name">Nama</label>
+									<input type="text" id="name" name="name" class="form-control" value="{{ Auth::user()->name ?? '' }}">
 								</div>
 								<div class="form-group col-md-12">
-									<label for="name">Nama <span class="required"></span></label>
-									<input type="text" id="name" name="name" class="form-control">
-								</div>
-								<div class="form-group col-md-12">
-									<label for="komentar">Response <span class="required"></span></label>
 									<textarea class="form-control" name="komentar" placeholder="Write your response ..."></textarea>
-									<p>{{ $errors->first('komentar')}}
 								</div>
 								<div class="form-group col-md-12">
 									<button class="btn btn-primary">Send Response</button>
