@@ -25,19 +25,21 @@
 							</div>
 						</div>
 						<div class="owl-carousel owl-theme slide" id="featured">
+								@foreach($mainNews as $mn)
 							<div class="item">
 								<article class="featured">
 									<div class="overlay"></div>
 									<figure>
-										<img src="{{asset('assets/images/news/img04.jpg')}}" alt="Sample Article">
+										<img src="{{ asset('storage/berita/' . $mn->foto) }}" alt="{{ $mn->tittle }}">
 									</figure>
 									<div class="details">
-										<div class="category"><a href="category.html">Computer</a></div>
-										<h1><a href="{{route('single')}}">Phasellus iaculis quam sed est elementum vel ornare ligula venenatis</a></h1>
-										<div class="time">December 26, 2016</div>
+										<div class="category"><a href="#">{{ $mn->beritaCategory->category }}</a></div>
+										<h1><a href="#">{{ Str::Limit($mn->tittle,30) }}</a></h1>
+										<div class="time">{{ $mn->created_at->format('M d, Y') }}</div>
 									</div>
 								</article>
 							</div>
+								@endforeach
 							<div class="item">
 								<article class="featured">
 									<div class="overlay"></div>
@@ -82,49 +84,26 @@
 							<div>Latest News</div>
 						</div>
 						<div class="row">
+							@forelse($lastNews as $row)
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<div class="row">
 									<article class="article col-md-12">
 										<div class="inner">
 											<figure>
-												<a href="{{route('single')}}">
-													<img src="{{asset('assets/images/news/img10.jpg')}}" alt="Sample Article">
+												<a href="#">
+													<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="Sample Article">
 												</a>
 											</figure>
 											<div class="padding">
 												<div class="detail">
-													<div class="time">December 10, 2016</div>
-													<div class="category"><a href="category.html">Healthy</a></div>
+													<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
+													<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
 												</div>
-												<h2><a href="{{route('single')}}">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-												<footer>
+												<h4><a href="#">{{ Str::Limit($row->tittle, 40) }}</a></h4>
+												<p>{!! Str::Limit($row->berita, 150) !!}</p>
+												<footer>	
 													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
-													<a class="btn btn-primary more" href="{{route('single')}}">
-														<div>More</div>
-														<div><i class="ion-ios-arrow-thin-right"></i></div>
-													</a>
-												</footer>
-											</div>
-										</div>
-									</article>
-									<article class="article col-md-12">
-										<div class="inner">
-											<figure>
-												<a href="{{route('single')}}">
-													<img src="{{asset('assets/images/news/img06.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<div class="detail">
-													<div class="time">December 22, 2016</div>
-													<div class="category"><a href="category.html">Healthy</a></div>
-												</div>
-												<h2><a href="{{route('single')}}">Exercitation ullamco laboris nisi ut aliquip</a></h2>
-												<p>Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat sollicitudin ut est. In fringilla dui dui.</p>
-												<footer>
-													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>327</div></a>
-													<a class="btn btn-primary more" href="{{route('single')}}">
+													<a class="btn btn-primary more" href="#">
 														<div>More</div>
 														<div><i class="ion-ios-arrow-thin-right"></i></div>
 													</a>
@@ -134,58 +113,9 @@
 									</article>
 								</div>
 							</div>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<div class="row">
-									<article class="article col-md-12">
-										<div class="inner">
-											<figure>                                
-												<a href="{{route('single')}}">
-													<img src="{{asset('assets/images/news/img05.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<div class="detail">
-													<div class="time">December 09, 2016</div>
-													<div class="category"><a href="category.html">Lifestyle</a></div>
-												</div>
-												<h2><a href="{{route('single')}}">Mauris elementum libero at pharetra auctor</a></h2>
-												<p>Vivamus in efficitur mi. Nullam semper justo ut elit lacinia lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
-												<footer>
-													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1083</div></a>
-													<a class="btn btn-primary more" href="{{route('single')}}">
-														<div>More</div>
-														<div><i class="ion-ios-arrow-thin-right"></i></div>
-													</a>
-												</footer>
-											</div>
-										</div>
-									</article>
-									<article class="article col-md-12">
-										<div class="inner">
-											<figure>
-												<a href="{{route('single')}}">
-													<img src="{{asset('assets/images/news/img07.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<div class="detail">
-													<div class="time">December 21, 2016</div>
-													<div class="category"><a href="category.html">Sport</a></div>
-												</div>
-												<h2><a href="{{route('single')}}">Sed do eiusmod tempor incididunt ut labore</a></h2>
-												<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris elementum libero at pharetra auctor.</p>
-												<footer>
-													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>980</div></a>
-													<a class="btn btn-primary more" href="{{route('single')}}">
-														<div>More</div>
-														<div><i class="ion-ios-arrow-thin-right"></i></div>
-													</a>
-												</footer>
-											</div>
-										</div>
-									</article>
-								</div>
-							</div>
+							@empty
+								<h5>Belum ada berita</h5>
+							@endforelse
 						</div>
 						<div class="banner">
 							<a href="#">
@@ -517,78 +447,22 @@
 						<aside>
 							<h1 class="aside-title">Popular <a href="#" class="all">See All <i class="ion-ios-arrow-right"></i></a></h1>
 							<div class="aside-body">
+								@forelse($popular as $row)
 								<article class="article-mini">
 									<div class="inner">
 										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img07.jpg')}}" alt="Sample Article">
+											<a href="#">
+												<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->tittle }}">
 											</a>
 										</figure>
 										<div class="padding">
-											<h1><a href="{{route('single')}}">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
+											<h1><a href="#">{{ $row->tittle }}</a></h1>
 										</div>
 									</div>
 								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img14.jpg')}}" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img09.jpg')}}" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">Aliquam et metus convallis tincidunt velit ut rhoncus dolor</a></h1>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img11.jpg')}}" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">dui augue facilisis lacus fringilla pulvinar massa felis quis velit</a></h1>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img06.jpg')}}" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">neque est semper nulla, ac elementum risus quam a enim</a></h1>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img03.jpg')}}" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">Morbi vitae nisl ac mi luctus aliquet a vitae libero</a></h1>
-										</div>
-									</div>
-								</article>
+								@empty
+									<h5>Belum ada berita</h5>
+								@endforelse
 							</div>
 						</aside>
 						<aside>

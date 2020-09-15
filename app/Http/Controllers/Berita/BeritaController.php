@@ -60,9 +60,9 @@ class BeritaController extends Controller
 
     public function create()
     {
-        $kategori_berita =  kategori::all();
-        $inkubator = Inkubator::all();
-        $penulis = profil_user::all();
+        $kategori_berita =  kategori::orderBy('category')->get();
+        $inkubator = Inkubator::orderBy('nama')->get();
+        $penulis = profil_user::orderBy('nama')->get();
 
         return view('berita.formTambah',compact('kategori_berita','inkubator','penulis'));
     }
@@ -111,9 +111,9 @@ class BeritaController extends Controller
     public function edit($id)
     {
         $berita = berita::find($id);
-        $kategori = kategori::all();
-        $inkubator = Inkubator::all();
-        $penulis = profil_user::all();
+        $kategori =  kategori::orderBy('category')->get();
+        $inkubator = Inkubator::orderBy('nama')->get();
+        $penulis = profil_user::orderBy('nama')->get();
 
         return view('berita.formEditBerita', compact('berita','kategori', 'inkubator','penulis'));
     }

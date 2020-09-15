@@ -20,7 +20,7 @@ class KategoriController extends Controller
 	}
 	*/
 	public function create(){
-		$berita_category = Kategori::All();
+		$berita_category = Kategori::orderBy('category')->get();
 		$datas = array(
 			'berita_category' => $berita_category,
 			'no'        => 1
