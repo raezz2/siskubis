@@ -15,7 +15,7 @@
 									<span class="sr-only">Next</span>
 								</a>
 							</div>
-							<div class="owl-carousel owl-theme" id="headline">
+							<div class="owl-carousel owl-theme" id="headline">							
 								<div class="item">
 									<a href="#"><div class="badge">Tip!</div> Vestibulum ante ipsum primis in faucibus orci</a>
 								</div>
@@ -25,19 +25,21 @@
 							</div>
 						</div>
 						<div class="owl-carousel owl-theme slide" id="featured">
+								@foreach($mainNews as $mn)
 							<div class="item">
 								<article class="featured">
 									<div class="overlay"></div>
 									<figure>
-										<img src="{{asset('assets/images/news/img04.jpg')}}" alt="Sample Article">
+										<img src="{{ asset('storage/berita/' . $mn->foto) }}" alt="{{ $mn->tittle }}">
 									</figure>
 									<div class="details">
-										<div class="category"><a href="category.html">Computer</a></div>
-										<h1><a href="{{route('single')}}">Phasellus iaculis quam sed est elementum vel ornare ligula venenatis</a></h1>
-										<div class="time">December 26, 2016</div>
+										<div class="category"><a href="#">{{ $mn->beritaCategory->category }}</a></div>
+										<h1><a href="#">{{ $mn->tittle }}</a></h1>
+										<div class="time">{{ $mn->created_at->format('M d, Y') }}</div>
 									</div>
 								</article>
 							</div>
+								@endforeach
 							<div class="item">
 								<article class="featured">
 									<div class="overlay"></div>
@@ -82,59 +84,26 @@
 							<div>Latest News</div>
 						</div>
 						<div class="row">
+							@forelse($lastNews as $row)
 							<div class="col-md-6 col-sm-6 col-xs-12">
 								<div class="row">
 									<article class="article col-md-12">
 										<div class="inner">
 											<figure>
-<<<<<<< HEAD
-												<a href="{{route('single')}}">
-													<img src="{{asset('assets/images/news/img10.jpg')}}" alt="Sample Article">
-=======
 												<a href="#">
 													<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->tittle }}">
->>>>>>> a3f7934d0d382b0585c2d2d90eff8fb520e9a5a8
 												</a>
 											</figure>
 											<div class="padding">
 												<div class="detail">
-													<div class="time">December 10, 2016</div>
-													<div class="category"><a href="category.html">Healthy</a></div>
+													<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
+													<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
 												</div>
-<<<<<<< HEAD
-												<h2><a href="{{route('single')}}">Duis aute irure dolor in reprehenderit in voluptate</a></h2>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-=======
 												<h4><a href="#">{{ Str::Limit($row->tittle, 40) }}</a></h4>
 												<p>{!! Str::Limit($row->berita, 150) !!}</p>
->>>>>>> a3f7934d0d382b0585c2d2d90eff8fb520e9a5a8
-												<footer>
+												<footer>	
 													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
-													<a class="btn btn-primary more" href="{{route('single')}}">
-														<div>More</div>
-														<div><i class="ion-ios-arrow-thin-right"></i></div>
-													</a>
-												</footer>
-											</div>
-										</div>
-									</article>
-									<article class="article col-md-12">
-										<div class="inner">
-											<figure>
-												<a href="{{route('single')}}">
-													<img src="{{asset('assets/images/news/img06.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<div class="detail">
-													<div class="time">December 22, 2016</div>
-													<div class="category"><a href="category.html">Healthy</a></div>
-												</div>
-												<h2><a href="{{route('single')}}">Exercitation ullamco laboris nisi ut aliquip</a></h2>
-												<p>Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat sollicitudin ut est. In fringilla dui dui.</p>
-												<footer>
-													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>327</div></a>
-													<a class="btn btn-primary more" href="{{route('single')}}">
+													<a class="btn btn-primary more" href="#">
 														<div>More</div>
 														<div><i class="ion-ios-arrow-thin-right"></i></div>
 													</a>
@@ -144,58 +113,9 @@
 									</article>
 								</div>
 							</div>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<div class="row">
-									<article class="article col-md-12">
-										<div class="inner">
-											<figure>                                
-												<a href="{{route('single')}}">
-													<img src="{{asset('assets/images/news/img05.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<div class="detail">
-													<div class="time">December 09, 2016</div>
-													<div class="category"><a href="category.html">Lifestyle</a></div>
-												</div>
-												<h2><a href="{{route('single')}}">Mauris elementum libero at pharetra auctor</a></h2>
-												<p>Vivamus in efficitur mi. Nullam semper justo ut elit lacinia lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra.</p>
-												<footer>
-													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1083</div></a>
-													<a class="btn btn-primary more" href="{{route('single')}}">
-														<div>More</div>
-														<div><i class="ion-ios-arrow-thin-right"></i></div>
-													</a>
-												</footer>
-											</div>
-										</div>
-									</article>
-									<article class="article col-md-12">
-										<div class="inner">
-											<figure>
-												<a href="{{route('single')}}">
-													<img src="{{asset('assets/images/news/img07.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<div class="detail">
-													<div class="time">December 21, 2016</div>
-													<div class="category"><a href="category.html">Sport</a></div>
-												</div>
-												<h2><a href="{{route('single')}}">Sed do eiusmod tempor incididunt ut labore</a></h2>
-												<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris elementum libero at pharetra auctor.</p>
-												<footer>
-													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>980</div></a>
-													<a class="btn btn-primary more" href="{{route('single')}}">
-														<div>More</div>
-														<div><i class="ion-ios-arrow-thin-right"></i></div>
-													</a>
-												</footer>
-											</div>
-										</div>
-									</article>
-								</div>
-							</div>
+							@empty
+								<h5>Belum ada berita</h5>
+							@endforelse
 						</div>
 						<div class="banner">
 							<a href="#">
@@ -479,13 +399,13 @@
 												<div class="item">
 													<a href="#">
 														<div class="name">Posts</div>
-														<div class="value">208</div>
+														<div class="value">208</div>														
 													</a>
 												</div>
 												<div class="item">
 													<a href="#">
 														<div class="name">Stars</div>
-														<div class="value">3,729</div>
+														<div class="value">3,729</div>														
 													</a>
 												</div>
 												<div class="item">
@@ -493,7 +413,7 @@
 														<div class="icon">
 															<div>More</div>
 															<i class="ion-chevron-right"></i>
-														</div>
+														</div>														
 													</a>
 												</div>
 											</div>
@@ -504,7 +424,9 @@
 												<h2 class="block-title">Photos</h2>
 												<div class="block-body">
 													<ul class="item-list-round" data-magnific="gallery">
-														<li><a href="{{asset('assets/images/news/img06.jpg')}}" style="background-image: url('{{asset("assets/images/news/img06.jpg")}}');"></a></li>
+														<li>
+															<a href="{{asset('assets/images/news/img06.jpg')}}" style="background-image: url('{{asset("assets/images/news/img06.jpg")}}');"></a>
+														</li>
 														<li><a href="{{asset('assets/images/news/img07.jpg')}}" style="background-image: url('{{asset("assets/images/news/img07.jpg")}}');"></a></li>
 														<li><a href="{{asset('assets/images/news/img08.jpg')}}" style="background-image: url('{{asset("assets/images/news/img08.jpg")}}');"></a></li>
 														<li><a href="{{asset('assets/images/news/img09.jpg')}}" style="background-image: url('{{asset("assets/images/news/img09.jpg")}}');"></a></li>
@@ -527,78 +449,22 @@
 						<aside>
 							<h1 class="aside-title">Popular <a href="#" class="all">See All <i class="ion-ios-arrow-right"></i></a></h1>
 							<div class="aside-body">
+								@forelse($popular as $row)
 								<article class="article-mini">
 									<div class="inner">
 										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img07.jpg')}}" alt="Sample Article">
+											<a href="#">
+												<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->tittle }}">
 											</a>
 										</figure>
 										<div class="padding">
-											<h1><a href="{{route('single')}}">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
+											<h1><a href="#">{{ $row->tittle }}</a></h1>
 										</div>
 									</div>
 								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img14.jpg')}}" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img09.jpg')}}" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">Aliquam et metus convallis tincidunt velit ut rhoncus dolor</a></h1>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img11.jpg')}}" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">dui augue facilisis lacus fringilla pulvinar massa felis quis velit</a></h1>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img06.jpg')}}" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">neque est semper nulla, ac elementum risus quam a enim</a></h1>
-										</div>
-									</div>
-								</article>
-								<article class="article-mini">
-									<div class="inner">
-										<figure>
-											<a href="{{route('single')}}">
-												<img src="{{asset('assets/images/news/img03.jpg')}}" alt="Sample Article">
-											</a>
-										</figure>
-										<div class="padding">
-											<h1><a href="{{route('single')}}">Morbi vitae nisl ac mi luctus aliquet a vitae libero</a></h1>
-										</div>
-									</div>
-								</article>
+								@empty
+									<h5>Belum ada berita</h5>
+								@endforelse
 							</div>
 						</aside>
 						<aside>
@@ -647,7 +513,7 @@
 												</div>
 												<h1><a href="{{route('single')}}">Donec congue turpis vitae mauris</a></h1>
 												<p>
-													Donec congue turpis vitae mauris condimentum luctus. Ut dictum neque at egestas convallis.
+													Donec congue turpis vitae mauris condimentum luctus. Ut dictum neque at egestas convallis. 
 												</p>
 											</div>
 										</div>
@@ -705,7 +571,7 @@
 								<div class="tab-pane comments" id="comments">
 									<div class="comment-list sm">
 										<div class="item">
-											<div class="user">
+											<div class="user">                                
 												<figure>
 													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
 												</figure>
@@ -719,7 +585,7 @@
 											</div>
 										</div>
 										<div class="item">
-											<div class="user">
+											<div class="user">                                
 												<figure>
 													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
 												</figure>
@@ -733,7 +599,7 @@
 											</div>
 										</div>
 										<div class="item">
-											<div class="user">
+											<div class="user">                                
 												<figure>
 													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
 												</figure>
@@ -773,22 +639,22 @@
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li>
+									</li> 
 									<li>
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li>
+									</li> 
 									<li>
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li>
+									</li> 
 									<li>
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li>
+									</li> 
 								</ul>
 							</div>
 						</aside>

@@ -455,11 +455,19 @@
 						<div class="block">
                             <h1 class="block-title">Latest News</h1>
                             <div class="block-body"></div>
+                            @php
+                            	use App\Berita;
+                            	$lastNews = Berita::with('beritaCategory')
+                    						->orderBy('created_at','desc')
+                    						->where('publish','=','1')
+                    						->where('inkubator_id','=','0')
+                    						->paginate(4);
+                            @endphp
                             @forelse($lastNews as $row)
 								<article class="article-mini">
 									<div class="inner">
 										<figure>
-											<a href="{{route('single')}}">
+											<a href="#">
 												<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="Sample Article">
 											</a>
 										</figure>
@@ -470,7 +478,7 @@
 								</article>
                             @empty
 								<h5>Belum ada berita</h5>
-                        @endforelse
+                        	@endforelse
                         </div>
 
                         <a href="#" class="btn btn-magz white btn-block">See All <i class="ion-ios-arrow-thin-right"></i></a>
