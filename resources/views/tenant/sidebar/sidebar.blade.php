@@ -9,7 +9,7 @@
                     <div class="main-menu">
                         <ul class="metismenu" id="menu">
                             <li class="Ul_li--hover"><a class="active" href="#"><i class="i-Bar-Chart text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Dashboard</span></a>
-                                
+
                             </li>
                             <li class="Ul_li--hover"><a class="" href="#"><i class="i-Administrator text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Tenant</span></a>
 
@@ -35,7 +35,7 @@
                                 </ul>
 							</li>
 							<li class="Ul_li--hover"><a class="" href="#"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Event</span></a></li>
-							<li class="Ul_li--hover"><a class="" href="#"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Beritas</span></a></li>
+							<li class="Ul_li--hover"><a class="" href="{{route('tenant.berita')}}"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Beritas</span></a></li>
                         </ul>
                     </div>
                 </div>

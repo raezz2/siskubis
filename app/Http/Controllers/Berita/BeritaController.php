@@ -39,6 +39,16 @@ class BeritaController extends Controller
         return view('berita.index',compact('berita', 'umum', 'hasil'));
     }
 
+    public function indexTenant()
+    {
+
+        $berita = Berita::with('profil_user')->orderBy('created_at','desc')->paginate(10);
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+		$hasil = Komentar::paginate(5);
+
+        return view('berita.indexTenant',compact('berita', 'umum', 'hasil'));
+    }
+
     public function search(Request $request){
         $cari = $request->input('search');
         $tgl = $request->input('tgl');
@@ -51,6 +61,20 @@ class BeritaController extends Controller
 
        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
         return view('berita.index', compact('berita','cari','umum'));
+    }
+
+    public function searchTenant(Request $request){
+        $cari = $request->input('search');
+        $tgl = $request->input('tgl');
+        $status = $request->input('status');
+        if($status == '3'){
+            $berita = Berita::where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
+        } else {
+            $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
+        }
+
+       $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+        return view('berita.indexTenant', compact('berita','cari','umum'));
     }
 
     public function create()
@@ -163,6 +187,21 @@ class BeritaController extends Controller
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
 
         return view('berita.showBerita', compact('berita','umum','komentar','total_komentar'));
+    }
+
+    public function showT($slug)
+    {
+        $berita = Berita::find($slug);
+        $berita = Berita::with(['beritaCategory','profil_user'])->where('slug', $slug)->first();
+        $view = $berita->views + 1;
+        $berita->update([
+            'views' => $view,
+        ]);
+        $komentar = DB::table('berita_komentar')->where('berita_id',$berita->id)->orderBy('created_at','desc')->get();
+        $total_komentar = DB::table('berita_komentar')->where('berita_id',$berita->id)->count();
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+
+        return view('berita.showBeritaTenant', compact('berita','umum','komentar','total_komentar'));
     }
 
 	public function single()

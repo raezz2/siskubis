@@ -6,7 +6,7 @@
 <div class="col-xl-8 col-lg-8">
 <div class="card">
 <div class="card-header container-fluid">
-  <div class="row">
+  {{-- <div class="row">
 	<div class="col-md-7">
 	  <h3>Berita</h3>
     </div>
@@ -16,13 +16,13 @@
 	<div class="col-md-2">
 	  <a href="{{ route('inkubator.formBerita') }}"><button class="btn btn-primary custom-btn btn-sm">+ Tambah Berita</button></a>
 	</div>
-  </div>
+  </div> --}}
 </div>
 <div class="card-body">
 
 <div class="row row-xs">
 	<div class="col-md-4">
-        <form action="{{ route('cariberita') }}" method="get" name="s" >
+        <form action="{{ route('tenant.cariberita') }}" method="get" name="s" >
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" name="search" placeholder="Search...">
         </div>
@@ -52,7 +52,7 @@
 			<div class="ul-widget5__content">
 				<div class="ul-widget5__pic"><img src="{{ asset('storage/berita/' . $b->foto) }}" alt="Third slide" /></div>
 				<div class="ul-widget5__section">
-					<a class="ul-widget4__title" href="{{ route('inkubator.showBerita', $b->slug) }}">{{ Str::limit($b->tittle, 40) }}</a>
+					<a class="ul-widget4__title" href="{{ route('tenant.showBerita', $b->slug) }}">{{ Str::limit($b->tittle, 40) }}</a>
 					<p class="ul-widget5__desc">{!! Str::limit($b->berita, 47) !!}</p>
 					<div class="ul-widget5__info">
 						<span>Status : </span>
@@ -69,12 +69,12 @@
 			<div class="ul-widget5__content">
 				<div class="ul-widget5__stats"><span class="ul-widget5__sales">{{ $b->views }} <i class="i-Eye"></i></span><span class="ul-widget5__sales">200 <i class="i-Speach-Bubble-3"></i></span></div>
 				<div class="ul-widget5__stats"><span class="ul-widget5__number">
-				<form action="{{ route('inkubator.destroyBerita', $b->id) }}" method="post">
+				{{-- <form action="{{ route('inkubator.destroyBerita', $b->id) }}" method="post">
                 	@csrf
                 	<input type="hidden" name="_method" value="DELETE">
 					<a class="ul-link-action text-success" href="{{ route('inkubator.editBerita', $b->id) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="i-Edit"></i></a>
 					<button type="submit" class="btn btn-link ul-link-action text-danger mr-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Want To Delete !!!"><i class="i-Eraser-2"></i></button>
-				</form>
+				</form> --}}
 				</span></div>
 			</div>
 		</div>
