@@ -39,7 +39,7 @@
 					<p>Belum Ada Komentar</p>
 				@endforelse
 				<br><br>
-				<form action="{{ route('inkubator.komentarBerita') }}" method="post" class="row">
+				<form action="{{ route('tenant.komentarBerita') }}" method="post" class="row">
 					{{ csrf_field() }}
 					<input type="hidden" name="id" value="id" class="form-control">
 					<input type="hidden" name="berita_id" value="{{ $berita->id }}" class="form-control">

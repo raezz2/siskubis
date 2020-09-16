@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Front\IndexController@index');
 Route::get('/single/{slug}','Front\IndexController@single')->name('single');
-//Route::get('/berita/{slug}','Front\IndexController@single')->name('berita.depan');
+Route::post('/single/komentar','Berita\BeritaController@komentar')->name('single.komentarBerita');
 
 Auth::routes();
 
@@ -97,6 +97,7 @@ Route::group(['prefix'=>'tenant','middleware' => ['role:tenant']], function () {
     Route::get('/berita', 'Berita\BeritaController@indexTenant')->name('tenant.berita');
     Route::get('/berita/{slug}', 'Berita\BeritaController@showT')->name('tenant.showBerita');
     Route::get('cariberita','Berita\BeritaController@searchTenant')->name('tenant.cariberita');
+    Route::post('/berita/komentar','Berita\BeritaController@komentar')->name('tenant.komentarBerita');
 });
 
 Route::group(['prefix'=>'user','middleware' => ['role:user']], function () {

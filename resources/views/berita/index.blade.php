@@ -115,7 +115,7 @@
 		</ul>
 	</div>
 
-	{{-- <div class="card">
+	<div class="card">
 		<div class="card-body">
 			<div class="card-title mb-0">Recent Comments</div>
 		</div>
@@ -132,13 +132,13 @@
 					<span class="ul-widget-app__icons">
 					<!-- <a href="inkubator/berita/destroy/{{ $li->id }}" class="badge badge-pill badge-danger p-2 m-1">Delete</a> -->
 					</span>
-					<span class="text-mute">{{ date('d M Y',strtotime($li->created_at)) }}</span>
+					<span class="text-mute">{{ \Carbon\Carbon::parse($li->created_at)->diffForHumans() }}</span>
 					</div>
 				</div>
 			</div>
 			@endforeach
 		</div>
-	</div> --}}
+	</div>
 </div>
 </div>
 @endsection

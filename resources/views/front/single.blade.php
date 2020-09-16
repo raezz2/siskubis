@@ -203,13 +203,12 @@
 											<h4 class="name">{{ $row->name}}</h4>
 											<span class="time">{{ \Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</span>
 											<div class="description"><p>{{ $row->komentar}}</p></div>
-											<a href="inkubator/berita/destroy/{{ $row->id }}"  class ="right"><small>Delete</small></a>
 									</div>
 									</div>
 								</div>
 								@endforeach
 							</div>
-							<form action="inkubator.berita.comment" method="post" class="row">
+							<form action="{{ route('single.komentarBerita') }}" method="post" class="row">
 								{{ csrf_field() }}
 								<input type="hidden" name="id" value="id" class="form-control">
 								<input type="hidden" name="berita_id" value="{{ $berita->id }}" class="form-control">
@@ -218,7 +217,7 @@
 								</div>
 								<div class="form-group col-md-12" hidden>
 									<label for="name">Nama</label>
-									<input type="text" id="name" name="name" class="form-control" value="{{ Auth::user()->name ?? '' }}">
+									<input type="text" id="name" name="name" class="form-control" value="{{ Auth::user()->name ?? 'anonymous' }}">
 								</div>
 								<div class="form-group col-md-12">
 									<textarea class="form-control" name="komentar" placeholder="Write your response ..."></textarea>

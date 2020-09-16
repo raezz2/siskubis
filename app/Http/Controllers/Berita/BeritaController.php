@@ -58,9 +58,9 @@ class BeritaController extends Controller
         } else {
             $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
         }
-
-       $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
-        return view('berita.index', compact('berita','cari','umum'));
+        $hasil = Komentar::orderBy('created_at','desc')->paginate(5);
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+        return view('berita.index', compact('berita','cari','umum','hasil'));
     }
 
     public function searchTenant(Request $request){
