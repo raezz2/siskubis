@@ -26,7 +26,6 @@
 						<button type="button" class="btn btn-sm btn-outline-secondary">Responsive Web Design</button>
 						<button type="button" class="btn btn-sm btn-outline-secondary">HTML5</button>
 						<button type="button" class="btn btn-sm btn-outline-secondary">CSS3</button>
-						<button type="button" class="btn btn-sm btn-outline-secondary">Web Design</button>
 					</div>
 					<div class="col-md-2">
 						<form id="likeForm" name="likeForm">

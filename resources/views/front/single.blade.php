@@ -26,7 +26,7 @@
 										<div class="padding">
 											<h1><a href="{{ route('single', $row->slug) }}">{{ $row->tittle }}</a></h1>
 											<div class="detail">
-												<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
+												<div class="category"><a href="">{{ $row->beritaCategory->category }}</a></div>
 												<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
 											</div>
 										</div>
@@ -55,7 +55,7 @@
 					</div>
 					<div class="col-md-8">
 						<ol class="breadcrumb">
-						  <li><a href="#">Home</a></li>
+						  <li><a href="/">Home</a></li>
 						  <li class="active">{{ $berita->beritaCategory->category }}</li>
 						</ol>
 						<article class="article main-article">
@@ -192,7 +192,7 @@
 						<div class="line thin"></div>
 						<div class="comments">
 							<h2 class="title">{{ $total_komentar }} Responses</h2>
-							<div class="comment-list">						
+							<div class="comment-list">
 								@foreach ($komentar as $row)
 								<div class="item">
 									<div class="user">

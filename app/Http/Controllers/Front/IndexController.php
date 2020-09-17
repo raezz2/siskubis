@@ -44,6 +44,27 @@ class IndexController extends Controller
         return view('front.index', compact('mainNews','lastNews','popular'));
     }
 
+    public function all()
+    {
+        $mainNews = Berita::with('beritaCategory')
+                    ->orderBy('views','desc')
+                    ->where('publish','=','1')
+                    ->where('inkubator_id','=','0')
+                    ->paginate(1);
+        $lastNews = Berita::with('beritaCategory')
+                    ->orderBy('created_at','desc')
+                    ->where('publish','=','1')
+                    ->where('inkubator_id','=','0')
+                    ->paginate(10);
+        $popular = Berita::with('beritaCategory')
+                    ->orderBy('views','desc')
+                    ->where('publish','=','1')
+                    ->where('inkubator_id','=','0')
+                    ->paginate(7);
+
+        return view('front.all', compact('mainNews','lastNews','popular'));
+    }
+
     public function single($slug)
     {
         $berita = Berita::find($slug);
