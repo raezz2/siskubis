@@ -185,9 +185,10 @@ class BeritaController extends Controller
         ]);
         $komentar = Komentar::where('berita_id',$berita->id)->orderBy('created_at','desc')->get();
         $total_komentar = Komentar::where('berita_id',$berita->id)->count();
+        $total_like = BeritaLike::where('berita_id',$berita->id)->count();
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
 
-        return view('berita.showBerita', compact('berita','umum','komentar','total_komentar'));
+        return view('berita.showBerita', compact('berita','umum','komentar','total_komentar','total_like'));
     }
 
     public function showT($slug)
@@ -200,9 +201,10 @@ class BeritaController extends Controller
         ]);
         $komentar = Komentar::where('berita_id',$berita->id)->orderBy('created_at','desc')->get();
         $total_komentar = Komentar::where('berita_id',$berita->id)->count();
+        $total_like = BeritaLike::where('berita_id',$berita->id)->count();
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
 
-        return view('berita.showBeritaTenant', compact('berita','umum','komentar','total_komentar'));
+        return view('berita.showBeritaTenant', compact('berita','umum','komentar','total_komentar','total_like'));
     }
 
 	public function single()
