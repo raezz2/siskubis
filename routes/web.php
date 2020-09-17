@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Front\IndexController@index');
 Route::get('/single/{slug}','Front\IndexController@single')->name('single');
 Route::post('/single/komentar','Berita\BeritaController@komentar')->name('single.komentarBerita');
+Route::get('/all','Front\IndexController@all')->name('front.all');
 
 Auth::routes();
 

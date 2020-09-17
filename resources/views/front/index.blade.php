@@ -15,7 +15,7 @@
 									<span class="sr-only">Next</span>
 								</a>
 							</div>
-							<div class="owl-carousel owl-theme" id="headline">							
+							<div class="owl-carousel owl-theme" id="headline">
 								<div class="item">
 									<a href="#"><div class="badge">Tip!</div> Vestibulum ante ipsum primis in faucibus orci</a>
 								</div>
@@ -59,10 +59,10 @@
 												<div class="detail">
 													<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
 													<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
-												</div>
-												<h4><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 30) }}</a></h4>
-												<p>{!! Str::Limit($row->berita, 150) !!}</p>
-												<footer>	
+												</div>g
+												<h4><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 20) }}</a></h4>
+												<p>{!! Str::Limit($row->berita, 120) !!}</p>
+												<footer>
 													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
 													<a class="btn btn-primary more" href="{{ route('single', $mn->slug) }}">
 														<div>More</div>
@@ -360,13 +360,13 @@
 												<div class="item">
 													<a href="#">
 														<div class="name">Posts</div>
-														<div class="value">208</div>														
+														<div class="value">208</div>
 													</a>
 												</div>
 												<div class="item">
 													<a href="#">
 														<div class="name">Stars</div>
-														<div class="value">3,729</div>														
+														<div class="value">3,729</div>
 													</a>
 												</div>
 												<div class="item">
@@ -374,7 +374,7 @@
 														<div class="icon">
 															<div>More</div>
 															<i class="ion-chevron-right"></i>
-														</div>														
+														</div>
 													</a>
 												</div>
 											</div>
@@ -408,7 +408,7 @@
 							</div>
 						</aside>
 						<aside>
-							<h1 class="aside-title">Popular <a href="#" class="all">See All <i class="ion-ios-arrow-right"></i></a></h1>
+							<h1 class="aside-title">Popular <a href="/all" class="all">See All <i class="ion-ios-arrow-right"></i></a></h1>
 							<div class="aside-body">
 								@forelse($popular as $row)
 								<article class="article-mini">
@@ -474,7 +474,7 @@
 												</div>
 												<h1><a href="#">Donec congue turpis vitae mauris</a></h1>
 												<p>
-													Donec congue turpis vitae mauris condimentum luctus. Ut dictum neque at egestas convallis. 
+													Donec congue turpis vitae mauris condimentum luctus. Ut dictum neque at egestas convallis.
 												</p>
 											</div>
 										</div>
@@ -532,7 +532,7 @@
 								<div class="tab-pane comments" id="comments">
 									<div class="comment-list sm">
 										<div class="item">
-											<div class="user">                                
+											<div class="user">
 												<figure>
 													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
 												</figure>
@@ -546,7 +546,7 @@
 											</div>
 										</div>
 										<div class="item">
-											<div class="user">                                
+											<div class="user">
 												<figure>
 													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
 												</figure>
@@ -560,7 +560,7 @@
 											</div>
 										</div>
 										<div class="item">
-											<div class="user">                                
+											<div class="user">
 												<figure>
 													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
 												</figure>
@@ -600,22 +600,22 @@
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li> 
+									</li>
 									<li>
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li> 
+									</li>
 									<li>
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li> 
+									</li>
 									<li>
 										<a href="#">
 											<img src="{{asset('assets/images/sponsored.png')}}" alt="Sponsored">
 										</a>
-									</li> 
+									</li>
 								</ul>
 							</div>
 						</aside>
