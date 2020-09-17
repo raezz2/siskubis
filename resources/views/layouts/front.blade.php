@@ -467,12 +467,12 @@
 								<article class="article-mini">
 									<div class="inner">
 										<figure>
-											<a href="#">
+											<a href="{{ route('single', $row->slug) }}">
 												<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="Sample Article">
 											</a>
 										</figure>
 										<div class="padding">
-											<h1><a href="#">{{ Str::Limit($row->tittle,30) }}</a></h1>
+											<h1><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle,30) }}</a></h1>
 										</div>
 									</div>
 								</article>

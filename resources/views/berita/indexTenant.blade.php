@@ -67,7 +67,16 @@
 				</div>
 			</div>
 			<div class="ul-widget5__content">
-				<div class="ul-widget5__stats"><span class="ul-widget5__sales">{{ $b->views }} <i class="i-Eye"></i></span><span class="ul-widget5__sales">200 <i class="i-Speach-Bubble-3"></i></span></div>
+				<div class="ul-widget5__stats">
+					<span class="ul-widget5__sales">{{ $b->views }} <i class="i-Eye"></i></span>
+					<span class="ul-widget5__sales">
+						@php
+							$total_komentar = DB::table('berita_komentar')->where('berita_id',$b->id)->count();
+						@endphp
+						{{ $total_komentar }} 
+						<i class="i-Speach-Bubble-3"></i>
+					</span>
+				</div>
 				<div class="ul-widget5__stats"><span class="ul-widget5__number">
 				{{-- <form action="{{ route('inkubator.destroyBerita', $b->id) }}" method="post">
                 	@csrf
@@ -115,7 +124,7 @@
 		</ul>
 	</div>
 
-	{{-- <div class="card">
+	<div class="card">
 		<div class="card-body">
 			<div class="card-title mb-0">Recent Comments</div>
 		</div>
@@ -132,13 +141,13 @@
 					<span class="ul-widget-app__icons">
 					<!-- <a href="inkubator/berita/destroy/{{ $li->id }}" class="badge badge-pill badge-danger p-2 m-1">Delete</a> -->
 					</span>
-					<span class="text-mute">{{ date('d M Y',strtotime($li->created_at)) }}</span>
+					<span class="text-mute">{{ \Carbon\Carbon::parse($li->created_at)->diffForHumans() }}</span>
 					</div>
 				</div>
 			</div>
 			@endforeach
 		</div>
-	</div> --}}
+	</div>
 </div>
 </div>
 @endsection

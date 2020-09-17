@@ -51,7 +51,7 @@
 									<article class="article col-md-12">
 										<div class="inner">
 											<figure>
-												<a href="#">
+												<a href="{{ route('single', $mn->slug) }}">
 													<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->tittle }}">
 												</a>
 											</figure>
@@ -60,11 +60,11 @@
 													<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
 													<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
 												</div>
-												<h4><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 40) }}</a></h4>
+												<h4><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 30) }}</a></h4>
 												<p>{!! Str::Limit($row->berita, 150) !!}</p>
 												<footer>	
 													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
-													<a class="btn btn-primary more" href="#">
+													<a class="btn btn-primary more" href="{{ route('single', $mn->slug) }}">
 														<div>More</div>
 														<div><i class="ion-ios-arrow-thin-right"></i></div>
 													</a>
@@ -414,7 +414,7 @@
 								<article class="article-mini">
 									<div class="inner">
 										<figure>
-											<a href="#">
+											<a href="{{ route('single', $row->slug) }}">
 												<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->tittle }}">
 											</a>
 										</figure>

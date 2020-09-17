@@ -12,7 +12,6 @@ use App\Inkubator;
 use App\profil_user;
 use App\Komentar;
 use App\User;
-use DB;
 use Auth;
 use Validator;
 use File;
@@ -33,8 +32,8 @@ class BeritaController extends Controller
     {
 
         $berita = Berita::with('profil_user')->orderBy('created_at','desc')->paginate(10);
-        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
-		$hasil = Komentar::paginate(5);
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
+		$hasil = Komentar::orderBy('created_at','desc')->paginate(5);
 
         return view('berita.index',compact('berita', 'umum', 'hasil'));
     }
@@ -43,8 +42,8 @@ class BeritaController extends Controller
     {
 
         $berita = Berita::with('profil_user')->orderBy('created_at','desc')->paginate(10);
-        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
-		$hasil = Komentar::paginate(5);
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
+		$hasil = Komentar::orderBy('created_at','desc')->paginate(5);
 
         return view('berita.indexTenant',compact('berita', 'umum', 'hasil'));
     }
@@ -59,7 +58,8 @@ class BeritaController extends Controller
             $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
         }
         $hasil = Komentar::orderBy('created_at','desc')->paginate(5);
-        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
+
         return view('berita.index', compact('berita','cari','umum','hasil'));
     }
 
@@ -73,7 +73,7 @@ class BeritaController extends Controller
             $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
         }
 
-       $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
         return view('berita.indexTenant', compact('berita','cari','umum'));
     }
 
@@ -182,9 +182,9 @@ class BeritaController extends Controller
         $berita->update([
             'views' => $view,
         ]);
-        $komentar = DB::table('berita_komentar')->where('berita_id',$berita->id)->orderBy('created_at','desc')->get();
-        $total_komentar = DB::table('berita_komentar')->where('berita_id',$berita->id)->count();
-        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+        $komentar = Komentar::where('berita_id',$berita->id)->orderBy('created_at','desc')->get();
+        $total_komentar = Komentar::where('berita_id',$berita->id)->count();
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
 
         return view('berita.showBerita', compact('berita','umum','komentar','total_komentar'));
     }
@@ -197,9 +197,9 @@ class BeritaController extends Controller
         $berita->update([
             'views' => $view,
         ]);
-        $komentar = DB::table('berita_komentar')->where('berita_id',$berita->id)->orderBy('created_at','desc')->get();
-        $total_komentar = DB::table('berita_komentar')->where('berita_id',$berita->id)->count();
-        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','ASC')->paginate(5);
+        $komentar = Komentar::where('berita_id',$berita->id)->orderBy('created_at','desc')->get();
+        $total_komentar = Komentar::where('berita_id',$berita->id)->count();
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
 
         return view('berita.showBeritaTenant', compact('berita','umum','komentar','total_komentar'));
     }
