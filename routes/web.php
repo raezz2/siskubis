@@ -58,6 +58,7 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     Route::put('berita/update/{id}','Berita\BeritaController@update')->name('inkubator.updateBerita');
     Route::get('/berita/{slug}', 'Berita\BeritaController@show')->name('inkubator.showBerita');
     Route::post('/berita/komentar','Berita\BeritaController@komentar')->name('inkubator.komentarBerita');
+    Route::post('/berita/like', 'Berita\BeritaController@likeStore')->name('inkubator.likeBerita');
     //End
     Route::get('/berita/kategori', 'Berita\KategoriController@kategori')->name('inkubator.kategori');
     Route::get('/chat', 'Chat\ChatController@index')->name('inkubator.chat');
@@ -98,6 +99,7 @@ Route::group(['prefix'=>'tenant','middleware' => ['role:tenant']], function () {
     Route::get('/berita/{slug}', 'Berita\BeritaController@showT')->name('tenant.showBerita');
     Route::get('cariberita','Berita\BeritaController@searchTenant')->name('tenant.cariberita');
     Route::post('/berita/komentar','Berita\BeritaController@komentar')->name('tenant.komentarBerita');
+    Route::post('/berita/like', 'Berita\BeritaController@likeStore')->name('tenant.likeBerita');
 });
 
 Route::group(['prefix'=>'user','middleware' => ['role:user']], function () {

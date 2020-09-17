@@ -18,6 +18,31 @@
 				<img src="{{ asset('storage/berita/' . $berita->foto) }}" alt="{{ $berita->slug }}" class="w-100" height="350px">
 				<p class="text-justify">{!! $berita->berita !!}</p>
 			</div>
+			<footer>
+				<div class="row mb-3 container">
+					<div class="col-md-10">
+						<button type="button" class="btn btn-sm btn-outline-secondary">Free Themes</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary">Bootstrap 3</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary">Responsive Web Design</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary">HTML5</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary">CSS3</button>
+						<button type="button" class="btn btn-sm btn-outline-secondary">Web Design</button>
+					</div>
+					<div class="col-md-2">
+						<form id="likeForm" name="likeForm">
+						{{ csrf_field() }}
+							<input type="text" name="user_id" value="{{ Auth::user()->id }}" hidden>
+							<input type="text" name="berita_id" value="{{ $berita->id }}" hidden>
+							<button class="btn btn-sm btn-outline-primary" id="like" value="create">
+          						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  									<path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+								</svg>
+								1220
+							</button> 
+						</form>
+					</div>
+				</div>
+			</footer>
 		</div>
 		<div class="card">
 			<div class="card-body">
@@ -99,4 +124,37 @@
 	</div>
 </div>
 </div>
+@endsection
+@section('js')
+
+	<script type="text/javascript">
+        
+        $(function () {
+            $.ajaxSetup({ 
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('#like').click(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    data: $('#likeForm').serialize(),
+                    url: "{{ route('tenant.likeBerita') }}",
+                    type: "POST",
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log('Berhasil')
+                    },
+                    error: function (data) {
+                        console.log('Gagal');
+                        alert("Anda hanya bisa menyukai ini 1x")
+                    }
+                });
+            });
+        });
+
+    </script>
+
 @endsection

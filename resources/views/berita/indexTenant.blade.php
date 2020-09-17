@@ -34,8 +34,8 @@
 	 <div class="btn-group">
         <select name="status" class="btn btn-danger btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <option value="3">All</option>
-            <option value="1">Publice</option>
-            <option value="0">Draf</option>
+            <option value="1">Publish</option>
+            <option value="0">Draft</option>
         </select>
 	  </div>
 	</div>
@@ -112,7 +112,19 @@
 				<div class="ul-widget-app__profile-title">
 					<a class="ul-widget4__title" href="{{ route('inkubator.showBerita', $row->slug) }}">{{ Str::limit($row->tittle, 40) }}</a>
 				</div>
-				<div class="ul-widget-app__profile-status"><span class="badge badge-pill badge-primary p-2 m-1">Pending</span><span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">{{ $row->created_at->format('d, M Y') }}</span></div>
+				<div class="ul-widget-app__profile-status">
+					@if($b->publish == 1)
+						<span class="badge badge-pill badge-success p-1 mr-2">Publish</span>
+					@else
+						<span class="badge badge-pill badge-danger p-1 mr-2">Draft</span>
+					@endif
+					<span class="ul-widget-app__icons">
+						<a href="href"><i class="i-Approved-Window text-mute"></i></a>
+						<a href="href"><i class="i-Like text-mute"></i></a>
+						<a href="href"><i class="i-Heart1 text-mute"></i></a>
+					</span>
+					<span class="text-mute">{{ $row->created_at->format('d, M Y') }}</span>
+				</div>
 			</div>
 		</div>
 		@empty
@@ -131,7 +143,7 @@
 		<div class="ul-widget-app__comments">
 			@foreach ($hasil as $li)
 			<div class="ul-widget-app__row-comments">
-				<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-md mb-2 rounded-circle" src="{{ asset('assets/images/images2.jpg')}}" alt="alt" /></div>
+				<div class="ul-widget-app__profile-pic p-1"><img class="profile-picture avatar-md mb-2 rounded-circle" src="{{ asset('assets/images/images2.jpg')}}" alt="alt" /></div>
 				<div class="ul-widget-app__comment">
 					<div class="ul-widget-app__profile-title">
 						<h6 class="heading">{{ $li->name}}</h6>

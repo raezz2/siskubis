@@ -34,8 +34,8 @@
 	 <div class="btn-group">
         <select name="status" class="btn btn-danger btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <option value="3">All</option>
-            <option value="1">Publice</option>
-            <option value="0">Draf</option>
+            <option value="1">Publish</option>
+            <option value="0">Draft</option>
         </select>
 	  </div>
 	</div>

@@ -12,6 +12,7 @@ use App\Inkubator;
 use App\profil_user;
 use App\Komentar;
 use App\User;
+use App\BeritaLike;
 use Auth;
 use Validator;
 use File;
@@ -53,9 +54,9 @@ class BeritaController extends Controller
         $tgl = $request->input('tgl');
         $status = $request->input('status');
         if($status == '3'){
-            $berita = Berita::where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
+            $berita = Berita::where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->orderBy('created_at','desc')->paginate(10);
         } else {
-            $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
+            $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->orderBy('created_at','desc')->paginate(10);
         }
         $hasil = Komentar::orderBy('created_at','desc')->paginate(5);
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
@@ -72,8 +73,8 @@ class BeritaController extends Controller
         } else {
             $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
         }
-
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
+        
         return view('berita.indexTenant', compact('berita','cari','umum'));
     }
 
@@ -220,5 +221,23 @@ class BeritaController extends Controller
         ]);
 
         return redirect()->back()->with(['success' => 'Komentar Ditambahkan']);
+    }
+
+    public function likeStore(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'berita_id' => 'required|exists:berita,id',
+            'user_id'   => 'required|exists:users,id'
+        ]);
+
+        if ($validator->passes()) {
+            BeritaLike::Create([
+                'berita_id' => $request->berita_id, 
+                'user_id'   => $request->user_id,
+            ]);        
+            return response()->json(['success'=>'Like tersimpan.']);
+        }
+
+        return response()->json(['error'=>$validator->errors()->all()]);
     }
 }
