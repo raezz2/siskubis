@@ -73,9 +73,10 @@ class BeritaController extends Controller
         } else {
             $berita = Berita::where('publish','=',$status)->where('created_at','LIKE', $tgl.'%')->where('tittle','LIKE','%'.$cari.'%')->paginate(10);
         }
+        $hasil = Komentar::orderBy('created_at','desc')->paginate(5);
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
-        
-        return view('berita.indexTenant', compact('berita','cari','umum'));
+
+        return view('berita.indexTenant', compact('berita','cari','umum','hasil'));
     }
 
     public function create()
@@ -234,9 +235,9 @@ class BeritaController extends Controller
 
         if ($validator->passes()) {
             BeritaLike::Create([
-                'berita_id' => $request->berita_id, 
+                'berita_id' => $request->berita_id,
                 'user_id'   => $request->user_id,
-            ]);        
+            ]);
             //return response()->json(['success'=>'Like tersimpan.']);
             return redirect()->back();
         }

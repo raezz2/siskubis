@@ -73,7 +73,7 @@
 						@php
 							$total_komentar = DB::table('berita_komentar')->where('berita_id',$b->id)->count();
 						@endphp
-						{{ $total_komentar }} 
+						{{ $total_komentar }}
 						<i class="i-Speach-Bubble-3"></i>
 					</span>
 				</div>
@@ -110,19 +110,14 @@
 			<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-lg" src="{{ asset('storage/berita/' . $row->foto) }}" alt="alt" /></div>
 			<div class="ul-widget-app__comment">
 				<div class="ul-widget-app__profile-title">
-					<a class="ul-widget4__title" href="{{ route('inkubator.showBerita', $row->slug) }}">{{ Str::limit($row->tittle, 40) }}</a>
+					<a class="ul-widget4__title" href="{{ route('tenant.showBerita', $row->slug) }}">{{ Str::limit($row->tittle, 40) }}</a>
 				</div>
 				<div class="ul-widget-app__profile-status">
-					@if($b->publish == 1)
+					@if($row->publish == 1)
 						<span class="badge badge-pill badge-success p-1 mr-2">Publish</span>
 					@else
 						<span class="badge badge-pill badge-danger p-1 mr-2">Draft</span>
 					@endif
-					<span class="ul-widget-app__icons">
-						<a href="href"><i class="i-Approved-Window text-mute"></i></a>
-						<a href="href"><i class="i-Like text-mute"></i></a>
-						<a href="href"><i class="i-Heart1 text-mute"></i></a>
-					</span>
 					<span class="text-mute">{{ $row->created_at->format('d, M Y') }}</span>
 				</div>
 			</div>

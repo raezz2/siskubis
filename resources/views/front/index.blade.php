@@ -51,7 +51,7 @@
 									<article class="article col-md-12">
 										<div class="inner">
 											<figure>
-												<a href="{{ route('single', $mn->slug) }}">
+												<a href="{{ route('single', $row->slug) }}">
 													<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->tittle }}">
 												</a>
 											</figure>

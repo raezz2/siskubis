@@ -73,7 +73,7 @@
 						@php
 							$total_komentar = DB::table('berita_komentar')->where('berita_id',$b->id)->count();
 						@endphp
-						{{ $total_komentar }} 
+						{{ $total_komentar }}
 						<i class="i-Speach-Bubble-3"></i>
 					</span>
 				</div>
