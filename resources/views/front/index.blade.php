@@ -59,7 +59,7 @@
 												<div class="detail">
 													<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
 													<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
-												</div>g
+												</div>
 												<h4><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 20) }}</a></h4>
 												<p>{!! Str::Limit($row->berita, 120) !!}</p>
 												<footer>
@@ -529,6 +529,7 @@
 										</div>
 									</article>
 								</div>
+								<!-- komentar -->
 								<div class="tab-pane comments" id="comments">
 									<div class="comment-list sm">
 										<div class="item">
@@ -546,32 +547,19 @@
 											</div>
 										</div>
 										<div class="item">
-											<div class="user">
-												<figure>
-													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
-												</figure>
-												<div class="details">
-													<h5 class="name">Mark Otto</h5>
-													<div class="time">24 Hours</div>
-													<div class="description">
-														Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											@foreach ($hasil as $li)
+												<div class="user">
+													<figure>
+														<img src="{{asset('assets/images/images2.jpg')}}">
+													</figure>
+													<div class="details">
+														<h4 class="name">{{ $li->name}}</h4>
+														<span class="time">{{ $li->created_at->diffForHumans() }}</span>
+														<div class="description"><p>{{ $li->komentar}}</p></div>
+														<a href="inkubator/berita/destroy/{{ $li->id }}"  class ="right"><small>Delete</small></a>
 													</div>
 												</div>
-											</div>
-										</div>
-										<div class="item">
-											<div class="user">
-												<figure>
-													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
-												</figure>
-												<div class="details">
-													<h5 class="name">Mark Otto</h5>
-													<div class="time">24 Hours</div>
-													<div class="description">
-														Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-													</div>
-												</div>
-											</div>
+											@endforeach
 										</div>
 									</div>
 								</div>

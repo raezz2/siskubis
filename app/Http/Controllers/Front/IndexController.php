@@ -41,7 +41,12 @@ class IndexController extends Controller
                     ->where('inkubator_id','=','0')
                     ->paginate(7);
 
-        return view('front.index', compact('mainNews','lastNews','popular'));
+        $berita = Berita::with('profil_user')->orderBy('created_at','desc')->paginate(10);
+        $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
+        $hasil = Komentar::orderBy('created_at','desc')->paginate(5);
+        
+        
+        return view('front.index', compact('mainNews','lastNews','popular', 'hasil'));
     }
 
     public function all()
@@ -84,4 +89,6 @@ class IndexController extends Controller
 
         return view('front.single', compact('berita','komentar','total_komentar','recommend','recent'));
     }
+
+    
 }
