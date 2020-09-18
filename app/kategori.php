@@ -10,7 +10,7 @@ class kategori extends Model
     protected $fillable = ['category'];
     protected $table = 'berita_category';
 
-    public function berita(){ 
-    	return $this->belongsTo('Berita'); 
+    public function berita(){
+    	return $this->belongsTo('Berita');
 	}
 }
