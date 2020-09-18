@@ -17,6 +17,7 @@ Route::get('/', 'Front\IndexController@index');
 Route::get('/single/{slug}','Front\IndexController@single')->name('single');
 Route::post('/single/komentar','Berita\BeritaController@komentar')->name('single.komentarBerita');
 Route::get('/all','Front\IndexController@all')->name('front.all');
+Route::get('/tag','Front\IndexController@all')->name('front.tag');
 
 Auth::routes();
 

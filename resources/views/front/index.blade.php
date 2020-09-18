@@ -85,21 +85,24 @@
 						</div>
 						<div class="line transparent little"></div>
 						<div class="row">
-							<div class="col-md-6 col-sm-6 trending-tags">
+							<div class="col-md-5 col-sm-7 trending-tags">
 								<h1 class="title-col">Trending Tags</h1>
 								<div class="body-col">
-									<ol class="tags-list">
-										<li><a href="#">HTML5</a></li>
-										<li><a href="#">CSS3</a></li>
-										<li><a href="#">JavaScript</a></li>
-										<li><a href="#">jQuery</a></li>
-										<li><a href="#">Bootstrap</a></li>
-										<li><a href="#">Responsive</a></li>
-										<li><a href="#">AuteIrure</a></li>
-										<li><a href="#">Voluptate</a></li>
-										<li><a href="#">Veit</a></li>
-										<li><a href="#">Reprehenderit</a></li>
-									</ol>
+                                    @php
+                                        use App\kategori;
+                                        $tagsNews = kategori::orderBy('category')->get();
+                                    @endphp
+                                    @forelse($tagsNews as $row)
+                                        <article class="article-mini">
+                                            <div class="inner">
+                                                <div class="padding-left">
+                                                    <h1><a href="{{ route('front.tag') }}">{{ $row->category }}</a></h1>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    @empty
+                                        <h5>Belum ada berita</h5>
+                                    @endforelse
 								</div>
 							</div>
 							<div class="col-md-6 col-sm-6">
@@ -532,6 +535,7 @@
 								<!-- komentar -->
 								<div class="tab-pane comments" id="comments">
 									<div class="comment-list sm">
+                                        {{-- komentar --}}
 										<div class="item">
 											<div class="user">
 												<figure>
@@ -560,22 +564,14 @@
 													</div>
 												</div>
 											@endforeach
+											</div>
+                                        </div>
+
+iv>
+												</div>
+											</div>
 										</div>
-									</div>
-								</div>
-							</div>
-						</aside>
-						<aside>
-							<h1 class="aside-title">Videos
-								<div class="carousel-nav" id="video-list-nav">
-									<div class="prev"><i class="ion-ios-arrow-left"></i></div>
-									<div class="next"><i class="ion-ios-arrow-right"></i></div>
-								</div>
-							</h1>
-							<div class="aside-body">
-								<ul class="video-list" data-youtube='"carousel":true, "nav": "#video-list-nav"'>
-									<li><a data-youtube-id="SBjQ9tuuTJQ" data-action="magnific"></a></li>
-									<li><a data-youtube-id="9cVJr3eQfXc" data-action="magnific"></a></li>
+a-action="magnific"></a></li>
 									<li><a data-youtube-id="DnGdoEa1tPg" data-action="magnific"></a></li>
 								</ul>
 							</div>
