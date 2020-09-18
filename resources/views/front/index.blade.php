@@ -537,20 +537,6 @@
 									<div class="comment-list sm">
                                         {{-- komentar --}}
 										<div class="item">
-											<div class="user">
-												<figure>
-													<img src="{{asset('assets/images/img01.jpg')}}" alt="User Picture">
-												</figure>
-												<div class="details">
-													<h5 class="name">Mark Otto</h5>
-													<div class="time">24 Hours</div>
-													<div class="description">
-														Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="item">
 											@foreach ($hasil as $li)
 												<div class="user">
 													<figure>
@@ -560,19 +546,11 @@
 														<h4 class="name">{{ $li->name}}</h4>
 														<span class="time">{{ $li->created_at->diffForHumans() }}</span>
 														<div class="description"><p>{{ $li->komentar}}</p></div>
-														<a href="inkubator/berita/destroy/{{ $li->id }}"  class ="right"><small>Delete</small></a>
 													</div>
 												</div>
 											@endforeach
 											</div>
                                         </div>
-
-iv>
-												</div>
-											</div>
-										</div>
-a-action="magnific"></a></li>
-									<li><a data-youtube-id="DnGdoEa1tPg" data-action="magnific"></a></li>
 								</ul>
 							</div>
 						</aside>

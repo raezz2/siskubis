@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Komentar;
+use App\BeritaLike;
 use App\User;
 use DB;
 
@@ -44,8 +45,8 @@ class IndexController extends Controller
         $berita = Berita::with('profil_user')->orderBy('created_at','desc')->paginate(10);
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
         $hasil = Komentar::orderBy('created_at','desc')->paginate(5);
-        
-        
+
+
         return view('front.index', compact('mainNews','lastNews','popular', 'hasil'));
     }
 
@@ -79,6 +80,7 @@ class IndexController extends Controller
             'views' => $view,
         ]);
         $komentar = DB::table('berita_komentar')->where('berita_id',$berita->id)->orderBy('created_at','desc')->get();
+        $total_like = BeritaLike::where('berita_id',$berita->id)->count();
         $total_komentar = DB::table('berita_komentar')->where('berita_id',$berita->id)->count();
         $recommend = Berita::with('beritaCategory')
                     ->where('berita_category_id', $berita->beritaCategory->id)
@@ -87,8 +89,8 @@ class IndexController extends Controller
                     ->paginate(2);
         $recent = Berita::with('beritaCategory')->orderBy('created_at','desc')->paginate(4);
 
-        return view('front.single', compact('berita','komentar','total_komentar','recommend','recent'));
+        return view('front.single', compact('berita','komentar','total_komentar','recommend','recent','total_like'));
     }
 
-    
+
 }
