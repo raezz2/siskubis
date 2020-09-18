@@ -237,9 +237,11 @@ class BeritaController extends Controller
                 'berita_id' => $request->berita_id, 
                 'user_id'   => $request->user_id,
             ]);        
-            return response()->json(['success'=>'Like tersimpan.']);
+            //return response()->json(['success'=>'Like tersimpan.']);
+            return redirect()->back();
         }
 
-        return response()->json(['error'=>$validator->errors()->all()]);
+        //return response()->json(['error'=>$validator->errors()->all()]);
+        return redirect()->back();
     }
 }
