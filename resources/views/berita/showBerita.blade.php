@@ -35,8 +35,8 @@
 						@endphp
 
 						@if($likeExist == null)
-							{{-- <form id="likeForm" name="likeForm"> --}}
-							<form action="{{ route('inkubator.likeBerita') }}" method="post">
+							<form id="likeForm" name="likeForm">
+							{{-- <form action="{{ route('inkubator.likeBerita') }}" method="post"> --}}
 							{{ csrf_field() }}
 								<input type="text" name="user_id" value="{{ Auth::user()->id }}" hidden>
 								<input type="text" name="berita_id" value="{{ $berita->id }}" hidden>
@@ -48,14 +48,12 @@
 								</button>
 							</form>
 						@else
-							<form id="dislikeForm" name="dislikeForm">
-							{{ csrf_field() }}
-								<button class="btn btn-sm btn-danger" id="dislike" value="create">
-		          					<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  										<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-									</svg>
-									{{ $total_like }}
-								</button>
+							<button class="btn btn-sm btn-danger" id="dislike" value="create">
+		          				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  									<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+								</svg>
+								{{ $total_like }}
+							</button>
 							</form>
 						@endif
 					</div>
@@ -157,25 +155,19 @@
             $('#like').click(function (e) {
                 e.preventDefault();
 
-                $(this).form(#dislike);
+                var _token      = $("input[name='_token']").val();
+                var berita_id   = $("input[name='berita_id']").val();
+                var user_id     = $("input[name='user_id']").val();
+
+                $(this).html('Liked');
+                $(this).prop('disabled', true);
+                $(this).css({"background-color": "#dc3545", "border-color": "#dc3545", "color": "white", "opacity": "100%"})
                 $.ajax({
                     data: $('#likeForm').serialize(),
                     url: "{{ route('inkubator.likeBerita') }}",
                     type: "POST",
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log('Berhasil');
-
-	            		// $('#dislikeForm').form('show');
-	            		// $('#likeForm').form('hide')
-                    },
-                    error: function (data) {
-                        console.log('Gagal');
-                        alert("Anda hanya bisa menyukai ini 1x");
-                    }
+                    dataType: 'json'
                 });
-
-                //var total_like = $('#total_like').val({{ $total_like }});
             });
         });
 
