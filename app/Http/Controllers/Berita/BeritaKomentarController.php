@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Berita;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Berita;
 use App\Komentar;
-use App\User;
-use Auth;
-use DB; 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BeritaKomentarController extends Controller
 {
@@ -19,7 +17,7 @@ class BeritaKomentarController extends Controller
             'name' => 'required',
             'komentar' => 'required'
         ]);
-    
+
         Komentar::create([
             'berita_id' => $request->berita_id,
             'name' => $request->name,
@@ -34,7 +32,7 @@ class BeritaKomentarController extends Controller
     {
 	    // menghapus data pegawai berdasarkan id yang dipilih
         DB::table('berita_komentar')->where('id',$id)->delete();
-    
+
 	return redirect()->back()->with(['success' => 'Komentar Dihapus']);
     }
 

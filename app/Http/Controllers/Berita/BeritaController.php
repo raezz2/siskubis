@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Berita;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
 use App\Berita;
 use App\kategori;
 use App\Inkubator;
@@ -13,9 +12,9 @@ use App\profil_user;
 use App\Komentar;
 use App\User;
 use App\BeritaLike;
-use Auth;
-use Validator;
-use File;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class BeritaController extends Controller
 {
@@ -158,7 +157,7 @@ class BeritaController extends Controller
             $file = $request->file('foto');
             $filename = time() . Str::slug($request->tittle) . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/berita', $filename);
-            File::delete(storage_path('app/public/berita/' . $produk->foto));
+            File::delete(storage_path('app/public/berita/' . $berita->foto));
         }
         $berita->update([
             'tittle'                => $request->tittle,
