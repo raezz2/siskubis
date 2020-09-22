@@ -589,6 +589,8 @@
 		<script src="{{asset('assets/scripts/sweetalert/dist/sweetalert.min.js')}}"></script>
 		<script src="{{asset('assets/scripts/toast/jquery.toast.min.js')}}"></script>
 		<script src="{{asset('assets/js/demo.js')}}"></script>
-		<script src="{{asset('assets/js/e-magz.js')}}"></script>
+        <script src="{{asset('assets/js/e-magz.js')}}"></script>
+        <script src="../../public/js/sweetalert2.min.js"></script>
+        <script src="../../public/js/sweetalert2.script.min.js"></script>
 	</body>
 </html>

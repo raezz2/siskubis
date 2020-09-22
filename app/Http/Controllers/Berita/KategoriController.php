@@ -10,20 +10,6 @@ use Session;
 
 class KategoriController extends Controller
 {
-	public function sukses(){
-        Session::flash('sukses', 'Ini notifikasi SUKSES');
-        return redirect(route('inkubator.kategori.create'));
-    }
-
-    public function peringatan(){
-        Session::flash('peringatan', 'Ini notifikasi PERINGATAN');
-        return redirect(route('inkubator.kategori.create'));
-    }
-
-    public function gagal(){
-        Session::flash('gagal', 'Ini notifikasi GAGAL');
-        return redirect(route('inkubator.kategori.create'));
-    }
 	public function create(){
 		$berita_category = Kategori::orderBy('category')->get();
 		$datas = array(
@@ -36,10 +22,11 @@ class KategoriController extends Controller
 	}
 	public function store(){
 		Kategori::create([
-			'category'      => request('category'),
+            'category'      => request('category'),
+            Session::flash('sukses', 'BERHASIL DITAMBAHKAN')
         ]);
 
-        Session::flash('sukses', 'Ini notifikasi SUKSES');
+
 		return redirect(route('inkubator.kategori.create'));
 	}
 	public function edit(Kategori $kategori)
@@ -54,16 +41,19 @@ class KategoriController extends Controller
 	public function update(Kategori $kategori)
 	{
 		$kategori->update([
-			'category'      => request('category'),
+            'category'      => request('category'),
+            Session::flash('peringatan', 'BERHASIL DIEDIT'),
         ]);
-        Session::flash('peringatan', 'BERHASIL DIEDIT');
+        // Session::flash('peringatan', 'BERHASIL DIEDIT');
 		return redirect(route('inkubator.kategori.create'));
 	}
 
 	public function destroy(Kategori $kategori){
-    	$kategori->delete();
+    	$kategori->delete([
+            Session::flash('gagal', 'BERHASIL DIHAPUS'),
+        ]);
 
-        Session::flash('gagal', 'BERHASIL DIHAPUS');
+
         return redirect(route('inkubator.kategori.create'));
 	}
 }

@@ -13,7 +13,7 @@
             <input type="text" class="form-control" name="category" placeholder="Enter Your Name" value="{{$kategori->category}}">
           </div>
           <div class="form-group">
-            <input type="submit" value="Edit" class="btn btn-primary">
+            <input type="submit" value="Update" class="btn btn-primary">
             <a href="{{ route('inkubator.kategori.create') }}" class="btn btn-danger">Kembali</a>
           </div>
         </div>

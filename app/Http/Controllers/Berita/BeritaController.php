@@ -10,6 +10,7 @@ use App\kategori;
 use App\Inkubator;
 use App\profil_user;
 use App\Komentar;
+use Session;
 use App\User;
 use App\BeritaLike;
 use Illuminate\Support\Facades\Auth;
@@ -30,10 +31,12 @@ class BeritaController extends Controller
      */
     public function index()
     {
-
         $berita = Berita::with('profil_user')->orderBy('created_at','desc')->paginate(10);
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
-		$hasil = Komentar::orderBy('created_at','desc')->paginate(5);
+        $hasil = Komentar::orderBy('created_at','desc')->paginate(5);
+        Session::flash('sukses', 'Kategori Berhasil Ditambahkan');
+
+        Session::flash('gagal', 'Kategori Berhasil Dihapus');
 
         return view('berita.index',compact('berita', 'umum', 'hasil'));
     }
@@ -134,6 +137,7 @@ class BeritaController extends Controller
         $kategori =  kategori::orderBy('category')->get();
         $inkubator = Inkubator::orderBy('nama')->get();
         $penulis = profil_user::orderBy('nama')->get();
+        Session::flash('peringatan', 'BERHASIL DIEDIT');
 
         return view('berita.formEditBerita', compact('berita','kategori', 'inkubator','penulis'));
     }

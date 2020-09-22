@@ -6,6 +6,14 @@
 <div class="col-xl-8 col-lg-8">
 <div class="card">
 <div class="card-header container-fluid">
+
+    @if ($message = Session::get('sukses'))
+		<div class="alert alert-success alert-block">
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			<strong>{{ $message }}</strong>
+		</div>
+	@endif
+
   <div class="row">
 	<div class="col-md-7">
 	  <h3>Berita</h3>
@@ -46,6 +54,20 @@
 </div>
   <hr>
 	<div class="ul-widget__body">
+
+    @if ($message = Session::get('peringatan'))
+    <div class="alert alert-warning alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>{{ $message }}</strong>
+    </div>
+    @endif
+
+    @if ($message = Session::get('gagal'))
+    <div class="alert alert-danger alert-block">
+	    <button type="button" class="close" data-dismiss="alert">×</button>
+	    <strong>{{ $message }}</strong>
+    </div>
+    @endif
 	<div class="ul-widget5">
 		@foreach ($berita as $b)
 		<div class="ul-widget5__item">
@@ -157,3 +179,7 @@
 </div>
 </div>
 @endsection
+
+{{-- @section('js')
+    <script src="../../js/scripts/sweetalert.script.min.js"></script>
+@endsection --}}

@@ -18,7 +18,9 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.2",
-        "overtrue/laravel-follow": "^2.2"
+        "overtrue/laravel-follow": "^2.2",
+        "uxweb/sweet-alert": "^2.0",
+        "yajra/laravel-datatables-oracle": "^9.11"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
