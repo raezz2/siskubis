@@ -421,7 +421,7 @@
 					<div class="col-md-3 col-sm-6 col-xs-12">
 						<div class="block">
 							<h1 class="block-title">Popular Tags <div class="right"><a href="#">See All <i class="ion-ios-arrow-thin-right"></i></a></div></h1>
-							<div class="block-body">
+							<!-- <div class="block-body">
 								<ul class="tags">
 									<li><a href="#">HTML5</a></li>
 									<li><a href="#">CSS3</a></li>
@@ -431,6 +431,20 @@
 									<li><a href="#">Standing On The Train</a></li>
 									<li><a href="#">at 6.00PM</a></li>
 								</ul>
+							</div> -->
+							<div class="block-body">
+                                    @php
+                                        use App\kategori;
+                                        $tagsNews = kategori::orderBy('category')->get();
+                                    @endphp
+										<ul class="tags">
+										@forelse($tagsNews as $row)
+											<li><a href="{{ route('front.tag') }}">{{ $row->category }}</a></li>
+										
+										@empty
+											<h5>Belum ada berita</h5>
+										@endforelse
+										</ul>
 							</div>
 						</div>
 						<div class="line"></div>
@@ -473,6 +487,10 @@
 										</figure>
 										<div class="padding">
 											<h1><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle,30) }}</a></h1>
+											<div class="detail">
+												<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
+												<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
+											</div>
 										</div>
 									</div>
 								</article>

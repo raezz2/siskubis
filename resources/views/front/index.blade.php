@@ -118,7 +118,7 @@
 									</div>
 								</h1>
 								<div class="body-col vertical-slider" data-max="4" data-nav="#hot-news-nav" data-item="article">
-									<article class="article-mini">
+									<!-- <article class="article-mini">
 										<div class="inner">
 											<figure>
 												<a href="#">
@@ -133,87 +133,27 @@
 												</div>
 											</div>
 										</div>
-									</article>
-									<article class="article-mini">
-										<div class="inner">
-											<figure>
-												<a href="#">
-													<img src="{{asset('assets/images/news/img01.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<h1><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-												<div class="detail">
-													<div class="category"><a href="category.html">Lifestyle</a></div>
-													<div class="time">December 22, 2016</div>
+									</article> -->
+									@forelse($lastNews as $row)
+										<article class="article-mini">
+											<div class="inner">
+												<figure>
+													<a href="{{ route('single', $row->slug) }}">
+														<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="Sample Article">
+													</a>
+												</figure>
+												<div class="padding">
+													<h1><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle,30) }}</a></h1>
+													<div class="detail">
+														<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
+														<div class="time">{{ $row->created_at->format('F d, Y') }}</div>
+													</div>
 												</div>
 											</div>
-										</div>
-									</article>
-									<article class="article-mini">
-										<div class="inner">
-											<figure>
-												<a href="#">
-													<img src="{{asset('assets/images/news/img05.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<h1><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-												<div class="detail">
-													<div class="category"><a href="category.html">Lifestyle</a></div>
-													<div class="time">December 22, 2016</div>
-												</div>
-											</div>
-										</div>
-									</article>
-									<article class="article-mini">
-										<div class="inner">
-											<figure>
-												<a href="#">
-													<img src="{{asset('assets/images/news/img02.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<h1><a href="#">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
-												<div class="detail">
-													<div class="category"><a href="category.html">Travel</a></div>
-													<div class="time">December 21, 2016</div>
-												</div>
-											</div>
-										</div>
-									</article>
-									<article class="article-mini">
-										<div class="inner">
-											<figure>
-												<a href="#">
-													<img src="{{asset('assets/images/news/img13.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<h1><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-												<div class="detail">
-													<div class="category"><a href="category.html">International</a></div>
-													<div class="time">December 20, 2016</div>
-												</div>
-											</div>
-										</div>
-									</article>
-									<article class="article-mini">
-										<div class="inner">
-											<figure>
-												<a href="#">
-													<img src="{{asset('assets/images/news/img08.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<h1><a href="#">Aliquam et metus convallis tincidunt velit ut rhoncus dolor</a></h1>
-												<div class="detail">
-													<div class="category"><a href="category.html">Computer</a></div>
-													<div class="time">December 19, 2016</div>
-												</div>
-											</div>
-										</div>
-									</article>
+										</article>
+									@empty
+										<h5>Belum ada berita</h5>
+									@endforelse
 								</div>
 							</div>
 						</div>
@@ -423,6 +363,10 @@
 										</figure>
 										<div class="padding">
 											<h1><a href="{{ route('single', $row->slug) }}">{{ $row->tittle }}</a></h1>
+											<div class="detail">
+												<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
+												<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
+											</div>
 										</div>
 									</div>
 								</article>
