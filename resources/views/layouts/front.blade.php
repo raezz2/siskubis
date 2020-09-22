@@ -440,7 +440,7 @@
 										<ul class="tags">
 										@forelse($tagsNews as $row)
 											<li><a href="{{ route('front.tag') }}">{{ $row->category }}</a></li>
-										
+
 										@empty
 											<h5>Belum ada berita</h5>
 										@endforelse
