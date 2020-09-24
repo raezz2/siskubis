@@ -82,7 +82,7 @@
 								{!! $berita->berita !!}
 							</div>
 							<footer>
-								<div class="col-md-10">
+								<!-- <div class="col-md-10">
 									<ul class="tags">
 										<li><a href="#">Free Themes</a></li>
 										<li><a href="#">Bootstrap 3</a></li>
@@ -91,6 +91,17 @@
 										<li><a href="#">CSS3</a></li>
 										<li><a href="#">Web Design</a></li>
 									</ul>
+								</div> -->
+								<div class="col-md-10">
+                                    @php
+                                        use App\kategori;
+                                        $tagsNews = kategori::orderBy('category')->get();
+                                    @endphp
+										<ul class="tags">
+										@foreach($tagsNews as $row)
+											<li><a href="{{ route('front.tag') }}">{{ $row->category }}</a></li>
+										@endforeach
+										</ul>
 								</div>
 								<div class="col-md-2">
 									@php

@@ -118,22 +118,6 @@
 									</div>
 								</h1>
 								<div class="body-col vertical-slider" data-max="4" data-nav="#hot-news-nav" data-item="article">
-									<!-- <article class="article-mini">
-										<div class="inner">
-											<figure>
-												<a href="#">
-													<img src="{{asset('assets/images/news/img09.jpg')}}" alt="Sample Article">
-												</a>
-											</figure>
-											<div class="padding">
-												<h1><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit</a></h1>
-												<div class="detail">
-													<div class="category"><a href="category.html">Lifestyle</a></div>
-													<div class="time">December 22, 2016</div>
-												</div>
-											</div>
-										</div>
-									</article> -->
 									@forelse($lastNews as $row)
 										<article class="article-mini">
 											<div class="inner">
@@ -161,121 +145,34 @@
 							<div>Just Another News</div>
 						</div>
 						<div class="row">
+							@forelse($justNews as $row)
 							<article class="col-md-12 article-list">
 								<div class="inner">
 									<figure>
-										<a href="#">
-											<img src="{{asset('assets/images/news/img11.jpg')}}" alt="Sample Article">
+										<a href="{{ route('single', $row->slug) }}">
+										<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="Sample Article">
 										</a>
 									</figure>
 									<div class="details">
 										<div class="detail">
-											<div class="category">
-												<a href="#">Film</a>
-											</div>
-											<div class="time">December 19, 2016</div>
+											<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
+											<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
 										</div>
-										<h1><a href="#">Donec consequat arcu at ultrices sodales quam erat aliquet diam</a></h1>
-										<p>
-										Donec consequat, arcu at ultrices sodales, quam erat aliquet diam, sit amet interdum libero nunc accumsan nisi.
-										</p>
+											<h4><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 20) }}</a></h4>
+											<p>{!! Str::Limit($row->berita, 120) !!}</p>
 										<footer>
-											<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>273</div></a>
-											<a class="btn btn-primary more" href="#">
-												<div>More</div>
-												<div><i class="ion-ios-arrow-thin-right"></i></div>
+											<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
+											<a class="btn btn-primary more" href="{{ route('single', $mn->slug) }}">
+											<div>More</div>
+											<div><i class="ion-ios-arrow-thin-right"></i></div>
 											</a>
 										</footer>
 									</div>
 								</div>
 							</article>
-							<article class="col-md-12 article-list">
-								<div class="inner">
-									<div class="badge">
-										Sponsored
-									</div>
-									<figure>
-										<a href="#">
-											<img src="{{asset('assets/images/news/img02.jpg')}}" alt="Sample Article">
-										</a>
-									</figure>
-									<div class="details">
-										<div class="detail">
-											<div class="category">
-												<a href="#">Travel</a>
-											</div>
-											<div class="time">December 18, 2016</div>
-										</div>
-										<h1><a href="#">Maecenas accumsan tortor ut velit pharetra mollis</a></h1>
-										<p>
-											Maecenas accumsan tortor ut velit pharetra mollis. Proin eu nisl et arcu iaculis placerat sollicitudin ut est. In fringilla dui.
-										</p>
-										<footer>
-											<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>4209</div></a>
-											<a class="btn btn-primary more" href="#">
-												<div>More</div>
-												<div><i class="ion-ios-arrow-thin-right"></i></div>
-											</a>
-										</footer>
-									</div>
-								</div>
-							</article>
-							<article class="col-md-12 article-list">
-								<div class="inner">
-									<figure>
-										<a href="#">
-											<img src="{{asset('assets/images/news/img03.jpg')}}" alt="Sample Article">
-										</a>
-									</figure>
-									<div class="details">
-										<div class="detail">
-											<div class="category">
-											<a href="#">Travel</a>
-											</div>
-											<div class="time">December 16, 2016</div>
-										</div>
-										<h1><a href="#">Nulla facilisis odio quis gravida vestibulum Proin venenatis pellentesque arcu</a></h1>
-										<p>
-											Nulla facilisis odio quis gravida vestibulum. Proin venenatis pellentesque arcu, ut mattis nulla placerat et.
-										</p>
-										<footer>
-											<a href="#" class="love active"><i class="ion-android-favorite"></i> <div>302</div></a>
-											<a class="btn btn-primary more" href="#">
-												<div>More</div>
-												<div><i class="ion-ios-arrow-thin-right"></i></div>
-											</a>
-										</footer>
-									</div>
-								</div>
-							</article>
-							<article class="col-md-12 article-list">
-								<div class="inner">
-									<figure>
-										<a href="#">
-											<img src="{{asset('assets/images/news/img09.jpg')}}" alt="Sample Article">
-										</a>
-									</figure>
-									<div class="details">
-										<div class="detail">
-											<div class="category">
-												<a href="#">Healthy</a>
-											</div>
-											<div class="time">December 16, 2016</div>
-										</div>
-										<h1><a href="#">Maecenas blandit ultricies lorem id tempor enim pulvinar at</a></h1>
-										<p>
-											Maecenas blandit ultricies lorem, id tempor enim pulvinar at. Curabitur sit amet tortor eu ipsum lacinia malesuada.
-										</p>
-										<footer>
-											<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>783</div></a>
-											<a class="btn btn-primary more" href="#">
-												<div>More</div>
-												<div><i class="ion-ios-arrow-thin-right"></i></div>
-											</a>
-										</footer>
-									</div>
-								</div>
-							</article>
+							@empty
+								<h5>Belum ada berita</h5>
+							@endforelse							
 						</div>
 					</div>
 					<div class="col-xs-6 col-md-4 sidebar" id="sidebar">
@@ -328,18 +225,11 @@
 												<h2 class="block-title">Photos</h2>
 												<div class="block-body">
 													<ul class="item-list-round" data-magnific="gallery">
-														<li>
-															<a href="{{asset('assets/images/news/img06.jpg')}}" style="background-image: url('{{asset("assets/images/news/img06.jpg")}}');"></a>
-														</li>
-														<li><a href="{{asset('assets/images/news/img07.jpg')}}" style="background-image: url('{{asset("assets/images/news/img07.jpg")}}');"></a></li>
-														<li><a href="{{asset('assets/images/news/img08.jpg')}}" style="background-image: url('{{asset("assets/images/news/img08.jpg")}}');"></a></li>
-														<li><a href="{{asset('assets/images/news/img09.jpg')}}" style="background-image: url('{{asset("assets/images/news/img09.jpg")}}');"></a></li>
-														<li><a href="{{asset('assets/images/news/img10.jpg')}}" style="background-image: url('{{asset("assets/images/news/img10.jpg")}}');"></a></li>
-														<li><a href="{{asset('assets/images/news/img11.jpg')}}" style="background-image: url('{{asset("assets/images/news/img11.jpg")}}');"></a></li>
-														<li><a href="{{asset('assets/images/news/img12.jpg')}}" style="background-image: url('{{asset("assets/images/news/img12.jpg")}}');"><div class="more">+2</div></a></li>
-														<li class="hidden"><a href="{{asset('assets/images/news/img13.jpg')}}" style="background-image: url('{{asset("assets/images/news/img13.jpg")}}');"></a></li>
-														<li class="hidden"><a href="{{asset('assets/images/news/img14.jpg')}}" style="background-image: url('{{asset("assets/images/news/img14.jpg")}}');"></a></li>
+														@foreach($popular as $row)
+														<li><a href="{{ route('single', $row->slug) }}" style="background-image: url('{{ asset('storage/berita/' . $row->foto) }}');"></a></li>
+														@endforeach
 													</ul>
+													
 												</div>
 											</div>
 											<div class="featured-author-footer">
