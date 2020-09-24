@@ -57,7 +57,7 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     //Alvi Adnan Vazshola
     Route::get('/berita/create', 'Berita\BeritaController@create')->name('inkubator.formBerita');
     Route::post('/berita/store', 'Berita\BeritaController@store')->name('inkubator.storeBerita');
-    Route::delete('/berita/destroy/{berita}', 'Berita\BeritaController@destroy')->name('inkubator.destroyBerita');
+    Route::get('/berita/destroy/{berita}', 'Berita\BeritaController@destroy')->name('inkubator.destroyBerita');
     Route::get('berita/edit/{id}','Berita\BeritaController@edit')->name('inkubator.editBerita');
     Route::put('berita/update/{id}','Berita\BeritaController@update')->name('inkubator.updateBerita');
     Route::get('/berita/{slug}', 'Berita\BeritaController@show')->name('inkubator.showBerita');

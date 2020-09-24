@@ -99,14 +99,12 @@
 						<i class="i-Speach-Bubble-3"></i>
 					</span>
 				</div>
-				<div class="ul-widget5__stats"><span class="ul-widget5__number">
-				<form action="{{ route('inkubator.destroyBerita', $b->id) }}" method="post">
-                	@csrf
-                	<input type="hidden" name="_method" value="DELETE">
-					<a class="ul-link-action text-success" href="{{ route('inkubator.editBerita', $b->id) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="i-Edit"></i></a>
-					<button type="submit" class="btn btn-link ul-link-action text-danger mr-1" data-toggle="tooltip" data-placement="top" title="" data-original-title="Want To Delete !!!"><i class="i-Eraser-2"></i></button>
-				</form>
-				</span></div>
+				<div class="ul-widget5__stats">
+                    <span class="ul-widget5__number">
+                        <a href="{{ route('inkubator.editBerita', $b->id) }}" class="ul-link-action text-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" style="float:left;"><i class="i-Edit"></i></a>
+                        <a href="{{ route('inkubator.destroyBerita', $b->id) }}" class="ul-link-action text-danger delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Want To Delete !!!" style="float:left;"><i class="i-Eraser-2"></i></a>
+                    </span>
+                </div>
 			</div>
 		</div>
 		@endforeach
@@ -180,6 +178,28 @@
 </div>
 @endsection
 
-{{-- @section('js')
-    <script src="../../js/scripts/sweetalert.script.min.js"></script>
-@endsection --}}
+@section('js')
+<script>
+    $('.delete').on('click', function (event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Apa Anda Yakin Menghapus ?',
+            type: 'warning',
+            showCancelButton:true,
+            confirmButtonColor: '#0CC27E',
+            cancelButtonColor: '#FF586B',
+            confirmButtonText: 'Hapus',
+            cancelButtontext: 'Batal',
+            confirmButtonClass: 'btn btn-success mr-5',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false
+        }).then(function(value){
+            if (value){
+                window.location.href = url;
+            }
+        });
+    });
+</script>
+
+@endsection

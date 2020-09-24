@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-md">
+    <div class="col-md-5">
       <div class="card">
         <div class="card-header">Buat Kategori Baru</div>
         <div class="card-body">
@@ -28,7 +28,10 @@
         </form>
       </div>
     </div>
-  </div><br><br>
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header">Daftar Kategori</div>
+
     @if ($message = Session::get('peringatan'))
     <div class="alert alert-warning alert-block">
         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -69,6 +72,9 @@
             @endforeach
         </tbody>
     </table>
+</div>
+</div>
+</div>
 </div>
 </div>
 @endsection
