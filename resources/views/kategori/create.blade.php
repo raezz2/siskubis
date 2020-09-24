@@ -9,22 +9,11 @@
           <form action="{{ route('inkubator.kategori.create') }}" method="post">
             {{ csrf_field() }}
 
-            @if(session()->has('sukses'))
-            <div class="alert alert-success">
-                {{ session()->get('sukses') }}
-            </div>
-            {{-- ($message = Session::get('sukses'))
-				<div class="alert alert-success alert-block">
-					<button type="button" class="close" data-dismiss="alert">×</button>
-					<strong>{{ $message }}</strong>
-                </div> --}}
-
-            {{-- @else ($message = Session::get('gagal'))
+            @if ($message = Session::get('sukses'))
             <div class="alert alert-success alert-block">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 <strong>{{ $message }}</strong>
-            </div> --}}
-
+            </div>
             @endif
 
             <div class="form-group">
@@ -54,31 +43,57 @@
     </div>
     @endif
 
-        <table class="table">
-          <thead>
+    <table class="table">
+        <thead>
             <tr>
               <th>No</th>
               <th>Nama Kategori</th>
               <th>Pilihan</th>
             </tr>
-          </thead>
-          <tbody>
+        </thead>
+        <tbody>
             @foreach($berita_category as $kategori)
             <tr>
               <td>{{ $no++ }}</td>
               <td>{{ $kategori->category }}</td>
               <td>
-                <a href="{{ route('inkubator.kategori.edit', $kategori) }}" class="btn btn-success btn-sm" style="float:left;">Edit</a>
-                <form action="{{ route('inkubator.kategori.destroy',$kategori) }}" method="post">
+                <a href="{{ route('inkubator.kategori.edit', $kategori) }}" class="btn btn-success btn-sm mr-2" style="float:left;">Edit</a>
+                <a href="{{ route('inkubator.kategori.destroy', $kategori) }}" class="btn btn-danger btn-sm delete" style="float:left;">Hapus</a>
+                {{-- <form action="{{ route('inkubator.kategori.destroy',$kategori) }}" method="post">
                   {{ csrf_field() }}
                   <input type="hidden" name="_method" value="DELETE">
-                  <button type="submit" class="btn btn-danger btn-sm" style="margin-left:3px;">Hapus</button>
-                </form>
+                  <button type="submit" class="btn btn-danger btn-sm delete" style="margin-left:3px;">Hapus</button>
+                </form> --}}
               </td>
             </tr>
             @endforeach
-          </tbody>
-        </table>
+        </tbody>
+    </table>
 </div>
 </div>
-@endsection()
+@endsection
+@section('js')
+<script>
+    $('.delete').on('click', function (event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Apa Anda Yakin Menghapus ?',
+            type: 'warning',
+            showCancelButton:true,
+            confirmButtonColor: '#0CC27E',
+            cancelButtonColor: '#FF586B',
+            confirmButtonText: 'Hapus',
+            cancelButtontext: 'Batal',
+            confirmButtonClass: 'btn btn-success mr-5',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false
+        }).then(function(value){
+            if (value){
+                window.location.href = url;
+            }
+        });
+    });
+</script>
+
+@endsection

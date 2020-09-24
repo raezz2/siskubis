@@ -80,7 +80,7 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     Route::post('/berita/kategori/create','Berita\KategoriController@store');
     Route::get('/berita/kategori/{kategori}/edit', 'Berita\KategoriController@edit')->name('inkubator.kategori.edit');
     Route::patch('/berita/kategori/{kategori}/edit', 'Berita\KategoriController@update')->name('inkubator.kategori.update');
-    Route::delete('/berita/kategori/{kategori}/delete', 'Berita\KategoriController@destroy')->name('inkubator.kategori.destroy');
+    Route::get('/berita/kategori/{kategori}/delete', 'Berita\KategoriController@destroy')->name('inkubator.kategori.destroy');
 
     //Search
     Route::get('cariberita','Berita\BeritaController@search')->name('cariberita');

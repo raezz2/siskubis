@@ -14,8 +14,8 @@ class KategoriController extends Controller
 		$berita_category = Kategori::orderBy('category')->get();
 		$datas = array(
 			'berita_category' => $berita_category,
-			'no'        => 1
-		);
+            'no'        => 1
+        );
 
 		$data = array('title'   => 'category');
 		return view('kategori.create',$data,$datas);
@@ -23,7 +23,7 @@ class KategoriController extends Controller
 	public function store(){
 		Kategori::create([
             'category'      => request('category'),
-            Session::flash('sukses', 'BERHASIL DITAMBAHKAN')
+            Session::flash('sukses', 'BERHASIL DITAMBAHKAN'),
         ]);
 
 
@@ -43,6 +43,7 @@ class KategoriController extends Controller
 		$kategori->update([
             'category'      => request('category'),
             Session::flash('peringatan', 'BERHASIL DIEDIT'),
+
         ]);
         // Session::flash('peringatan', 'BERHASIL DIEDIT');
 		return redirect(route('inkubator.kategori.create'));
@@ -50,8 +51,9 @@ class KategoriController extends Controller
 
 	public function destroy(Kategori $kategori){
     	$kategori->delete([
-            Session::flash('gagal', 'BERHASIL DIHAPUS'),
+            Session::flash('gagal', 'BERHASIL DIHAPUS')
         ]);
+
 
 
         return redirect(route('inkubator.kategori.create'));

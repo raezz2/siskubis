@@ -34,9 +34,6 @@ class BeritaController extends Controller
         $berita = Berita::with('profil_user')->orderBy('created_at','desc')->paginate(10);
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
         $hasil = Komentar::orderBy('created_at','desc')->paginate(5);
-        Session::flash('sukses', 'Kategori Berhasil Ditambahkan');
-
-        Session::flash('gagal', 'Kategori Berhasil Dihapus');
 
         return view('berita.index',compact('berita', 'umum', 'hasil'));
     }
@@ -107,6 +104,8 @@ class BeritaController extends Controller
             $filename = time() . Str::slug($request->tittle) . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/berita', $filename);
 
+            Session::flash('sukses', 'BERHASIL DITAMBAHKAN');
+
             $berita = Berita::create([
                 'tittle'                => $request->tittle,
                 'slug'                  => Str::slug($request->tittle),
@@ -127,6 +126,7 @@ class BeritaController extends Controller
     {
         $berita->delete();
         File::delete(storage_path('app/public/berita/' . $berita->foto));
+        Session::flash('gagal', 'BERHASIL DIHAPUS');
 
         return redirect(route('inkubator.berita'))->with(['success' => 'berita berhasil dihapus']);
     }
@@ -137,7 +137,7 @@ class BeritaController extends Controller
         $kategori =  kategori::orderBy('category')->get();
         $inkubator = Inkubator::orderBy('nama')->get();
         $penulis = profil_user::orderBy('nama')->get();
-        Session::flash('peringatan', 'BERHASIL DIEDIT');
+
 
         return view('berita.formEditBerita', compact('berita','kategori', 'inkubator','penulis'));
     }
@@ -156,6 +156,8 @@ class BeritaController extends Controller
         ]);
         $berita = Berita::find($id);
         $filename = $berita->foto;
+
+        Session::flash('peringatan', 'BERHASIL DIEDIT');
 
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
