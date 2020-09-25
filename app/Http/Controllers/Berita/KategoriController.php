@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Berita;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Kategori;
-use Session;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+
 
 
 class KategoriController extends Controller
@@ -45,7 +46,7 @@ class KategoriController extends Controller
             Session::flash('peringatan', 'BERHASIL DIEDIT'),
 
         ]);
-        // Session::flash('peringatan', 'BERHASIL DIEDIT');
+
 		return redirect(route('inkubator.kategori.create'));
 	}
 

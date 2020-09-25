@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,9 +48,6 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
 	Route::get('/pencapaian', 'Produk\ProdukController@index')->name('inkubator.pencapaian');
 	Route::get('/laporan', 'Produk\ProdukController@index')->name('inkubator.laporan');
 	Route::get('/surat', 'Persuratan\PersuratanController@index')->name('inkubator.surat');
-	//Route::get('/event', 'Produk\ProdukController@index')->name('inkubator.event');
-	//Route::get('/berita', 'Produk\ProdukController@index')->name('inkubator.berita');
-	//Route::get('/pengumuman', 'Produk\ProdukController@index')->name('inkubator.pengumuman');
 	Route::get('/event', 'Event\EventController@index')->name('inkubator.event-list');
 	Route::get('/event/calendar', 'Event\EventController@calendar')->name('inkubator.event-calendar');
     Route::get('/pengumuman', 'Pengumuman\PengumumanController@index')->name('inkubator.pengumuman');
@@ -70,7 +68,6 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
 	Route::get('/profile', 'Profile\ProfileUserController@index')->name('inkubator.profile');
 
 	//komentar
-	//Route::get('/{slug}', 'Berita\BeritaKomentarController@show');
 	Route::post('/berita/comment', 'Berita\BeritaKomentarController@comment')->name('inkubator.berita.comment');
 	Route::get('/berita/destroy/{id}', 'Berita\BeritaKomentarController@destroy')->name('inkubator.berita.destroy');
 
@@ -85,8 +82,6 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     //Search
     Route::get('cariberita','Berita\BeritaController@search')->name('cariberita');
 });
-
-
 
 
 Route::group(['prefix'=>'mentor','middleware' => ['role:mentor']], function () {

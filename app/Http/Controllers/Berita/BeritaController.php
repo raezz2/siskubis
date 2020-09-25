@@ -10,7 +10,7 @@ use App\kategori;
 use App\Inkubator;
 use App\profil_user;
 use App\Komentar;
-use Session;
+use Illuminate\Support\Facades\Session;
 use App\User;
 use App\BeritaLike;
 use Illuminate\Support\Facades\Auth;
