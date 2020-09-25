@@ -25,21 +25,21 @@
 							</div>
 						</div>
 						<div class="owl-carousel owl-theme slide" id="featured">
-								@foreach($mainNews as $mn)
+							@foreach($mainNews as $row)
 							<div class="item">
 								<article class="featured">
 									<div class="overlay"></div>
 									<figure>
-										<img src="{{ asset('storage/berita/' . $mn->foto) }}" alt="{{ $mn->tittle }}">
+										<img src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->tittle }}">
 									</figure>
 									<div class="details">
-										<div class="category"><a href="#">{{ $mn->beritaCategory->category }}</a></div>
-										<h1><a href="{{ route('single', $mn->slug) }}">{{ $mn->tittle }}</a></h1>
-										<div class="time">{{ $mn->created_at->format('M d, Y') }}</div>
+										<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
+										<h1><a href="{{ route('single', $row->slug) }}">{{ $row->tittle }}</a></h1>
+										<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
 									</div>
 								</article>
 							</div>
-								@endforeach
+							@endforeach
 						</div>
 						<div class="line">
 							<div>Latest News</div>
@@ -60,11 +60,16 @@
 													<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
 													<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
 												</div>
-												<h4><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 20) }}</a></h4>
+												<h5><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 30) }}</a></h5>
 												<p>{!! Str::Limit($row->berita, 120) !!}</p>
 												<footer>
-													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
-													<a class="btn btn-primary more" href="{{ route('single', $mn->slug) }}">
+													<a href="#" class="love"><i class="ion-android-favorite-outline"></i> 
+														@php
+															$berita_like = DB::table('berita_like')->where('berita_id',$row->id)->count();
+														@endphp
+														<div>{{ $berita_like }}</div>
+													</a>
+													<a class="btn btn-primary more" href="{{ route('single', $row->slug) }}">
 														<div>More</div>
 														<div><i class="ion-ios-arrow-thin-right"></i></div>
 													</a>
@@ -90,7 +95,7 @@
 								<div class="body-col">
                                     @php
                                         use App\kategori;
-                                        $tagsNews = kategori::orderBy('category')->get();
+                                        $tagsNews = kategori::orderBy('category')->paginate(8);
                                     @endphp
                                     @forelse($tagsNews as $row)
                                         <article class="article-mini">
@@ -127,10 +132,10 @@
 													</a>
 												</figure>
 												<div class="padding">
-													<h1><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle,30) }}</a></h1>
+													<h1><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle,40) }}</a></h1>
 													<div class="detail">
+														<div class="time mr-3 ml-3">{{ $row->created_at->format('F d, Y') }}</div>
 														<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
-														<div class="time">{{ $row->created_at->format('F d, Y') }}</div>
 													</div>
 												</div>
 											</div>
@@ -158,11 +163,16 @@
 											<div class="time">{{ $row->created_at->format('M d, Y') }}</div>
 											<div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
 										</div>
-											<h4><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 20) }}</a></h4>
+											<h6><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 40) }}</a></h6>
 											<p>{!! Str::Limit($row->berita, 120) !!}</p>
 										<footer>
-											<a href="#" class="love"><i class="ion-android-favorite-outline"></i> <div>1263</div></a>
-											<a class="btn btn-primary more" href="{{ route('single', $mn->slug) }}">
+											<a href="#" class="love"><i class="ion-android-favorite-outline"></i> 
+												@php
+													$berita_like = DB::table('berita_like')->where('berita_id',$row->id)->count();
+												@endphp
+												<div>{{ $berita_like }}</div>
+											</a>
+											<a class="btn btn-primary more" href="{{ route('single', $row->slug) }}">
 											<div>More</div>
 											<div><i class="ion-ios-arrow-thin-right"></i></div>
 											</a>
@@ -181,7 +191,7 @@
 							<div class="aside-body">
 								<div class="featured-author">
 									<div class="featured-author-inner">
-										<div class="featured-author-cover" style="background-image: url('{{asset("assets/images/news/img15.jpg")}}');">
+										<div class="featured-author-cover" style="background-image: url('{{asset('assets/images/news/img15.jpg')}}');">
 											<div class="badges">
 												<div class="badge-item"><i class="ion-star"></i> Featured</div>
 											</div>
@@ -429,112 +439,29 @@
 						</div>
 						<div class="next">
 							<i class="ion-ios-arrow-right"></i>
-						</div>
+						</div>		
 					</div>
 				</h1>
 				<div class="owl-carousel owl-theme carousel-1">
-					<article class="article">
+					@foreach($popular as $row)
+ 					<article class="article">
 						<div class="inner">
 							<figure>
-								<a href="#">
-									<img src="{{asset('assets/images/news/img03.jpg')}}" alt="Sample Article">
+								<a href="{{ route('single', $row->slug) }}">
+									<img src="{{asset('storage/berita/' . $row->foto)}}" alt="Sample Article">
 								</a>
 							</figure>
 							<div class="padding">
 								<div class="detail">
-										<div class="time">December 11, 2016</div>
-										<div class="category"><a href="category.html">Travel</a></div>
+									<div class="time">{{ $row->created_at->format('F d, Y') }}</div>
+									<div class="category"><a href="category.html">{{ $row->beritaCategory->category }}</a></div>
 								</div>
-								<h2><a href="#">tempor interdum Praesent tincidunt</a></h2>
-								<p>Praesent tincidunt, leo vitae congue molestie.</p>
+								<h2><a href="#">{{ Str::Limit($row->tittle,45) }}</a></h2>
+								{{-- <p>{!! Str::Limit($row->berita, 75) !!}</p> --}}
 							</div>
 						</div>
 					</article>
-					<article class="article">
-						<div class="inner">
-							<figure>
-								<a href="#">
-									<img src="{{asset('assets/images/news/img16.jpg')}}" alt="Sample Article">
-								</a>
-							</figure>
-							<div class="padding">
-								<div class="detail">
-									<div class="time">December 09, 2016</div>
-									<div class="category"><a href="category.html">Sport</a></div>
-								</div>
-								<h2><a href="#">Maecenas porttitor sit amet turpis a semper</a></h2>
-								<p> Proin vulputate, urna id porttitor luctus, dui augue facilisis lacus.</p>
-							</div>
-						</div>
-					</article>
-					<article class="article">
-						<div class="inner">
-							<figure>
-								<a href="#">
-									<img src="{{asset('assets/images/news/img15.jpg')}}" alt="Sample Article">
-								</a>
-							</figure>
-							<div class="padding">
-								<div class="detail">
-									<div class="time">December 26, 2016</div>
-									<div class="category"><a href="category.html">Lifestyle</a></div>
-								</div>
-								<h2><a href="#">Fusce ac odio eu ex volutpat pellentesque</a></h2>
-								<p>Vestibulum ante ipsum primis in faucibus orci luctus</p>
-							</div>
-						</div>
-					</article>
-					<article class="article">
-						<div class="inner">
-							<figure>
-								<a href="#">
-									<img src="{{asset('assets/images/news/img14.jpg')}}" alt="Sample Article">
-								</a>
-							</figure>
-							<div class="padding">
-								<div class="detail">
-									<div class="time">December 26, 2016</div>
-									<div class="category"><a href="category.html">Travel</a></div>
-								</div>
-								<h2><a href="#">Nulla facilisis odio quis gravida vestibulum</a></h2>
-								<p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
-							</div>
-						</div>
-					</article>
-					<article class="article">
-						<div class="inner">
-							<figure>
-								<a href="#">
-									<img src="{{asset('assets/images/news/img01.jpg')}}" alt="Sample Article">
-								</a>
-							</figure>
-							<div class="padding">
-								<div class="detail">
-									<div class="time">December 26, 2016</div>
-									<div class="category"><a href="category.html">Travel</a></div>
-								</div>
-								<h2><a href="#">Fusce Ullamcorper Elit At Felis Cursus Suscipit</a></h2>
-								<p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
-							</div>
-						</div>
-					</article>
-					<article class="article">
-						<div class="inner">
-							<figure>
-								<a href="#">
-									<img src="{{asset('assets/images/news/img11.jpg')}}" alt="Sample Article">
-								</a>
-							</figure>
-							<div class="padding">
-								<div class="detail">
-									<div class="time">December 26, 2016</div>
-									<div class="category"><a href="category.html">Travel</a></div>
-								</div>
-								<h2><a href="#">Donec consequat arcu at ultrices sodales</a></h2>
-								<p>Proin venenatis pellentesque arcu, ut mattis nulla placerat et.</p>
-							</div>
-						</div>
-					</article>
+					@endforeach
 				</div>
 			</div>
 		</section>
