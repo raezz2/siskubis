@@ -10,7 +10,8 @@ use App\kategori;
 use App\Inkubator;
 use App\profil_user;
 use App\Komentar;
-use Illuminate\Support\Facades\Session;
+use Session;
+use Image;
 use App\User;
 use App\BeritaLike;
 use Illuminate\Support\Facades\Auth;
@@ -100,9 +101,11 @@ class BeritaController extends Controller
 
         ]);
         if ($request->hasFile('foto')) {
-            $file = $request->file('foto');
-            $filename = time() . Str::slug($request->tittle) . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/berita', $filename);
+            $image = $request->file('foto');
+            $filename = time() . Str::slug($request->tittle) . '.' . $image->getClientOriginalExtension();
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->resize(900,585);
+            $image_resize->save(public_path('storage/berita/'.$filename));
 
             Session::flash('sukses', 'BERHASIL DITAMBAHKAN');
 

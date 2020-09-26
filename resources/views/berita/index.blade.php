@@ -138,7 +138,8 @@
 					@else
 						<span class="badge badge-pill badge-danger p-1 mr-2">Draft</span>
 					@endif
-					<span class="ul-widget-app__icons"><a href="href"><i class="i-Approved-Window text-mute"></i></a><a href="href"><i class="i-Like text-mute"></i></a><a href="href"><i class="i-Heart1 text-mute"></i></a></span><span class="text-mute">{{ $row->created_at->format('d, M Y') }}</span></div>
+					<span class="text-mute">{{ $row->created_at->format('d, M Y') }}</span>
+				</div>
 			</div>
 		</div>
 		@empty
