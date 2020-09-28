@@ -248,7 +248,7 @@
                                         <div class="block-body">
                                             <ul class="item-list-round" data-magnific="gallery">
                                                 @foreach($popular as $row)
-                                                <li><a href="{{ route('single', $row->slug) }}"
+                                                <li><a href="{{ asset('storage/berita/' . $row->foto) }}"
                                                         style="background-image: url('{{ asset('storage/berita/' . $row->foto) }}');"></a>
                                                 </li>
                                                 @endforeach
