@@ -12,15 +12,9 @@
     <link rel="stylesheet" href="{{ asset('theme/css/plugins/fontawesome-5.css')}}" />
     <link href="{{ asset('theme/css/plugins/metisMenu.min.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('theme/css/plugins/sweetalert2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('theme/css/plugins/toastr.min.css') }}" />
     @yield('css')
 </head>
-{{-- <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            @include('alert')
-        </div>
-    </div>
-</div> --}}
 
 <body class="text-left">
     @guest
@@ -84,6 +78,8 @@
         <script src="{{ asset('theme/js/scripts/layout-sidebar-vertical.min.js')}}"></script>
         <script src="{{ asset('theme/js/plugins/sweetalert2.min.js') }}"></script>
         <script src="{{ asset('theme/js/plugins/sweetalert2.script.min.js') }}"></script>
+        <script src="{{ asset('theme/js/plugins/toastr.min.js') }}"></script>
+        <script src="{{ asset('theme/js/script/toastr.script.min.js') }}"></script>
         @yield('js')
 
         <script>

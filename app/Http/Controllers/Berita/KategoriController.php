@@ -24,11 +24,14 @@ class KategoriController extends Controller
 	public function store(){
 		Kategori::create([
             'category'      => request('category'),
-            Session::flash('sukses', 'BERHASIL DITAMBAHKAN'),
         ]);
 
+        $notification = array(
+            'message' => 'Kategori Berhasil Ditambahkan!',
+            'alert-type' => 'success'
+        );
 
-		return redirect(route('inkubator.kategori.create'));
+		return redirect(route('inkubator.kategori.create'))->with($notification);
 	}
 	public function edit(Kategori $kategori)
 	{
@@ -43,21 +46,26 @@ class KategoriController extends Controller
 	{
 		$kategori->update([
             'category'      => request('category'),
-            Session::flash('peringatan', 'BERHASIL DIEDIT'),
-
         ]);
 
-		return redirect(route('inkubator.kategori.create'));
+        $notification = array(
+            'message' => 'Kategori Berhasil Diedit!',
+            'alert-type' => 'success'
+        );
+
+		return redirect(route('inkubator.kategori.create'))->with($notification);
 	}
 
 	public function destroy(Kategori $kategori){
     	$kategori->delete([
-            Session::flash('gagal', 'BERHASIL DIHAPUS')
         ]);
 
+        $notification = array(
+            'message' => 'Kategori Berhasil Dihapus!',
+            'alert-type' => 'error'
+        );
 
-
-        return redirect(route('inkubator.kategori.create'));
+        return redirect(route('inkubator.kategori.create'))->with($notification);
 	}
 }
 

@@ -7,12 +7,12 @@
 <div class="card">
 <div class="card-header container-fluid">
 
-    @if ($message = Session::get('sukses'))
+    {{-- @if ($message = Session::get('sukses'))
 		<div class="alert alert-success alert-block">
 			<button type="button" class="close" data-dismiss="alert">×</button>
 			<strong>{{ $message }}</strong>
 		</div>
-	@endif
+	@endif --}}
 
   <div class="row">
 	<div class="col-md-7">
@@ -204,3 +204,4 @@
 </script>
 
 @endsection
+@include('alert')
