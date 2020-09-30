@@ -10,7 +10,6 @@ use App\kategori;
 use App\Inkubator;
 use App\profil_user;
 use App\Komentar;
-use Session;
 use Image;
 use App\User;
 use App\BeritaLike;
@@ -107,8 +106,6 @@ class BeritaController extends Controller
             $image_resize->resize(900,585);
             $image_resize->save(public_path('storage/berita/'.$filename));
 
-            Session::flash('sukses', 'BERHASIL DITAMBAHKAN');
-
             $berita = Berita::create([
                 'tittle'                => $request->tittle,
                 'slug'                  => Str::slug($request->tittle),
@@ -121,7 +118,12 @@ class BeritaController extends Controller
                 'views'                 => $request->views
             ]);
 
-            return redirect(route('inkubator.berita'))->with(['success' => 'berita berhasil dipublish']);
+            $notification = array(
+                'message' => 'Berita Berhasil Ditambahkan!',
+                'alert-type' => 'success'
+            );
+
+            return redirect(route('inkubator.berita'))->with($notification);
         }
     }
 
@@ -129,9 +131,13 @@ class BeritaController extends Controller
     {
         $berita->delete();
         File::delete(storage_path('app/public/berita/' . $berita->foto));
-        Session::flash('gagal', 'BERHASIL DIHAPUS');
 
-        return redirect(route('inkubator.berita'))->with(['success' => 'berita berhasil dihapus']);
+        $notification = array(
+            'message' => 'Berita Berhasil Dihapus!',
+            'alert-type' => 'error'
+        );
+
+        return redirect(route('inkubator.berita'))->with($notification);
     }
 
     public function edit($id)
@@ -159,8 +165,10 @@ class BeritaController extends Controller
         ]);
         $berita = Berita::find($id);
         $filename = $berita->foto;
-
-        Session::flash('peringatan', 'BERHASIL DIEDIT');
+        $notification = array(
+            'message' => 'Berita Berhasil Diedit!',
+            'alert-type' => 'success'
+        );
 
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
@@ -180,7 +188,7 @@ class BeritaController extends Controller
             'views'                 => $request->views
         ]);
 
-        return redirect(route('inkubator.berita'))->with(['success' => 'berita berhasil dipublish']);
+        return redirect(route('inkubator.berita'))->with($notification);
 
     }
 
@@ -246,11 +254,9 @@ class BeritaController extends Controller
                 'berita_id' => $request->berita_id,
                 'user_id'   => $request->user_id,
             ]);
-            //return response()->json(['success'=>'Like tersimpan.']);
             return redirect()->back();
         }
 
-        //return response()->json(['error'=>$validator->errors()->all()]);
         return redirect()->back();
     }
 }

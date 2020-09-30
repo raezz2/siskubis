@@ -7,13 +7,6 @@
 <div class="card">
 <div class="card-header container-fluid">
 
-    {{-- @if ($message = Session::get('sukses'))
-		<div class="alert alert-success alert-block">
-			<button type="button" class="close" data-dismiss="alert">×</button>
-			<strong>{{ $message }}</strong>
-		</div>
-	@endif --}}
-
   <div class="row">
 	<div class="col-md-7">
 	  <h3>Berita</h3>
@@ -54,20 +47,6 @@
 </div>
   <hr>
 	<div class="ul-widget__body">
-
-    @if ($message = Session::get('peringatan'))
-    <div class="alert alert-warning alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
-    @endif
-
-    @if ($message = Session::get('gagal'))
-    <div class="alert alert-danger alert-block">
-	    <button type="button" class="close" data-dismiss="alert">×</button>
-	    <strong>{{ $message }}</strong>
-    </div>
-    @endif
 	<div class="ul-widget5">
 		@foreach ($berita as $b)
 		<div class="ul-widget5__item">
@@ -177,31 +156,5 @@
 	</div>
 </div>
 </div>
-@endsection
-
-@section('js')
-<script>
-    $('.delete').on('click', function (event) {
-        event.preventDefault();
-        const url = $(this).attr('href');
-        swal({
-            title: 'Apa Anda Yakin Menghapus ?',
-            type: 'warning',
-            showCancelButton:true,
-            confirmButtonColor: '#0CC27E',
-            cancelButtonColor: '#FF586B',
-            confirmButtonText: 'Hapus',
-            cancelButtontext: 'Batal',
-            confirmButtonClass: 'btn btn-success mr-5',
-            cancelButtonClass: 'btn btn-danger',
-            buttonsStyling: false
-        }).then(function(value){
-            if (value){
-                window.location.href = url;
-            }
-        });
-    });
-</script>
-
 @endsection
 @include('alert')
