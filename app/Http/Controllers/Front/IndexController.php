@@ -93,6 +93,4 @@ class IndexController extends Controller
 
         return view('front.single', compact('berita','komentar','total_komentar','recommend','recent','total_like'));
     }
-
-
 }

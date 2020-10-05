@@ -19,7 +19,7 @@ Route::get('/single/{slug}','Front\IndexController@single')->name('single');
 Route::post('/single/komentar','Berita\BeritaController@komentar')->name('single.komentarBerita');
 Route::get('/all','Front\IndexController@all')->name('front.all');
 Route::get('/tag','Front\IndexController@all')->name('front.tag');
-Route::post('/single/like', 'Berita\BeritaController@likeStore')->name('single.likeBerita');
+Route::post('/berita/like', 'Berita\BeritaController@likeStore')->name('single.likeBerita');
 
 
 Auth::routes();
@@ -51,8 +51,8 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
 	Route::get('/event', 'Event\EventController@index')->name('inkubator.event-list');
 	Route::get('/event/calendar', 'Event\EventController@calendar')->name('inkubator.event-calendar');
     Route::get('/pengumuman', 'Pengumuman\PengumumanController@index')->name('inkubator.pengumuman');
+    //Berita
     Route::get('/berita', 'Berita\BeritaController@index')->name('inkubator.berita');
-    //Alvi Adnan Vazshola
     Route::get('/berita/create', 'Berita\BeritaController@create')->name('inkubator.formBerita');
     Route::post('/berita/store', 'Berita\BeritaController@store')->name('inkubator.storeBerita');
     Route::get('/berita/destroy/{berita}', 'Berita\BeritaController@destroy')->name('inkubator.destroyBerita');
@@ -61,26 +61,19 @@ Route::group(['prefix'=>'inkubator','middleware' => ['role:inkubator']], functio
     Route::get('/berita/{slug}', 'Berita\BeritaController@show')->name('inkubator.showBerita');
     Route::post('/berita/komentar','Berita\BeritaController@komentar')->name('inkubator.komentarBerita');
     Route::post('/berita/like', 'Berita\BeritaController@likeStore')->name('inkubator.likeBerita');
-    //End
     Route::get('/berita/kategori', 'Berita\KategoriController@kategori')->name('inkubator.kategori');
     Route::get('/chat', 'Chat\ChatController@index')->name('inkubator.chat');
     Route::get('/pesan', 'Pesan\PesanController@index')->name('inkubator.pesan');
 	Route::get('/profile', 'Profile\ProfileUserController@index')->name('inkubator.profile');
-
-	//komentar
 	Route::post('/berita/comment', 'Berita\BeritaKomentarController@comment')->name('inkubator.berita.comment');
 	Route::get('/berita/destroy/{id}', 'Berita\BeritaKomentarController@destroy')->name('inkubator.berita.destroy');
-
-
-    //Kategori
     Route::get('/berita/kategori/create', 'Berita\KategoriController@create')->name('inkubator.kategori.create');
     Route::post('/berita/kategori/create','Berita\KategoriController@store');
     Route::get('/berita/kategori/{kategori}/edit', 'Berita\KategoriController@edit')->name('inkubator.kategori.edit');
     Route::patch('/berita/kategori/{kategori}/edit', 'Berita\KategoriController@update')->name('inkubator.kategori.update');
     Route::get('/berita/kategori/{kategori}/delete', 'Berita\KategoriController@destroy')->name('inkubator.kategori.destroy');
-
-    //Search
     Route::get('cariberita','Berita\BeritaController@search')->name('cariberita');
+    //End
 });
 
 

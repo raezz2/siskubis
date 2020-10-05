@@ -1,8 +1,7 @@
 @extends('layouts.front')
 @section('css')
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="">
 @endsection
 @section('content')
 <section class="single">
@@ -29,7 +28,7 @@
                                     </a>
                                 </figure>
                                 <div class="padding">
-                                    <h1><a href="{{ route('single', $row->slug) }}">{{ $row->tittle }}</a></h1>
+                                    <h1><a href="{{ url('single/', [$row->slug]) }}">{{ $row->tittle }}</a></h1>
                                     <div class="detail">
                                         <div class="category"><a href="">{{ $row->beritaCategory->category }}</a></div>
                                         <div class="time">{{ $row->created_at->format('M d, Y') }}</div>
@@ -94,16 +93,16 @@
                             </ul>
                         </div>
                         <div class="col-md-2">
+                        @if(Auth::user())
                             @php
-                            use App\BeritaLike;
 
-                            $likeExist = BeritaLike::where('user_id','=', Auth::user()->id ??
+                            $likeExist = DB::table('berita_like')->where('user_id','=', Auth::user()->id ??
                             '')->where('berita_id','=',$berita->id)->first();
                             @endphp
 
                             @if($likeExist == null)
-                            {{-- <form id="likeForm" name="likeForm"> --}}
-                            <form action="{{ route('single.likeBerita') }}" method="post">
+                            <form id="likeForm" name="likeForm">
+                            {{-- <form action="{{ route('single.likeBerita') }}" method="post"> --}}
                                 {{ csrf_field() }}
                                 <input type="text" name="user_id" value="{{ Auth::user()->id ?? ''}}" hidden>
                                 <input type="text" name="berita_id" value="{{ $berita->id }}" hidden>
@@ -117,8 +116,6 @@
                                 </button>
                             </form>
                             @else
-                            {{-- <form id="dislikeForm" name="dislikeForm">
-										{{ csrf_field() }} --}}
                             <button class="btn btn-sm btn-danger" id="dislike" value="delete">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -127,43 +124,20 @@
                                 </svg>
                                 {{ $total_like }}
                             </button>
-                            {{-- </form> --}}
                             @endif
+                        @endif
                         </div>
                     </footer>
                 </article>
                 <div class="sharing">
                     <div class="title"><i class="ion-android-share-alt"></i> Sharing is caring</div>
                     <ul class="social">
-                        <li>
-                            <a href="#" class="facebook">
-                                <i class="ion-social-facebook"></i> Facebook
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="twitter">
-                                <i class="ion-social-twitter"></i> Twitter
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="googleplus">
-                                <i class="ion-social-googleplus"></i> Google+
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="linkedin">
-                                <i class="ion-social-linkedin"></i> Linkedin
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="skype">
-                                <i class="ion-ios-email-outline"></i> Email
-                            </a>
-                        </li>
-                        <li class="count">
-                            20
-                            <div>Shares</div>
-                        </li>
+                        <li><a href="#" class="facebook"><i class="ion-social-facebook"></i> Facebook</a></li>
+                        <li><a href="#" class="twitter"><i class="ion-social-twitter"></i> Twitter</a></li>
+                        <li><a href="#" class="googleplus"><i class="ion-social-googleplus"></i> Google+</a></li>
+                        <li><a href="#" class="linkedin"><i class="ion-social-linkedin"></i> Linkedin</a></li>
+                        <li><a href="#" class="skype"><i class="ion-ios-email-outline"></i> Email</a></li>
+                        <li class="count">20<div>Shares</div></li>
                     </ul>
                 </div>
                 <div class="line">
@@ -178,34 +152,22 @@
                         <h3 class="name">{{ $berita->profil_user->nama}}</h3>
                         <p>{{ $berita->profil_user->deskripsi }}</p>
                         <ul class="social trp sm">
-                            <li>
-                                <a href="#" class="facebook">
-                                    <svg>
-                                        <rect /></svg>
-                                    <i class="ion-social-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="twitter">
-                                    <svg>
-                                        <rect /></svg>
-                                    <i class="ion-social-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="youtube">
-                                    <svg>
-                                        <rect /></svg>
-                                    <i class="ion-social-youtube"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="googleplus">
-                                    <svg>
-                                        <rect /></svg>
-                                    <i class="ion-social-googleplus"></i>
-                                </a>
-                            </li>
+                            <li><a href="#" class="facebook">
+                                <svg><rect /></svg>
+                                <i class="ion-social-facebook"></i>
+                            </a></li>
+                            <li><a href="#" class="twitter">
+                                <svg><rect /></svg>
+                                <i class="ion-social-twitter"></i>
+                            </a></li>
+                            <li><a href="#" class="youtube">
+                                <svg><rect /></svg>
+                                <i class="ion-social-youtube"></i>
+                            </a></li>
+                            <li><a href="#" class="googleplus">
+                                <svg><rect /></svg>
+                                <i class="ion-social-googleplus"></i>
+                            </a></li>
                         </ul>
                     </div>
                 </div>
@@ -231,7 +193,7 @@
                         </div>
                     </article>
                     @empty
-                    <p>Belum ada berita terkait kategori ini</p>
+                        <p>Belum ada berita terkait kategori ini</p>
                     @endforelse
                 </div>
                 <!--komentar-->
@@ -247,8 +209,7 @@
                                 </figure>
                                 <div class="details">
                                     <h4 class="name">{{ $row->name}}</h4>
-                                    <span
-                                        class="time">{{ \Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</span>
+                                    <span class="time">{{ \Carbon\Carbon::parse($row->created_at)->diffForHumans() }}</span>
                                     <div class="description">
                                         <p>{{ $row->komentar}}</p>
                                     </div>
@@ -257,6 +218,7 @@
                         </div>
                         @endforeach
                     </div>
+                    @if(Auth::user())
                     <form action="{{ route('single.komentarBerita') }}" method="post" class="row">
                         {{ csrf_field() }}
                         <input type="hidden" name="id" value="id" class="form-control">
@@ -277,6 +239,7 @@
                             <button class="btn btn-primary">Send Response</button>
                         </div>
                     </form>
+                    @endif
                 </div>
             </div>
         </div>
@@ -284,9 +247,8 @@
 </section>
 @endsection
 @section('js')
-
-<script type="text/javascript">
-    $(function () {
+    <script type="text/javascript">
+        $(function () {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -296,22 +258,20 @@
             $('#like').click(function (e) {
                 e.preventDefault();
 
+                var _token      = $("input[name='_token']").val();
+                var berita_id   = $("input[name='berita_id']").val();
+                var user_id     = $("input[name='user_id']").val();
+
+                $(this).html('Liked');
+                $(this).prop('disabled', true);
+                $(this).css({"background-color": "#dc3545", "border-color": "#dc3545", "color": "white", "opacity": "100%"})
                 $.ajax({
                     data: $('#likeForm').serialize(),
                     url: "{{ route('single.likeBerita') }}",
                     type: "POST",
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log('Berhasil');
-                    },
-                    error: function (data) {
-                        console.log('Gagal');
-                        alert("Anda hanya bisa menyukai ini 1x");
-                    }
+                    dataType: 'json'
                 });
             });
         });
-
-</script>
-
+    </script>
 @endsection

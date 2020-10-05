@@ -51,7 +51,7 @@
 		@foreach ($berita as $b)
 		<div class="ul-widget5__item">
 			<div class="ul-widget5__content">
-				<div class="ul-widget5__pic"><img src="{{ asset('storage/berita/' . $b->foto) }}" alt="Third slide" /></div>
+				<div class="ul-widget5__pic"><img src="{{ asset('storage/berita/' . $b->foto) }}" alt="{{ $b->slug }}" /></div>
 				<div class="ul-widget5__section">
 					<a class="ul-widget4__title" href="{{ route('inkubator.showBerita', $b->slug) }}">{{ Str::limit($b->tittle, 40) }}</a>
 					<p class="ul-widget5__desc">{!! Str::limit($b->berita, 47) !!}</p>
@@ -106,7 +106,7 @@
 		<!--  row-comments -->
 		@forelse($umum as $row)
 		<div class="ul-widget-app__row-comments">
-			<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-lg" src="{{ asset('storage/berita/' . $row->foto) }}" alt="alt" /></div>
+			<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-lg" src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->slug }}" /></div>
 			<div class="ul-widget-app__comment">
 				<div class="ul-widget-app__profile-title">
 					<a class="ul-widget4__title" href="{{ route('inkubator.showBerita', $row->slug) }}">{{ Str::limit($row->tittle, 40) }}</a>
