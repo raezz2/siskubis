@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,24 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    // public function index()
+    // {
+        // return view('admin.dashboard');
+    // }    
+	public function index()
     {
-        return view('admin.dashboard');
+		$user=Auth::user();
+        if ( $user->hasRole('admin') ) {// do your magic here
+			return redirect()->route('admin.home');
+		}elseif($user->hasRole('inkubator')){
+			return redirect()->route('inkubator.home');
+		}elseif($user->hasRole('mentor')){
+			return redirect()->route('mentor.home');
+		}elseif($user->hasRole('tenant')){
+			return redirect()->route('tenant.home');
+		}elseif($user->hasRole('user')){
+			return redirect()->route('user.home');
+		}
+		return redirect('/');
     }
 }

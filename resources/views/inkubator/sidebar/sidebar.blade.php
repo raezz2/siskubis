@@ -15,15 +15,11 @@
                             <li class="Ul_li--hover"><a class="" href="{{route('inkubator.tenant')}}"><i class="i-Administrator text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Tenant</span></a></li>
                             <li class="Ul_li--hover"><a class="" href="{{route('inkubator.produk')}}"><i class="i-Suitcase text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Produk</span></a>
                             </li>
-                            <li class="Ul_li--hover"><a class="" href="#"><i class="i-Computer-Secure text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Aktifitas</span></a>
-                            </li>
+                            <li class="Ul_li--hover"><a class="" href="{{route('inkubator.aktifitas')}}"><i class="i-Computer-Secure text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Aktifitas</span></a></li>
                             <!--  <p class="main-menu-title text-muted ml-3 font-weight-700 text-13 mt-4 mb-2">UI Elements</p> -->
-                            <li class="Ul_li--hover"><a class="" href="#"><i class="i-Computer-Secure text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Keuangan</span></a>
-                            </li>
-
-                            <li class="Ul_li--hover"><a class="" href="#"><i class="i-File-Clipboard-File--Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Pencapaian</span></a>
-                            </li>
-                            <li class="Ul_li--hover"><a href=""><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Laporan</span></a></li>
+                            <li class="Ul_li--hover"><a href="{{route('inkubator.keuangan')}}"><i class="i-Computer-Secure text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Keuangan</span></a></li>
+                            <li class="Ul_li--hover"><a href="{{route('inkubator.pencapaian')}}"><i class="i-File-Clipboard-File--Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Pencapaian</span></a></li>
+                            <li class="Ul_li--hover"><a href="{{route('inkubator.laporan')}}"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Laporan</span></a></li>
                             <li class="Ul_li--hover"><a href="{{route('inkubator.surat')}}"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Persuratan</span></a></li>
 							<li class="Ul_li--hover"><a href="{{route('inkubator.event-list')}}"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Event</span></a></li>
 							<li class="Ul_li--hover"><a href="{{route('inkubator.berita')}}"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Berita</span></a></li>

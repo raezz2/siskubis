@@ -14,7 +14,8 @@
                             <li class="Ul_li--hover"><a class="" href="#"><i class="i-Administrator text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Tenant</span></a>
 
                             </li>
-							<li class="Ul_li--hover"><a class="" href="#"><i class="i-Administrator text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Pendamping</span></a>
+                            <li class="Ul_li--hover"><a class="" href="#"><i class="i-Administrator text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Pendamping</span></a>
+
 
                             </li>
                             <li class="Ul_li--hover"><a class="has-arrow" href="#"><i class="i-Suitcase text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Produk</span></a>
@@ -85,6 +86,13 @@
                                 </ul>
                             </li>
                             <li class="Ul_li--hover"><a href="datatables.html"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Laporan</span></a></li>
+
+                            <li class="Ul_li--hover"><a class="has-arrow" href="#"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Persuratan</span></a>
+                                <ul class="mm-collapse">
+                                    <li class="item-name"><a href="/mentor/suratmasuk"><i class="nav-icon i-Error-404-Window"></i><span class="item-name">Surat Masuk</span></a></li>
+                                    <li class="item-name"><a href="/mentor/suratkeluar"><i class="nav-icon i-Male"></i><span class="item-name">Surat Keluar</span></a></li>
+                                </ul>
+                            </li>
                             <li class="Ul_li--hover"><a class="has-arrow"><i class="i-Double-Tap text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Forum</span></a>
                                 <ul class="mm-collapse">
                                     <li class="item-name"><a href="signin.html"><i class="nav-icon i-Checked-User"></i><span class="item-name">Sign in</span></a></li>
@@ -99,7 +107,11 @@
                                     <li class="item-name"><a class="open" href="blank.html"><i class="nav-icon i-File-Horizontal"></i><span class="item-name">Blank Page</span></a></li>
                                 </ul>
                             </li>
+                            <li class="Ul_li--hover"><a class="" href="{{route('mentor.event-list')}}"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Event</span></a></li>
+
                             <li class="Ul_li--hover"><a href="http://demos.ui-lib.com/gull-html-doc/"><i class="i-Safe-Box1 text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Backup</span></a></li>
+                            <li class="Ul_li--hover"><a class="" href="{{ route('mentor.pengumuman') }}"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Pengumuman</span></a>
+                            </li>
                         </ul>
                     </div>
                 </div>

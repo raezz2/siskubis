@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Berita;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use App\Berita;
-use App\kategori;
-use App\Inkubator;
-use App\profil_user;
-use App\Komentar;
 use Image;
 use App\User;
+use App\Berita;
+use App\kategori;
+use App\Komentar;
+use App\Inkubator;
 use App\BeritaLike;
+use App\profil_user;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class BeritaController extends Controller
 {
@@ -130,6 +130,8 @@ class BeritaController extends Controller
     public function destroy(Berita $berita)
     {
         $berita->delete();
+        $komentar = komentar::where('berita_id', $berita->id)->delete();
+        $like = BeritaLike::where('berita_id', $berita->id)->delete();
         File::delete(storage_path('app/public/berita/' . $berita->foto));
 
         $notification = array(
@@ -171,9 +173,11 @@ class BeritaController extends Controller
         );
 
         if ($request->hasFile('foto')) {
-            $file = $request->file('foto');
-            $filename = time() . Str::slug($request->tittle) . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/berita', $filename);
+            $image = $request->file('foto');
+            $filename = time() . Str::slug($request->tittle) . '.' . $image->getClientOriginalExtension();
+            $image_resize = Image::make($image->getRealPath());
+            $image_resize->resize(900,585);
+            $image_resize->save(public_path('storage/berita/'.$filename));
             File::delete(storage_path('app/public/berita/' . $berita->foto));
         }
         $berita->update([
@@ -206,6 +210,7 @@ class BeritaController extends Controller
         $umum = Berita::with('profil_user')->where('inkubator_id','0')->orderBy('created_at','desc')->paginate(5);
 
         return view('berita.showBerita', compact('berita','umum','komentar','total_komentar','total_like'));
+      
     }
 
     public function showT($slug)

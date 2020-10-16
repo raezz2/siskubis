@@ -8,8 +8,8 @@
                 <div class="side-nav">
                     <div class="main-menu">
                         <ul class="metismenu" id="menu">
-                            <li class="Ul_li--hover"><a class="active" href="#"><i class="i-Bar-Chart text-20 mr-2 "></i><span class="item-name text-15 ">Dashboard</span></a>
-                                
+                            <li class="Ul_li--hover"><a class="active" href="/user"><i class="i-Bar-Chart text-20 mr-2 "></i><span class="item-name text-15 ">Dashboard</span></a>
+
                             </li>
 
                             <li class="Ul_li--hover"><a class="has-arrow" href="#"><i class="i-Computer-Secure text-20 mr-2 "></i><span class="item-name text-15 ">Keuangan</span></a>
@@ -21,8 +21,17 @@
                                     <li class="item-name"><a href="weather-card.html"><i class="nav-icon i-Receipt-4"></i><span class="item-name">Weather App </span></a></li>
                                 </ul>
                             </li>
+                            <li class="Ul_li--hover"><a class="has-arrow" href="#"><i class="i-File-Horizontal-Text text-20 mr-2 text-muted"></i><span class="item-name text-15 text-muted">Persuratan</span></a>
+                                <ul class="mm-collapse">
+                                    <li class="item-name"><a href="/user/suratmasuk"><i class="nav-icon i-Error-404-Window"></i><span class="item-name">Surat Masuk</span></a></li>
+                                    <li class="item-name"><a href="/user/suratkeluar"><i class="nav-icon i-Male"></i><span class="item-name">Surat Keluar</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="Ul_li--hover"><a class="" href="{{ route('user.pengumuman') }}"><i class="i-File-Horizontal-Text text-20 mr-2 "></i><span class="item-name text-15 text">Pengumuman</span></a>
+                            </li>
 
-						</ul>
+                        </ul>
+
                     </div>
                 </div>
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;">

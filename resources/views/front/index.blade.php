@@ -1,5 +1,11 @@
 @extends('layouts.front')
+@section('css')
+.love.active {
+  color: #F73F52;
+}
+@endsection
 @section('content')
+
 <section class="home">
     <div class="container">
         <div class="row">
@@ -27,17 +33,17 @@
                     </div>
                 </div>
                 <div class="owl-carousel owl-theme slide" id="featured">
-                    @foreach($mainNews as $row)
+                    @foreach($mainNews as $mn)
                     <div class="item">
                         <article class="featured">
                             <div class="overlay"></div>
                             <figure>
-                                <img src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->tittle }}">
-                            </figure>
+                                <img src="{{ asset('storage/berita/' . $mn->foto) }}" alt="{{ $mn->tittle }}">
+                            </figure> 
                             <div class="details">
-                                <div class="category"><a href="#">{{ $row->beritaCategory->category }}</a></div>
-                                <h1><a href="{{ route('single', $row->slug) }}">{{ $row->tittle }}</a></h1>
-                                <div class="time">{{ $row->created_at->format('M d, Y') }}</div>
+                                <div class="category"><a href="#">{{ $mn->beritaCategory->category }}</a></div>
+                                <h1><a href="{{ route('single', $mn->slug) }}">{{ $mn->tittle }}</a></h1>
+                                <div class="time">{{ $mn->created_at->format('M d, Y') }}</div>
                             </div>
                         </article>
                     </div>
@@ -68,19 +74,40 @@
                                                 href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 30) }}</a>
                                         </h5>
                                         <p>{!! Str::Limit($row->berita, 120) !!}</p>
-                                        <footer>
-                                            <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
-                                                @php
-                                                $berita_like =
-                                                DB::table('berita_like')->where('berita_id',$row->id)->count();
-                                                @endphp
-                                                <div>{{ $berita_like }}</div>
-                                            </a>
+
+<div class="row">
+    <div class="col-sm-8 love">
+                                            @php
+
+                                                $likeExist = DB::table('berita_like')->where('user_id','=', Auth::user()->id ?? '')->where('berita_id','=',$row->id)->first();
+                                                $total_like = DB::table('berita_like')->where('berita_id',$row->id)->count();
+                                            @endphp
+
+                                            @if($likeExist == null)
+                                                <form action="{{ route('single.likeBerita') }}" method="post">
+                                                {{ csrf_field() }}
+                                                    <input type="text" name="user_id" value="{{ Auth::user()->id ?? '' }}" hidden>
+                                                    <input type="text" name="berita_id" value="{{ $row->id }}" hidden>
+                                                    <button class="btn btn-link" style="text-decoration: none; color: #989898;" id="like" value="create">
+                                                        <i class="ion-android-favorite-outline"></i>
+                                                        {{ $total_like }}
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <button class="btn btn-link" id="dislike" value="create" style="text-decoration: none; color: #F73F52;">
+                                                    <i class="ion-android-favorite danger"></i>
+                                                    {{ $total_like }}
+                                                </button>
+                                            @endif
+    </div>
+    <div class="col-sm-auto">
                                             <a class="btn btn-primary more" href="{{ route('single', $row->slug) }}">
                                                 <div>More</div>
                                                 <div><i class="ion-ios-arrow-thin-right"></i></div>
                                             </a>
-                                        </footer>
+    </div>
+</div>
+                                        
                                     </div>
                                 </div>
                             </article>
@@ -176,17 +203,38 @@
                                 <h6><a href="{{ route('single', $row->slug) }}">{{ Str::Limit($row->tittle, 40) }}</a>
                                 </h6>
                                 <p>{!! Str::Limit($row->berita, 120) !!}</p>
-                                <footer>
-                                    <a href="#" class="love"><i class="ion-android-favorite-outline"></i>
-                                        @php
-                                        $berita_like = DB::table('berita_like')->where('berita_id',$row->id)->count();
-                                        @endphp
-                                        <div>{{ $berita_like }}</div>
-                                    </a>
-                                    <a class="btn btn-primary more" href="{{ route('single', $row->slug) }}">
-                                        <div>More</div>
-                                        <div><i class="ion-ios-arrow-thin-right"></i></div>
-                                    </a>
+                                <footer>           
+                                    <div class="row">
+                                        <div class="col-sm-1 love">
+                                            @php
+
+                                                $likeExist = DB::table('berita_like')->where('user_id','=', Auth::user()->id ?? '')->where('berita_id','=',$row->id)->first();
+                                                $total_like = DB::table('berita_like')->where('berita_id',$row->id)->count();
+                                            @endphp
+                                            @if($likeExist == null)
+                                                <form action="{{ route('single.likeBerita') }}" method="post">
+                                                {{ csrf_field() }}
+                                                    <input type="text" name="user_id" value="{{ Auth::user()->id ?? '' }}" hidden>
+                                                    <input type="text" name="berita_id" value="{{ $row->id }}" hidden>
+                                                    <button class="btn btn-link" style="text-decoration: none; color: #989898;" id="like" value="create">
+                                                        <i class="ion-android-favorite-outline"></i>
+                                                        {{ $total_like }}
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <button class="btn btn-link" id="dislike" value="create" style="text-decoration: none; color: #F73F52;">
+                                                    <i class="ion-android-favorite danger"></i>
+                                                    {{ $total_like }}
+                                                </button>
+                                            @endif
+                                        </div>
+                                        <div class="col-sm-auto">
+                                            <a class="btn btn-primary more" href="{{ route('single', $row->slug) }}">
+                                                <div>More</div>
+                                                <div><i class="ion-ios-arrow-thin-right"></i></div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </footer>
                             </div>
                         </div>
@@ -203,17 +251,17 @@
                         <div class="featured-author">
                             <div class="featured-author-inner">
                                 <div class="featured-author-cover"
-                                    style="background-image: url('{{asset('assets/images/news/img15.jpg')}}');">
+                                    style="background-image: url('{{asset("img/inkubator/lppmuny2.jpg")}}');">
                                     <div class="badges">
                                         <div class="badge-item"><i class="ion-star"></i> Featured</div>
                                     </div>
                                     <div class="featured-author-center">
                                         <figure class="featured-author-picture">
-                                            <img src="{{asset('assets/images/img01.jpg')}}" alt="Sample Article">
+                                            <img src="{{asset('img/inkubator/lppmuny.jpg')}}" alt="Sample Article">
                                         </figure>
                                         <div class="featured-author-info">
-                                            <h2 class="name">John Doe</h2>
-                                            <div class="desc">@JohnDoe</div>
+                                            <h2 class="name">LPPM UNY</h2>
+                                            <div class="desc">@lppmuny</div>
                                         </div>
                                     </div>
                                 </div>
@@ -221,39 +269,40 @@
                                     <div class="featured-author-count">
                                         <div class="item">
                                             <a href="#">
-                                                <div class="name">Posts</div>
+                                                <div class="name">Tenant</div>
                                                 <div class="value">208</div>
                                             </a>
                                         </div>
                                         <div class="item">
                                             <a href="#">
-                                                <div class="name">Stars</div>
-                                                <div class="value">3,729</div>
+                                                <div class="name">Produk</div>
+                                                <div class="value">300</div>
                                             </a>
                                         </div>
                                         <div class="item">
                                             <a href="#">
                                                 <div class="icon">
-                                                    <div>More</div>
+                                                    <div>Detail</div>
                                                     <i class="ion-chevron-right"></i>
                                                 </div>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="featured-author-quote">
-                                        "Eur costrict mobsa undivani krusvuw blos andugus pu aklosah"
+                                        "Berperan kreatif, produktif dan adaptif dalam rangka mendukung UNY menuju
+                                        universitas kependidikan kelas dunia."
                                     </div>
                                     <div class="block">
                                         <h2 class="block-title">Photos</h2>
                                         <div class="block-body">
                                             <ul class="item-list-round" data-magnific="gallery">
                                                 @foreach($popular as $row)
-                                                <li><a href="{{ asset('storage/berita/' . $row->foto) }}"
-                                                        style="background-image: url('{{ asset('storage/berita/' . $row->foto) }}');"></a>
+                                                <li>
+                                                    <a href="{{asset('storage/berita/' . $row->foto) }}"
+                                                        style="background-image: url('{{asset('storage/berita/' . $row->foto) }}');"></a>
                                                 </li>
                                                 @endforeach
                                             </ul>
-
                                         </div>
                                     </div>
                                     <div class="featured-author-footer">
@@ -295,15 +344,15 @@
                         <form class="newsletter">
                             <div class="icon">
                                 <i class="ion-ios-email-outline"></i>
-                                <h1>Newsletter</h1>
+                                <h1>Buletin</h1>
                             </div>
                             <div class="input-group">
-                                <input type="email" class="form-control email" placeholder="Your mail">
+                                <input type="email" class="form-control email" placeholder="Email anda">
                                 <div class="input-group-btn">
                                     <button class="btn btn-primary"><i class="ion-paper-airplane"></i></button>
                                 </div>
                             </div>
-                            <p>By subscribing you will receive new articles in your email.</p>
+                            <p>Dengan berlangganan Anda akan menerima artikel baru di email Anda.</p>
                         </form>
                     </div>
                 </aside>
@@ -325,7 +374,7 @@
                             <article class="article-fw">
                                 <div class="inner">
                                     <figure>
-                                        <a href="#">
+                                        <a href="{{route('single','none')}}">
                                             <img src="{{asset('assets/images/news/img16.jpg')}}" alt="Sample Article">
                                         </a>
                                     </figure>
@@ -334,7 +383,8 @@
                                             <div class="time">December 31, 2016</div>
                                             <div class="category"><a href="category.html">Sport</a></div>
                                         </div>
-                                        <h1><a href="#">Donec congue turpis vitae mauris</a></h1>
+                                        <h1><a href="{{route('single','none')}}">Donec congue turpis vitae mauris</a>
+                                        </h1>
                                         <p>
                                             Donec congue turpis vitae mauris condimentum luctus. Ut dictum neque at
                                             egestas convallis.
@@ -346,13 +396,13 @@
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
-                                        <a href="#">
+                                        <a href="{{route('single','none')}}">
                                             <img src="{{asset('assets/images/news/img05.jpg')}}" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
-                                        <h1><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit</a>
-                                        </h1>
+                                        <h1><a href="{{route('single','none')}}">Duis aute irure dolor in reprehenderit
+                                                in voluptate velit</a></h1>
                                         <div class="detail">
                                             <div class="category"><a href="category.html">Lifestyle</a></div>
                                             <div class="time">December 22, 2016</div>
@@ -363,12 +413,13 @@
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
-                                        <a href="#">
+                                        <a href="{{route('single','none')}}">
                                             <img src="{{asset('assets/images/news/img02.jpg')}}" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
-                                        <h1><a href="#">Fusce ullamcorper elit at felis cursus suscipit</a></h1>
+                                        <h1><a href="{{route('single','none')}}">Fusce ullamcorper elit at felis cursus
+                                                suscipit</a></h1>
                                         <div class="detail">
                                             <div class="category"><a href="category.html">Travel</a></div>
                                             <div class="time">December 21, 2016</div>
@@ -379,13 +430,13 @@
                             <article class="article-mini">
                                 <div class="inner">
                                     <figure>
-                                        <a href="#">
+                                        <a href="{{route('single','none')}}">
                                             <img src="{{asset('assets/images/news/img10.jpg')}}" alt="Sample Article">
                                         </a>
                                     </figure>
                                     <div class="padding">
-                                        <h1><a href="#">Duis aute irure dolor in reprehenderit in voluptate velit</a>
-                                        </h1>
+                                        <h1><a href="{{route('single','none')}}">Duis aute irure dolor in reprehenderit
+                                                in voluptate velit</a></h1>
                                         <div class="detail">
                                             <div class="category"><a href="category.html">Healthy</a></div>
                                             <div class="time">December 20, 2016</div>
@@ -417,6 +468,22 @@
                             </div>
                             </ul>
                         </div>
+                    </div>
+                </aside>
+                <aside>
+                    <h1 class="aside-title">Videos
+                        <div class="carousel-nav" id="video-list-nav">
+                            <div class="prev"><i class="ion-ios-arrow-left"></i></div>
+                            <div class="next"><i class="ion-ios-arrow-right"></i></div>
+                        </div>
+                    </h1>
+                    <div class="aside-body">
+                        <ul class="video-list" data-youtube='"carousel":true, "nav": "#video-list-nav"'>
+                            <li><a data-youtube-id="SBjQ9tuuTJQ" data-action="magnific"></a></li>
+                            <li><a data-youtube-id="9cVJr3eQfXc" data-action="magnific"></a></li>
+                            <li><a data-youtube-id="DnGdoEa1tPg" data-action="magnific"></a></li>
+                        </ul>
+                    </div>
                 </aside>
                 <aside id="sponsored">
                     <h1 class="aside-title">Sponsored</h1>
@@ -449,7 +516,6 @@
         </div>
     </div>
 </section>
-
 <section class="best-of-the-week">
     <div class="container">
         <h1>
@@ -486,3 +552,4 @@
     </div>
 </section>
 @endsection
+

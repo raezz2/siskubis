@@ -16,7 +16,7 @@ class ModifyTableBerita extends Migration
         Schema::getConnection()->getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
         Schema::table('berita', function (Blueprint $table) {
             DB::statement("ALTER TABLE `berita` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;");
-            DB::statement("ALTER TABLE `berita` CHANGE `views` `views` INT(11) NOT NULL DEFAULT '0';");
+            DB::statement("ALTER TABLE `berita` CHANGE `views` `views` INT(11) NOT NULL DEFAULT '0';")
         });
     }
 

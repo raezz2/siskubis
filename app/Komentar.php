@@ -14,7 +14,6 @@ class Komentar extends Model
         'user_id',
         'komentar',
         'berita_id'
-
     ];
 
 

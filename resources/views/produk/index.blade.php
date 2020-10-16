@@ -7,36 +7,32 @@
 		<div class="card-header">
 		<h3>Produk</h3>
 		</div>
-		<div class="card-body">
-			<div class="ul-contact-list">
-				<div class="contact-close-mobile-icon float-right mb-2"><i class="i-Close-Window text-15 font-weight-600"></i></div>
-				<!-- modal-->
-				<!-- end:modal-->
-				<input class="form-control form-control-rounded col-md-12" id="exampleFormControlInput1" type="text" placeholder="Search Produk..." />
-				<br>
-				<div class="list-group" id="list-tab" role="tablist"><a class="list-group-item list-group-item-action border-0 active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><i class="nav-icon i-Business-Mens"></i>All Produks</a>
-				<a class="list-group-item list-group-item-action border-0" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><i class="nav-icon i-Conference"></i> Non Produk</a>
-				<label class="text-muted font-weight-600 py-8" for="">MEMBERS INKUBATOR</label>
-					<select class="form-control form-control-rounded"><option>All Inkubator</option><option></option></select>
-					</br>
-					<a class="list-group-item list-group-item-action border-0" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><i class="nav-icon i-Arrow-Next"></i> Pra Start Up</a>
-					<a class="list-group-item list-group-item-action border-0" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><i class="nav-icon i-Arrow-Next"></i> Start Up</a>
-					<a class="list-group-item list-group-item-action border-0" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings"><i class="nav-icon i-Arrow-Next"></i> Scale Up</a>
-				</div>
-			</div>
-			<div class="ul-contact-list">
-				<div class="contact-close-mobile-icon float-right mb-2"><i class="i-Close-Window text-15 font-weight-600"></i></div>
-				<!-- modal-->
-				<input class="form-control form-control-rounded col-md-12" id="exampleFormControlInput1" type="text" placeholder="Search User..." />
-				<br>
-				<div class="list-group" id="list-tab" role="tablist"><a class="list-group-item list-group-item-action border-0 active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><i class="nav-icon i-Business-Mens"></i>All Produk</a>
-				<label class="text-muted font-weight-600 py-8" for="">MEMBERS INKUBATOR</label>
-					<a class="list-group-item list-group-item-action border-0" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><i class="nav-icon i-Arrow-Next"></i> Pra Start Up</a>
-					<a class="list-group-item list-group-item-action border-0" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><i class="nav-icon i-Arrow-Next"></i> Start Up</a>
-					<a class="list-group-item list-group-item-action border-0" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings"><i class="nav-icon i-Arrow-Next"></i> Scale Up</a>
-				</div>
-			</div>
-		</div>
+<div class="card-body">
+                <div class="form-group">
+                    <label for="search">Pencarian</label>
+                    <div class="input-group">
+                        <input type="text" name="title" id="title" class="form-control" placeholder="search" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Priority</label>
+                                            <label class="checkbox checkbox-success">
+                            <input type="checkbox" name="priority" value="2"><span>Pra Start Up</span><span class="checkmark"></span>
+                        </label>
+                                            <label class="checkbox checkbox-success">
+                            <input type="checkbox" name="priority" value="1"><span>Proposal</span><span class="checkmark"></span>
+                        </label>
+                                            <label class="checkbox checkbox-success">
+                            <input type="checkbox" name="priority" value="4"><span>Scale Up</span><span class="checkmark"></span>
+                        </label>
+                                            <label class="checkbox checkbox-success">
+                            <input type="checkbox" name="priority" value="3"><span>Start Up</span><span class="checkmark"></span>
+                        </label>
+                                    </div>
+                <div class="form-group">
+                    <button id="filter" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
 	</div>
    </div>
 	<div class="col-md-9">
@@ -44,16 +40,15 @@
                     <div class="row list-grid">
                         <div class="list-item col-md-3">
                             <div class="card o-hidden mb-4 d-flex flex-column">
-                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('theme/images/products/speaker-1.jpg')}}" /></div>
+                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('img/produk/qlapa1.jpg')}}" /></div>
                                 <div class="flex-grow-1 d-bock">
                                     <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center"><a class="w-40 w-sm-100" href="">
                                             <div class="item-title">
-                                                Wireless Bluetooth V4.0 Portable Speaker with HD Sound
-                                                and Bass
+                                                Qlapa - Marketplace Kerajian
                                             </div>
                                         </a>
-                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Gadget</p>
-                                      
+                                        <p class="m-0 text-muted text-small w-15 w-sm-100">PT. Kelapa Daya Persada</p>
+
                                         <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges"><span class="badge badge-info">Startup</span></p>
                                     </div>
                                 </div>
@@ -61,13 +56,13 @@
                         </div>
                         <div class="list-item col-md-3">
                             <div class="card o-hidden mb-4 d-flex flex-column">
-                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('theme/images/products/speaker-2.jpg')}}" /></div>
+                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('img/produk/pajak.jpg')}}" /></div>
                                 <div class="flex-grow-1 d-bock">
                                     <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center"><a class="w-40 w-sm-100" href="">
-                                            <div class="item-title">Portable Speaker with HD Sound</div>
+                                            <div class="item-title">Pajakku</div>
                                         </a>
-                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Gadget</p>
-                                        
+                                        <p class="m-0 text-muted text-small w-15 w-sm-100">PT. Taat Pajak Bersama</p>
+
                                         <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges"><span class="badge badge-primary">Startup</span></p>
                                     </div>
                                 </div>
@@ -75,13 +70,13 @@
                         </div>
                         <div class="list-item col-md-3">
                             <div class="card o-hidden mb-4 d-flex flex-column">
-                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('theme/images/products/headphone-2.jpg')}}" /></div>
+                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('img/produk/agrito.png')}}" /></div>
                                 <div class="flex-grow-1 d-bock">
                                     <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center"><a class="w-40 w-sm-100" href="">
-                                            <div class="item-title">Lightweight On-Ear Headphones - Black</div>
+                                            <div class="item-title"><b>Agrito - Marketplace Pertanian</b></div>
                                         </a>
-                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Gadget</p>
-                                       
+                                        <p class="m-0 text-muted text-small w-15 w-sm-100">PT. Agrito Sejahtera Indonesia</p>
+
                                         <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges"><span class="badge badge-info">Startup</span></p>
                                     </div>
                                 </div>
@@ -89,16 +84,16 @@
                         </div>
                         <div class="list-item col-md-3">
                             <div class="card o-hidden mb-4 d-flex flex-column">
-                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('theme/images/products/watch-1.jpg')}}" /></div>
+                                <a href="{{route('inkubator.produk-detail',['startup','1'])}}"><div class="list-thumb d-flex"><img alt="" src="{{ asset('img/produk/igrow.jpg')}}" /></div></a>
                                 <div class="flex-grow-1 d-bock">
-                                    <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center"><a class="w-40 w-sm-100" href="">
+                                    <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center">
+									<a class="w-40 w-sm-100" href="{{route('inkubator.produk-detail',['startup','1'])}}">
                                             <div class="item-title">
-                                                Automatic-self-wind mens Watch 5102PR-001 (Certified
-                                                Pre-owned)
+                                               <b>iGrow-Pembiayaan Pertanian</b>
                                             </div>
-                                        </a>
-                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Gadget</p>
-                                        
+                                    </a>
+                                    <a href="{{route('inkubator.tenant-detail',['startup','1'])}}">    <p class="m-0 text-muted text-small w-15 w-sm-100">PT. Daya Guna Mandiri</p></a>
+
                                         <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges"><span class="badge badge-info">Startup</span></p>
                                     </div>
                                 </div>
@@ -106,13 +101,13 @@
                         </div>
                         <div class="list-item col-md-3">
                             <div class="card o-hidden mb-4 d-flex flex-column">
-                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('theme/images/products/watch-2.jpg')}}" /></div>
+                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('img/produk/default.png')}}" /></div>
                                 <div class="flex-grow-1 d-bock">
                                     <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center"><a class="w-40 w-sm-100" href="">
-                                            <div class="item-title">Automatic-self-wind mens Watch 5102PR-001</div>
+                                            <div class="item-title">Produk</div>
                                         </a>
-                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Gadget</p>
-                                        
+                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Nama Perusahaan</p>
+
                                         <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges"><span class="badge badge-info">Startup</span></p>
                                     </div>
                                 </div>
@@ -120,13 +115,13 @@
                         </div>
                         <div class="list-item col-md-3">
                             <div class="card o-hidden mb-4 d-flex flex-column">
-                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('theme/images/products/headphone-3.jpg')}}" /></div>
+                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('img/produk/default.png')}}" /></div>
                                 <div class="flex-grow-1 d-bock">
                                     <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center"><a class="w-40 w-sm-100" href="">
-                                            <div class="item-title">On-Ear Headphones - Black</div>
+                                            <div class="item-title">Produk</div>
                                         </a>
-                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Gadget</p>
-                                        
+                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Nama Perusahaan</p>
+
                                         <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges"><span class="badge badge-success">Scaleup</span></p>
                                     </div>
                                 </div>
@@ -134,13 +129,13 @@
                         </div>
                         <div class="list-item col-md-3">
                             <div class="card o-hidden mb-4 d-flex flex-column">
-                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('theme/images/products/headphone-4.jpg')}}" /></div>
+                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('img/produk/default.png')}}" /></div>
                                 <div class="flex-grow-1 d-bock">
                                     <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center"><a class="w-40 w-sm-100" href="">
-                                            <div class="item-title">In-Ear Headphone</div>
+                                            <div class="item-title">Produk</div>
                                         </a>
-                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Gadget</p>
-                                        
+                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Nama Perusahaan</p>
+
                                         <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges"><span class="badge badge-primary">Startup</span></p>
                                     </div>
                                 </div>
@@ -148,13 +143,13 @@
                         </div>
                         <div class="list-item col-md-3">
                             <div class="card o-hidden mb-4 d-flex flex-column">
-                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('theme/images/products/iphone-2.jpg')}}" /></div>
+                                <div class="list-thumb d-flex"><img alt="" src="{{ asset('img/produk/default.png')}}" /></div>
                                 <div class="flex-grow-1 d-bock">
                                     <div class="card-body align-self-center d-flex flex-column justify-content-between align-items-lg-center"><a class="w-40 w-sm-100" href="">
-                                            <div class="item-title">Duis exercitation nostrud anim</div>
+                                            <div class="item-title">Produk</div>
                                         </a>
-                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Gadget</p>
-                                       
+                                        <p class="m-0 text-muted text-small w-15 w-sm-100">Nama Perusahaan</p>
+
                                         <p class="m-0 text-muted text-small w-15 w-sm-100 d-none d-lg-block item-badges"><span class="badge badge-red">Pra Startup</span></p>
                                     </div>
                                 </div>

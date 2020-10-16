@@ -35,14 +35,14 @@
         <div class="firstbar">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-sm-12">
+                    <div class="col-md-4 col-sm-12">
                         <div class="brand">
                             <a href="index.html">
                                 <img src="{{asset('assets/images/logo.png')}}" alt="Magz Logo">
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-8 col-sm-12">
                         <form class="search" autocomplete="off">
                             <div class="form-group">
                                 <div class="input-group">
@@ -64,20 +64,9 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-3 col-sm-12 text-right">
-                        <ul class="nav-icons">
-                            <li><a href="/register"><i class="ion-person-add"></i>
-                                    <div>Register</div>
-                                </a></li>
-                            <li><a href="/login"><i class="ion-person"></i>
-                                    <div>Login</div>
-                                </a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
-
         <!-- Start nav -->
         <nav class="menu">
             <div class="container">
@@ -98,7 +87,6 @@
                         <li class="for-tablet"><a href="/login">Login</a></li>
                         <li class="for-tablet"><a href="/register">Register</a></li>
                         <li><a href="/">Home</a></li>
-
                         <li class="dropdown magz-dropdown"><a href="#">Event <i class="ion-ios-arrow-right"></i></a>
                             <ul class="dropdown-menu">
                                 <li><a href="category.html">Internet</a></li>
@@ -178,7 +166,7 @@
                                                 <article class="article col-md-4 mini">
                                                     <div class="inner">
                                                         <figure>
-                                                            <a href="#">
+                                                            <a href="{{route('single','none')}}">
                                                                 <img src="{{asset('assets/images/news/img10.jpg')}}"
                                                                     alt="Sample Article">
                                                             </a>
@@ -189,15 +177,15 @@
                                                                 <div class="category"><a
                                                                         href="category.html">Healthy</a></div>
                                                             </div>
-                                                            <h2><a href="#">Duis aute irure dolor in reprehenderit in
-                                                                    voluptate</a></h2>
+                                                            <h2><a href="{{route('single','none')}}">Duis aute irure
+                                                                    dolor in reprehenderit in voluptate</a></h2>
                                                         </div>
                                                     </div>
                                                 </article>
                                                 <article class="article col-md-4 mini">
                                                     <div class="inner">
                                                         <figure>
-                                                            <a href="#">
+                                                            <a href="{{route('single','none')}}">
                                                                 <img src="{{asset('assets/images/news/img11.jpg')}}"
                                                                     alt="Sample Article">
                                                             </a>
@@ -208,15 +196,15 @@
                                                                 <div class="category"><a
                                                                         href="category.html">Lifestyle</a></div>
                                                             </div>
-                                                            <h2><a href="#">Duis aute irure dolor in reprehenderit in
-                                                                    voluptate</a></h2>
+                                                            <h2><a href="{{route('single','none')}}">Duis aute irure
+                                                                    dolor in reprehenderit in voluptate</a></h2>
                                                         </div>
                                                     </div>
                                                 </article>
                                                 <article class="article col-md-4 mini">
                                                     <div class="inner">
                                                         <figure>
-                                                            <a href="#">
+                                                            <a href="{{route('single','none')}}">
                                                                 <img src="{{asset('assets/images/news/img14.jpg')}}"
                                                                     alt="Sample Article">
                                                             </a>
@@ -227,8 +215,8 @@
                                                                 <div class="category"><a href="category.html">Travel</a>
                                                                 </div>
                                                             </div>
-                                                            <h2><a href="#">Duis aute irure dolor in reprehenderit in
-                                                                    voluptate</a></h2>
+                                                            <h2><a href="{{route('single','none')}}">Duis aute irure
+                                                                    dolor in reprehenderit in voluptate</a></h2>
                                                         </div>
                                                     </div>
                                                 </article>
@@ -274,7 +262,7 @@
                                                 <article class="article col-md-4 mini">
                                                     <div class="inner">
                                                         <figure>
-                                                            <a href="#">
+                                                            <a href="{{route('single','none')}}">
                                                                 <img src="{{asset('assets/images/news/img10.jpg')}}"
                                                                     alt="Sample Article">
                                                             </a>
@@ -285,15 +273,15 @@
                                                                 <div class="category"><a
                                                                         href="category.html">Healthy</a></div>
                                                             </div>
-                                                            <h2><a href="#">Duis aute irure dolor in reprehenderit in
-                                                                    voluptate</a></h2>
+                                                            <h2><a href="{{route('single','none')}}">Duis aute irure
+                                                                    dolor in reprehenderit in voluptate</a></h2>
                                                         </div>
                                                     </div>
                                                 </article>
                                                 <article class="article col-md-4 mini">
                                                     <div class="inner">
                                                         <figure>
-                                                            <a href="#">
+                                                            <a href="{{route('single','none')}}">
                                                                 <img src="{{asset('assets/images/news/img11.jpg')}}"
                                                                     alt="Sample Article">
                                                             </a>
@@ -304,15 +292,15 @@
                                                                 <div class="category"><a
                                                                         href="category.html">Lifestyle</a></div>
                                                             </div>
-                                                            <h2><a href="#">Duis aute irure dolor in reprehenderit in
-                                                                    voluptate</a></h2>
+                                                            <h2><a href="{{route('single','none')}}">Duis aute irure
+                                                                    dolor in reprehenderit in voluptate</a></h2>
                                                         </div>
                                                     </div>
                                                 </article>
                                                 <article class="article col-md-4 mini">
                                                     <div class="inner">
                                                         <figure>
-                                                            <a href="#">
+                                                            <a href="{{route('single','none')}}">
                                                                 <img src="{{asset('assets/images/news/img14.jpg')}}"
                                                                     alt="Sample Article">
                                                             </a>
@@ -323,8 +311,8 @@
                                                                 <div class="category"><a href="category.html">Travel</a>
                                                                 </div>
                                                             </div>
-                                                            <h2><a href="#">Duis aute irure dolor in reprehenderit in
-                                                                    voluptate</a></h2>
+                                                            <h2><a href="{{route('single','none')}}">Duis aute irure
+                                                                    dolor in reprehenderit in voluptate</a></h2>
                                                         </div>
                                                     </div>
                                                 </article>
@@ -370,7 +358,7 @@
                                                 <article class="article col-md-4 mini">
                                                     <div class="inner">
                                                         <figure>
-                                                            <a href="#">
+                                                            <a href="{{route('single','none')}}">
                                                                 <img src="{{asset('assets/images/news/img10.jpg')}}"
                                                                     alt="Sample Article">
                                                             </a>
@@ -381,15 +369,15 @@
                                                                 <div class="category"><a
                                                                         href="category.html">Healthy</a></div>
                                                             </div>
-                                                            <h2><a href="#">Duis aute irure dolor in reprehenderit in
-                                                                    voluptate</a></h2>
+                                                            <h2><a href="{{route('single','none')}}">Duis aute irure
+                                                                    dolor in reprehenderit in voluptate</a></h2>
                                                         </div>
                                                     </div>
                                                 </article>
                                                 <article class="article col-md-4 mini">
                                                     <div class="inner">
                                                         <figure>
-                                                            <a href="#">
+                                                            <a href="{{route('single','none')}}">
                                                                 <img src="{{asset('assets/images/news/img11.jpg')}}"
                                                                     alt="Sample Article">
                                                             </a>
@@ -400,15 +388,15 @@
                                                                 <div class="category"><a
                                                                         href="category.html">Lifestyle</a></div>
                                                             </div>
-                                                            <h2><a href="#">Duis aute irure dolor in reprehenderit in
-                                                                    voluptate</a></h2>
+                                                            <h2><a href="{{route('single','none')}}">Duis aute irure
+                                                                    dolor in reprehenderit in voluptate</a></h2>
                                                         </div>
                                                     </div>
                                                 </article>
                                                 <article class="article col-md-4 mini">
                                                     <div class="inner">
                                                         <figure>
-                                                            <a href="#">
+                                                            <a href="{{route('single','none')}}">
                                                                 <img src="{{asset('assets/images/news/img14.jpg')}}"
                                                                     alt="Sample Article">
                                                             </a>
@@ -419,8 +407,8 @@
                                                                 <div class="category"><a href="category.html">Travel</a>
                                                                 </div>
                                                             </div>
-                                                            <h2><a href="#">Duis aute irure dolor in reprehenderit in
-                                                                    voluptate</a></h2>
+                                                            <h2><a href="{{route('single','none')}}">Duis aute irure
+                                                                    dolor in reprehenderit in voluptate</a></h2>
                                                         </div>
                                                     </div>
                                                 </article>
@@ -444,25 +432,39 @@
                                 <li><a href="#"><i class="icon ion-heart"></i> Contact Us</a></li>
                             </ul>
                         </li>
+                        @guest
                         <li class="dropdown magz-dropdown"><a href="#">My Account <i
                                     class="ion-ios-arrow-right"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><i class="icon ion-person"></i>Dashboard</a></li>
+                                <li><a href="/login"><i class="icon ion-person"></i>Login</a></li>
+                                <li><a href="/register"><i class="icon ion-heart"></i>Register</a></li>
+                            </ul>
+                        </li>
+                        @endguest
+                        @auth
+                        <li class="dropdown magz-dropdown"><a href="#">My Account <i
+                                    class="ion-ios-arrow-right"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{route('dashboard')}}"><i class="icon ion-person"></i>Dashboard</a></li>
                                 <li><a href="#"><i class="icon ion-heart"></i> Forum</a></li>
                                 <li><a href="#"><i class="icon ion-settings"></i> Profile</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#"><i class="icon ion-log-out"></i> Logout</a></li>
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i
+                                            class="icon ion-log-out"></i> Logout</a></li>
                             </ul>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- End nav -->
     </header>
-
     @yield('content')
-
     <!-- Start footer -->
     <footer class="footer">
         <div class="container">
@@ -556,7 +558,7 @@
                         @endforelse
                     </div>
 
-                    <a href="#" class="btn btn-magz white btn-block">See All <i
+                    <a href="/all" class="btn btn-magz white btn-block">See All <i
                             class="ion-ios-arrow-thin-right"></i></a>
                 </div>
                 <div class="col-md-3 col-xs-12 col-sm-6">
@@ -662,7 +664,6 @@
         </div>
     </footer>
     <!-- End Footer -->
-
     <!-- JS -->
     <script src="{{asset('assets/js/jquery.js')}}"></script>
     <script src="{{asset('assets/js/jquery.migrate.js')}}"></script>

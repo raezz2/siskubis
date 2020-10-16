@@ -46,30 +46,32 @@
 		<div class="col-xl-9">
 			<div class="row">
 				@foreach($data as $data)
-				<div class="col-xl-6">
-					<div class="card mt-4 mb-4">
-						<img class="card-img-top" src="{{ asset('theme/images/'.$data->foto)}}" alt="" height="380px">
+				<div class="col-xl-4">
+					<div class="card mt-2 mb-2">
+						<a href="{{route('inkubator.tenant-detail',['startup','1'])}}"><img class="card-img-top" src="{{ asset('img/tenant/'.$data->foto)}}" alt="" height="300px"></a>
 						<div class="card-header">
-						<strong>{{$data->title}}</strong>
+						<a href="{{route('inkubator.tenant-detail',['startup','1'])}}"><strong>{{$data->title}}</strong></a>
 						</div>
 						<div class="card-body">
 							<div class="d-sm-flex align-item-sm-center flex-sm-nowrap">
 								<div>
 									
 									<p class="ul-task-manager__paragraph mb-3">{{$data->subtitle}}</p>
-									<a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a>
+									<a href="{{route('inkubator.profile-detail','1')}}"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted" /></a>
+									<a href="{{route('inkubator.profile-detail','1')}}"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a>
+									<a href="{{route('inkubator.profile-detail','1')}}"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a>
 								</div>
 								<ul class="list list-unstyled mb-0 mt-3 mt-sm-0 ml-auto">
 									
 									<li>Priority:</li>
 									<li><a class="badge badge-warning align-top" href="#">{{$data->name}}</a></li>
 									<li>Mentor:</li>
-									<li><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a></li>
+									<li><a href="{{route('inkubator.profile-detail','1')}}"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"></li>
 								</ul>
 							</div>
 						</div>
 						<div class="card-footer d-sm-flex justify-content-sm-between align-items-sm-center">
-						<span class="ul-task-manager__font-date text-muted">Terdaftar:{{$data->created_at}}</span>
+						<!-- <span class="ul-task-manager__font-date text-muted">Terdaftar:{{$data->created_at}}</span> -->
 						<span>Aktifitas: <span class="font-weight-semibold">18 hours ago</span></span>
 							<ul class="list-inline mb-0 mt-2 mt-sm-0">
 								<li class="list-inline-item dropdown"><a class="text-default" href="#" data-toggle="dropdown">Aktif</a>
@@ -81,192 +83,6 @@
 					</div>
 				</div>
 				@endforeach
-				
-				<!--<div class="col-xl-6">
-					<div class="card mt-4 mb-4">
-						<img class="card-img-top" src="{{ asset('theme/images/photo-wide-2.jpg')}}" alt="">
-						<div class="card-header">
-						<strong>Nama Produk</strong>
-						</div>
-						<div class="card-body">
-							<div class="d-sm-flex align-item-sm-center flex-sm-nowrap">
-								<div>
-									<h6><a href="">#23. New icons set for an iOS app</a></h6>
-									<p class="ul-task-manager__paragraph mb-3">A collection of textile samples lay spread out on the table..</p><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a>
-								</div>
-								<ul class="list list-unstyled mb-0 mt-3 mt-sm-0 ml-auto">
-									<li><span class="ul-task-manager__font-date text-muted">20 January, 2015</span></li>
-									<li>Priority:</li>
-									<li><a class="badge badge-warning align-top" href="#">Start Up</a></li>
-									<li>Mentor:</li>
-									<li><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="card-footer d-sm-flex justify-content-sm-between align-items-sm-center"><span>Due: <span class="font-weight-semibold">18 hours</span></span>
-							<ul class="list-inline mb-0 mt-2 mt-sm-0">
-								<li class="list-inline-item dropdown"><a class="text-default" href="#" data-toggle="dropdown">On hold</a>
-									<div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Open</a><a class="dropdown-item active" href="#">On hold</a><a class="dropdown-item" href="#">Resolved</a><a class="dropdown-item" href="#">Closed</a>
-										<div class="dropdown-divider"></div><a class="dropdown-item" href="#">Dublicate</a><a class="dropdown-item" href="#">Invalid</a><a class="dropdown-item" href="#">Wontfix</a>
-									</div>
-								</li>
-								<li class="list-inline-item dropdown"><a class="text-default" href="#" data-toggle="dropdown"><i class="i-Gear-2"></i></a>
-									<div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="icon-alarm-add"></i> Check in</a><a class="dropdown-item" href="#"><i class="icon-attachment"></i> Attach screenshot</a><a class="dropdown-item" href="#"><i class="icon-rotate-ccw2"></i> Reassign</a>
-										<div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="icon-pencil7"></i> Edit task</a><a class="dropdown-item" href="#"><i class="icon-cross2"></i> Remove</a>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-6">
-					<div class="card mt-4 mb-4">
-						<img class="card-img-top" src="{{ asset('theme/images/photo-wide-2.jpg')}}" alt="">
-						<div class="card-header">
-						<strong>Nama Produk</strong>
-						</div>
-						<div class="card-body">
-							<div class="d-sm-flex align-item-sm-center flex-sm-nowrap">
-								<div>
-									<h6><a href="">#23. New icons set for an iOS app</a></h6>
-									<p class="ul-task-manager__paragraph mb-3">A collection of textile samples lay spread out on the table..</p><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a>
-								</div>
-								<ul class="list list-unstyled mb-0 mt-3 mt-sm-0 ml-auto">
-									<li><span class="ul-task-manager__font-date text-muted">20 January, 2015</span></li>
-									<li>Priority:</li>
-									<li><a class="badge badge-success align-top" href="#">Pra Start Up</a></li>
-									<li>Mentor:</li>
-									<li><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="card-footer d-sm-flex justify-content-sm-between align-items-sm-center"><span>Due: <span class="font-weight-semibold">18 hours</span></span>
-							<ul class="list-inline mb-0 mt-2 mt-sm-0">
-								<li class="list-inline-item dropdown"><a class="text-default" href="#" data-toggle="dropdown">On hold</a>
-									<div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Open</a><a class="dropdown-item active" href="#">On hold</a><a class="dropdown-item" href="#">Resolved</a><a class="dropdown-item" href="#">Closed</a>
-										<div class="dropdown-divider"></div><a class="dropdown-item" href="#">Dublicate</a><a class="dropdown-item" href="#">Invalid</a><a class="dropdown-item" href="#">Wontfix</a>
-									</div>
-								</li>
-								<li class="list-inline-item dropdown"><a class="text-default" href="#" data-toggle="dropdown"><i class="i-Gear-2"></i></a>
-									<div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="icon-alarm-add"></i> Check in</a><a class="dropdown-item" href="#"><i class="icon-attachment"></i> Attach screenshot</a><a class="dropdown-item" href="#"><i class="icon-rotate-ccw2"></i> Reassign</a>
-										<div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="icon-pencil7"></i> Edit task</a><a class="dropdown-item" href="#"><i class="icon-cross2"></i> Remove</a>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-6">
-					<div class="card mt-4 mb-4">
-						<img class="card-img-top" src="{{ asset('theme/images/photo-wide-2.jpg')}}" alt="">
-						<div class="card-header">
-						<strong>Nama Produk</strong>
-						</div>
-						<div class="card-body">
-							<div class="d-sm-flex align-item-sm-center flex-sm-nowrap">
-								<div>
-									<h6><a href="">#23. New icons set for an iOS app</a></h6>
-									<p class="ul-task-manager__paragraph mb-3">A collection of textile samples lay spread out on the table..</p><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a>
-								</div>
-								<ul class="list list-unstyled mb-0 mt-3 mt-sm-0 ml-auto">
-									<li><span class="ul-task-manager__font-date text-muted">20 January, 2015</span></li>
-									<li>Priority:</li>
-									<li><a class="badge badge-primary align-top" href="#">Scale Up</a></li>
-									<li>Mentor:</li>
-									<li><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="card-footer d-sm-flex justify-content-sm-between align-items-sm-center"><span>Due: <span class="font-weight-semibold">18 hours</span></span>
-							<ul class="list-inline mb-0 mt-2 mt-sm-0">
-								<li class="list-inline-item dropdown"><a class="text-default" href="#" data-toggle="dropdown">On hold</a>
-									<div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Open</a><a class="dropdown-item active" href="#">On hold</a><a class="dropdown-item" href="#">Resolved</a><a class="dropdown-item" href="#">Closed</a>
-										<div class="dropdown-divider"></div><a class="dropdown-item" href="#">Dublicate</a><a class="dropdown-item" href="#">Invalid</a><a class="dropdown-item" href="#">Wontfix</a>
-									</div>
-								</li>
-								<li class="list-inline-item dropdown"><a class="text-default" href="#" data-toggle="dropdown"><i class="i-Gear-2"></i></a>
-									<div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="icon-alarm-add"></i> Check in</a><a class="dropdown-item" href="#"><i class="icon-attachment"></i> Attach screenshot</a><a class="dropdown-item" href="#"><i class="icon-rotate-ccw2"></i> Reassign</a>
-										<div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="icon-pencil7"></i> Edit task</a><a class="dropdown-item" href="#"><i class="icon-cross2"></i> Remove</a>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-								<div class="col-xl-6">
-					<div class="card mt-4 mb-4">
-						<img class="card-img-top" src="{{ asset('theme/images/photo-wide-2.jpg')}}" alt="">
-						<div class="card-header">
-						<strong>Nama Produk</strong>
-						</div>
-						<div class="card-body">
-							<div class="d-sm-flex align-item-sm-center flex-sm-nowrap">
-								<div>
-									<h6><a href="">#23. New icons set for an iOS app</a></h6>
-									<p class="ul-task-manager__paragraph mb-3">A collection of textile samples lay spread out on the table..</p><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a>
-								</div>
-								<ul class="list list-unstyled mb-0 mt-3 mt-sm-0 ml-auto">
-									<li><span class="ul-task-manager__font-date text-muted">20 January, 2015</span></li>
-									<li>Priority:</li>
-									<li><a class="badge badge-success align-top" href="#">Pra Start Up</a></li>
-									<li>Mentor:</li>
-									<li><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="card-footer d-sm-flex justify-content-sm-between align-items-sm-center"><span>Due: <span class="font-weight-semibold">18 hours</span></span>
-							<ul class="list-inline mb-0 mt-2 mt-sm-0">
-								<li class="list-inline-item dropdown"><a class="text-default" href="#" data-toggle="dropdown">On hold</a>
-									<div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Open</a><a class="dropdown-item active" href="#">On hold</a><a class="dropdown-item" href="#">Resolved</a><a class="dropdown-item" href="#">Closed</a>
-										<div class="dropdown-divider"></div><a class="dropdown-item" href="#">Dublicate</a><a class="dropdown-item" href="#">Invalid</a><a class="dropdown-item" href="#">Wontfix</a>
-									</div>
-								</li>
-								<li class="list-inline-item dropdown"><a class="text-default" href="#" data-toggle="dropdown"><i class="i-Gear-2"></i></a>
-									<div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="icon-alarm-add"></i> Check in</a><a class="dropdown-item" href="#"><i class="icon-attachment"></i> Attach screenshot</a><a class="dropdown-item" href="#"><i class="icon-rotate-ccw2"></i> Reassign</a>
-										<div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="icon-pencil7"></i> Edit task</a><a class="dropdown-item" href="#"><i class="icon-cross2"></i> Remove</a>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-6">
-					<div class="card mt-4 mb-4">
-						<img class="card-img-top" src="{{ asset('theme/images/photo-wide-2.jpg')}}" alt="">
-						<div class="card-header">
-						<strong>Nama Produk</strong>
-						</div>
-						<div class="card-body">
-							<div class="d-sm-flex align-item-sm-center flex-sm-nowrap">
-								<div>
-									<h6><a href="">#23. New icons set for an iOS app</a></h6>
-									<p class="ul-task-manager__paragraph mb-3">A collection of textile samples lay spread out on the table..</p><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a>
-								</div>
-								<ul class="list list-unstyled mb-0 mt-3 mt-sm-0 ml-auto">
-									<li><span class="ul-task-manager__font-date text-muted">20 January, 2015</span></li>
-									<li>Priority:</li>
-									<li><a class="badge badge-primary align-top" href="#">Scale Up</a></li>
-									<li>Mentor:</li>
-									<li><a href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" height="36" alt="corrupted 2" /></a><a href="#"><i class="ul-task-manager__fonts i-Add"></i></a><a class="btn btn-icon bg-transparent border-slate-300 text-slate rounded-round border-dashed" href=""><i class="icon-plus22"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="card-footer d-sm-flex justify-content-sm-between align-items-sm-center"><span>Due: <span class="font-weight-semibold">18 hours</span></span>
-							<ul class="list-inline mb-0 mt-2 mt-sm-0">
-								<li class="list-inline-item dropdown"><a class="text-default" href="#" data-toggle="dropdown">On hold</a>
-									<div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Open</a><a class="dropdown-item active" href="#">On hold</a><a class="dropdown-item" href="#">Resolved</a><a class="dropdown-item" href="#">Closed</a>
-										<div class="dropdown-divider"></div><a class="dropdown-item" href="#">Dublicate</a><a class="dropdown-item" href="#">Invalid</a><a class="dropdown-item" href="#">Wontfix</a>
-									</div>
-								</li>
-								<li class="list-inline-item dropdown"><a class="text-default" href="#" data-toggle="dropdown"><i class="i-Gear-2"></i></a>
-									<div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="icon-alarm-add"></i> Check in</a><a class="dropdown-item" href="#"><i class="icon-attachment"></i> Attach screenshot</a><a class="dropdown-item" href="#"><i class="icon-rotate-ccw2"></i> Reassign</a>
-										<div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="icon-pencil7"></i> Edit task</a><a class="dropdown-item" href="#"><i class="icon-cross2"></i> Remove</a>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>-->
 			</div>
 			<!-- pagination-->
 			<div class="row justify-content-center mt-4">
@@ -292,63 +108,37 @@
 			<!-- end of search-->
 			<!-- navigation-->
 			<div class="card mb-3">
-				<div class="card-header font-weight-bold dropdown-toggle" onclick="customToggle3()">Navigation</div>
-				<div class="card-body" id="custom-toggle3">
-				<div class="ul-contact-list">
-				<div class="contact-close-mobile-icon float-right mb-2"><i class="i-Close-Window text-15 font-weight-600"></i></div>
-				<input class="form-control form-control-rounded col-md-12" id="exampleFormControlInput1" type="text" placeholder="Search Tenant..." />
-				<br>
-				<div class="list-group" id="list-tab" role="tablist"><a class="list-group-item list-group-item-action border-0 active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><i class="nav-icon i-Business-Mens"></i>All Tenants</a>
-				<a class="list-group-item list-group-item-action border-0" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><i class="nav-icon i-Conference"></i> Non Tenant</a>
-				<label class="text-muted font-weight-600 py-8" for="">MEMBERS INKUBATOR</label>
-					<select class="form-control form-control-rounded"><option>All Inkubator</option><option></option></select>
-					</br>
-					<a class="list-group-item list-group-item-action border-0" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><i class="nav-icon i-Arrow-Next"></i> Pra Start Up</a>
-					<a class="list-group-item list-group-item-action border-0" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><i class="nav-icon i-Arrow-Next"></i> Start Up</a>
-					<a class="list-group-item list-group-item-action border-0" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings"><i class="nav-icon i-Arrow-Next"></i> Scale Up</a>
-				</div>
-			</div>
-			<!--<div class="ul-contact-list">
-				<div class="contact-close-mobile-icon float-right mb-2"><i class="i-Close-Window text-15 font-weight-600"></i></div>
-				<!-- modal-->
-				<!--<input class="form-control form-control-rounded col-md-12" id="exampleFormControlInput1" type="text" placeholder="Search User..." />
-				<br>
-				<div class="list-group" id="list-tab" role="tablist"><a class="list-group-item list-group-item-action border-0 active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><i class="nav-icon i-Business-Mens"></i>All Tenant</a>
-				<label class="text-muted font-weight-600 py-8" for="">MEMBERS INKUBATOR</label>
-					<a class="list-group-item list-group-item-action border-0" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"><i class="nav-icon i-Arrow-Next"></i> Pra Start Up</a>
-					<a class="list-group-item list-group-item-action border-0" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><i class="nav-icon i-Arrow-Next"></i> Start Up</a>
-					<a class="list-group-item list-group-item-action border-0" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings"><i class="nav-icon i-Arrow-Next"></i> Scale Up</a>
-				</div>
-			</div>-->
-				</div>
+				<div class="card-header font-weight-bold dropdown-toggle" onclick="customToggle3()">Filter</div>
+				<div class="card-body">
+                <div class="form-group">
+                    <label for="search">Pencarian</label>
+                    <div class="input-group">
+                        <input type="text" name="title" id="title" class="form-control" placeholder="search" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Priority</label>
+                                            <label class="checkbox checkbox-success">
+                            <input type="checkbox" name="priority" value="2"><span>Pra Start Up</span><span class="checkmark"></span>
+                        </label>
+                                            <label class="checkbox checkbox-success">
+                            <input type="checkbox" name="priority" value="1"><span>Proposal</span><span class="checkmark"></span>
+                        </label>
+                                            <label class="checkbox checkbox-success">
+                            <input type="checkbox" name="priority" value="4"><span>Scale Up</span><span class="checkmark"></span>
+                        </label>
+                                            <label class="checkbox checkbox-success">
+                            <input type="checkbox" name="priority" value="3"><span>Start Up</span><span class="checkmark"></span>
+                        </label>
+                                    </div>
+                <div class="form-group">
+                    <button id="filter" class="btn btn-primary">Filter</button>
+                </div>
+            </div>
 			</div>
 			<!-- end of navigation-->
 			<!-- assigners-->
-<!--			<div class="card mb-3">
-				<div class="card-header font-weight-bold dropdown-toggle" onclick="customToggle4()">Assigners</div>
-				<div class="card-body" id="custom-toggle4">
-					<ul class="media-list">
-						<li class="media mb-2"><a class="mr-4" href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" alt="asd" srcset="" /></a>
-							<div class="ul-task-manager__media"><a href="">James Alexander gull</a>
-								<div class="font-size-sm text-muted">Santa Ana,CA</div>
-							</div>
-							<div class="ml-3 align-self-center"><span class="badge badge-mark"></span></div>
-						</li>
-						<li class="media mb-2"><a class="mr-4" href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" alt="asd" srcset="" /></a>
-							<div class="ul-task-manager__media"><a href="">James Alexander</a>
-								<div class="font-size-sm text-muted">Santa Ana,CA</div>
-							</div>
-							<div class="ml-3 align-self-center"><span class="badge badge-mark"></span></div>
-						</li>
-						<li class="media mb-2"><a class="mr-4" href="#"><img class="rounded-circle" src="{{ asset('theme/images/faces/1.jpg')}}" width="36" alt="asd" srcset="" /></a>
-							<div class="ul-task-manager__media"><a href="">James Alexander</a>
-								<div class="font-size-sm text-muted">Santa Ana,CA</div>
-							</div>
-							<div class="ml-3 align-self-center"><span class="badge badge-mark"></span></div>
-						</li>
-					</ul>
-				</div>
-			</div>-->
+
 			<!-- end of assigners-->
 			<!-- completeness stats-->
 			<div class="card mb-3">

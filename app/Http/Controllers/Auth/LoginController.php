@@ -30,19 +30,20 @@ class LoginController extends Controller
     //protected $redirectTo = RouteServiceProvider::HOME;
 	protected function authenticated(Request $request, $user)
 	{
-		if ( $user->hasRole('admin') ) {// do your magic here
-			return redirect()->route('admin.home');
-		}elseif($user->hasRole('inkubator')){
-			return redirect()->route('inkubator.home');
-		}elseif($user->hasRole('mentor')){
-			return redirect()->route('mentor.home');
-		}elseif($user->hasRole('tenant')){
-			return redirect()->route('tenant.home');
-		}elseif($user->hasRole('user')){
-			return redirect()->route('user.home');
-		}
+		// if ( $user->hasRole('admin') ) {// do your magic here
+			// return redirect()->route('admin.home');
+		// }elseif($user->hasRole('inkubator')){
+			// return redirect()->route('inkubator.home');
+		// }elseif($user->hasRole('mentor')){
+			// return redirect()->route('mentor.home');
+		// }elseif($user->hasRole('tenant')){
+			// return redirect()->route('tenant.home');
+		// }elseif($user->hasRole('user')){
+			// return redirect()->route('user.home');
+		// }
 
-	 return redirect('/home');
+	 // return redirect('/home');
+	 return redirect('/');
 	}
     /**
      * Create a new controller instance.

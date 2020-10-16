@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Berita;
 
-use App\Kategori;
+use App\kategori;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 
 
 class KategoriController extends Controller
 {
 	public function create(){
-		$berita_category = Kategori::orderBy('category')->get();
+		$berita_category = kategori::orderBy('category')->get();
 		$datas = array(
 			'berita_category' => $berita_category,
             'no'        => 1
@@ -22,6 +21,7 @@ class KategoriController extends Controller
 	}
 	public function store(){
 		Kategori::create([
+
             'category'      => request('category'),
         ]);
 
@@ -32,7 +32,7 @@ class KategoriController extends Controller
 
 		return redirect(route('inkubator.kategori.create'))->with($notification);
 	}
-	public function edit(Kategori $kategori)
+	public function edit(kategori $kategori)
 	{
 		$data = array(
 			'title'       => 'Kategori',
@@ -41,7 +41,7 @@ class KategoriController extends Controller
 		return view('kategori.edit',$data);
 	}
 
-	public function update(Kategori $kategori)
+	public function update(kategori $kategori)
 	{
 		$kategori->update([
             'category'      => request('category'),
@@ -55,7 +55,7 @@ class KategoriController extends Controller
 		return redirect(route('inkubator.kategori.create'))->with($notification);
 	}
 
-	public function destroy(Kategori $kategori){
+	public function destroy(kategori $kategori){
     	$kategori->delete([
         ]);
 

@@ -21,4 +21,14 @@ class ProdukController extends Controller
     {
         return view('produk.index');
     }
+	
+	public function kategori($kategori)
+    {
+        return view('produk.index');
+    }
+	
+	public function detail($kategori,$id)
+    {
+        return view('produk.index');
+    }
 }

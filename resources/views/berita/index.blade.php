@@ -1,5 +1,10 @@
 @extends('layouts.app')
+@section('css')
 
+	<link rel="stylesheet" href="{{ asset('theme/css/plugins/sweetalert2.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('theme/css/plugins/toastr.min.css') }}" />
+
+@endsection
 @section('content')
 
 <div class="row">
@@ -51,7 +56,7 @@
 		@foreach ($berita as $b)
 		<div class="ul-widget5__item">
 			<div class="ul-widget5__content">
-				<div class="ul-widget5__pic"><img src="{{ asset('storage/berita/' . $b->foto) }}" alt="Third slide" /></div>
+				<div class="ul-widget5__pic"><img src="{{ asset('storage/berita/' . $b->foto) }}" alt="{{ $b->slug }}" /></div>
 				<div class="ul-widget5__section">
 					<a class="ul-widget4__title" href="{{ route('inkubator.showBerita', $b->slug) }}">{{ Str::limit($b->tittle, 40) }}</a>
 					<p class="ul-widget5__desc">{!! Str::limit($b->berita, 47) !!}</p>
@@ -63,7 +68,7 @@
 								<span class="badge badge-pill badge-danger p-1 mr-2">Draft</span>
 							@endif
 						<span>Author : </span><span class="text-primary">{{ $b->profil_user->nama }}</span><br>
-						<span>Released : </span><span class="text-primary">{{ $b->created_at->format('d, M Y') }}</span>
+						<span>Released : </span><span class="text-primary">{{ $b->created_at->format('d F Y') }}</span>
 					</div>
 				</div>
 			</div>
@@ -106,7 +111,7 @@
 		<!--  row-comments -->
 		@forelse($umum as $row)
 		<div class="ul-widget-app__row-comments">
-			<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-lg" src="{{ asset('storage/berita/' . $row->foto) }}" alt="alt" /></div>
+			<div class="ul-widget-app__profile-pic p-3"><img class="profile-picture avatar-lg" src="{{ asset('storage/berita/' . $row->foto) }}" alt="{{ $row->slug }}" /></div>
 			<div class="ul-widget-app__comment">
 				<div class="ul-widget-app__profile-title">
 					<a class="ul-widget4__title" href="{{ route('inkubator.showBerita', $row->slug) }}">{{ Str::limit($row->tittle, 40) }}</a>
@@ -157,4 +162,59 @@
 </div>
 </div>
 @endsection
-@include('alert')
+@section('js')
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "2000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type', 'info') }}";
+    switch(type){
+        case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+
+        case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+    }
+  @endif
+
+    $('.delete').on('click', function (event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Apa Anda Yakin Menghapus ?',
+            type: 'warning',
+            showCancelButton:true,
+            confirmButtonColor: '#0CC27E',
+            cancelButtonColor: '#FF586B',
+            confirmButtonText: 'Hapus',
+            cancelButtontext: 'Batal',
+            confirmButtonClass: 'btn btn-success mr-5',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false
+        }).then(function(value){
+            if (value){
+                window.location.href = url;
+            }
+        });
+    });
+</script>
+
+@endsection
